@@ -1,0 +1,52 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{~ui('loader')->js('#admin/js/cplace.mgr.ajax')}
+<table cellspacing="1" cellpadding="4" width="100%" align="center"
+	class="tableborder">
+	<tr class="header">
+		<td colspan="4">城市区域管理 / 当前城市：<font color="red">{$city['cityname']}</font></td>
+	</tr>
+	<tr class="banner">
+		<td colspan="7">1、是否开启热门？ <font class="ini"
+			src="catalog.enabled"></font>（点击按钮：绿色开启、灰色关闭）<br />
+		</td>
+	</tr>
+	<tr class="tr_nav">
+		<td width="6%">编号</td>
+		<td width="36%">区域名称</td>
+		<td width="20%">更新时间</td>
+		<td width="6%">是否热门</td>
+	</tr>
+	<!--{loop $places $i $topclass}-->
+	{eval $mclass = $topclass; unset($mclass['streets']);
+	$topclass['streets'] || $topclass['streets'] = array();
+	array_unshift($topclass['streets'], $mclass);
+	$topclass['streets'][0]['master'] = true; $parentID = $mclass['id'];
+	$parent = $mclass['name']; }
+	<!--{loop $topclass['streets'] $i $class}-->
+	<tr>
+		<td>{$class['id']}</td>
+		<td>{echo $class['master'] ? '' : $parent.' / '}<label >{$class['name']}</label>
+		</td>
+		<td>{echo date('Y-m-d H:i:s', $class['timestamp_update'])}</td>
+		<td>
+			{eval $num = logic('circle')->Exists({$city['cityid']},{$class['id']})}
+			<a href="javascript:void(0)" onclick="circle_update({$city['cityid']},{$class['id']},{echo $num ? 0:1},this)">
+			<img id="img{$class['id']}" src="templates/admin/images/{echo $num ? 'btn_enable.png':'btn_disable.gif' }"></img>
+			</a>
+		</td>
+	</tr>
+	<!--{/loop}-->
+	<!--{/loop}-->
+</table>
+<script type="text/javascript">
+$.hook.add('cplace.add.finish', function(id){
+location.href = location.href;
+});
+function after_cplace_delete(id)
+{
+location.href = location.href;
+}
+</script>
+<!--{template @admin/footer}-->

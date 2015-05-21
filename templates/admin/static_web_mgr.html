@@ -1,0 +1,218 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@json2')}
+<script type="text/javascript">
+var __Global_SID = '{$list[id]}';
+var __Global_ID = "{$list[id]}";
+</script>
+<form action="{$action}" id="subForm" method="post" enctype="multipart/form-data">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+		<tr class="header">
+			<td colspan="2">静态页面信息</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">网页标题</td>
+			<td align="right">
+				<input name="title" type="text" datatype="*" errormsg="请输入" sucmsg=" " value="{$list['title']}" />
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">左侧按钮名称</td>
+			<td align="right">
+				<input name="left_btn" type="text" datatype="*" errormsg="请输入" sucmsg=" " value="{$list['left_btn']}" />
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">右侧按钮名称</td>
+			<td align="right">
+				<input name="right_btn" type="text" datatype="*" errormsg="请输入" sucmsg=" " value="{$list['right_btn']}" />
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">底部按钮名称</td>
+			<td align="right">
+				<input name="bottom_btn" type="text" datatype="*" errormsg="请输入" sucmsg=" " value="{$list['bottom_btn']}" />
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">底部按钮URL</td>
+			<td align="right">
+				<input name="bottom_url" type="text" datatype="*" errormsg="请输入" sucmsg=" " value="{$list['bottom_url']}" />
+			</td>
+		</tr>
+		<tr>
+			<td width="100" class="td_title">右侧列表</td>
+			<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="border-table" width="98%">
+	        <thead>
+	          <tr>
+	          	<th width="15%">列表一</th>
+	          	<th width="15%">列表二</th>
+	          	<th width="15%">列表三</th>
+	          </tr>
+	        </thead>
+	        <tbody id="item_box">
+	        {if $config}
+	          <!--{loop $config $i $value}-->
+	          <tr class="td_c">
+	            <td>
+	            	<input type="text" name="field1[]" value="{echo $value[0]}" />
+	            </td>
+	            <td>
+	            	<input type="text" name="field2[]" value="{echo $value[1]}" />
+	            </td>
+	            <td>
+	            	<input type="text" name="field3[]" value="{echo $value[2]}" />
+	            </td>
+	            <td>
+	              <a title="删除" onclick="delItemTr(this);">删除</a>
+	            </td>
+	          </tr>
+	          <!--{/loop}-->
+	          {else}
+	          <tr class="td_c">
+	            <td>
+	            	<input type="text" name="field1[]" value="{echo $value[0]}" />
+	            </td>
+	            <td>
+	            	<input type="text" name="field2[]" value="{echo $value[1]}" />
+	            </td>
+	            <td>
+	            	<input type="text" name="field3[]" value="{echo $value[2]}" />
+	            </td>
+	            <td>
+	              <a title="删除" onclick="delItemTr(this);">删除</a>
+	            </td>
+	          </tr>
+	          {/if}
+	        </tbody>
+	        <tr><td><input name="addproduct" onclick="addconfig();" type="button" class="button" id="addproduct" value="添加" /></td></tr>
+	      </table>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">状态:</td>
+			<td align="right">
+			<select name="status" class="isearcher_filter_list" datatype="*" errormsg="请选择" sucmsg=" ">
+					<option value="1" {if "1"==$list['status']}selected{/if}>显示</option>
+					<option value="0" {if "0"==$list['status']}selected{/if}>不显示</option>
+			</select></td>
+		</tr>
+		<tr>
+            <td width="150" class="td_title">顶部图片：<br/>
+              <font style="font-weight:bold;color:red;">图片尺寸：450*268</font></td>
+            <td><input type="hidden" name="pic" id="imgs" value="" />
+              <ul class="img_scroll">
+                {loop $list['pic'] $id}
+                {if $id > 0}
+                <li id="img_li_for_{$id}"> <a href="{echo imager($id, IMG_Original)}" class="thickbox"><img class="pro_image_tiny" src="{echo imager($id, IMG_Tiny)}" /></a>
+                  <input type="text" value="{echo logic('upload')->Field($id, 'intro')}" onFocus="introFocus(this)" onBlur="introChange({$id}, this)" />
+                  <a href="?#deleteImage" onClick="DeleteImage($id);return false;">[ 删除 ]</a> </li>
+                {/if}
+                {/loop}
+                <li id="img_li_TPL"> <a href="#http://[url]/" target="_blank"><img src="#http://[url]/" width="80" height="80" /></a>
+                  <input type="text" value="" onFocus="introFocus(this)" onBlur="introChange([id], this)" />
+                  <a href="?#deleteImage" onClick="DeleteImage([id]);return false;">[ 删除 ]</a> </li>
+              </ul>
+              {~logic('upload')->html()}
+              *点击删除图片时会实时删除服务器上的图片，请慎重 <br>
+              <font color="red">*如果提示 Acces Deined 错误，请检查“全局设置-上传设置”里面对应的图片上传权限是否有打开</font></td>
+          </tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">左侧描述：</td>
+			<td align="right"><textarea name="content" id="editor">{echo thtmlspecialchars($list['description']);}</textarea></td>
+		</tr>
+	</table>
+	<br>
+	<center>
+		<input type="hidden" name="id" value="{$list[id]}"/>
+		<input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交">
+	</center>
+</form>
+<script type="text/javascript">
+
+	function DeleteImage(id) {
+	    if (!confirm('确认删除？')) return;
+	    $.get('?mod=activity&code=Delimage_web&aid=' + __Global_ID + '&id=' + id + $.rnd.stamp(), function (data) {
+	        if (data == 'ok') {
+	            if (__Global_ID == '') {
+	                $('#imgs').val($('#imgs').val().replace(id + ',', ''));
+	            }
+	            $('#img_li_for_' + id).slideUp();
+	        }
+	    });
+	}
+	
+	function InsertImage(file) {
+	    if (__Global_ID == '') {
+	        $('#imgs').val($('#imgs').val() + file.id + ',');
+	        ShowUploadImage(file);
+	        return;
+	    }
+	    $.get('?mod=activity&code=Addimage_web&aid=' + __Global_ID + '&id=' + file.id + $.rnd.stamp(), function (data) {
+	        if (data == 'ok') {
+	            ShowUploadImage(file);
+	        }
+	    });
+	}
+	
+	function ShowUploadImage(file) {
+	    var tpl = $('#img_li_TPL').html();
+	    tpl = tpl.replace(/\[id\]/g, file.id);
+	    tpl = tpl.replace(/#http\:\/\/\[url\]\//g, file.url);
+	    $('#img_li_TPL').before('<li id="img_li_for_' + file.id + '">' + tpl + '</li>');
+	}
+
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+	
+	function addconfig(){
+		if($('#item_box tr:last input:first').attr('value')){
+			$('#item_box tr:first').clone().appendTo("#item_box");  
+		}
+	}
+	
+    function delItemTr(obj) {
+        $.dialog.confirm("您确定要删除这个吗？", function () {
+        	if ($('#item_box tr').length > 1){
+        		$(obj).parent().parent().remove(); //删除节点
+        	}
+        });
+    }
+		
+	function dialog(data){
+		$.dialog({
+			lock: true,
+		    max: false,
+		    min: false,
+			fixed: true,
+		    drag: false,
+		    resize: false,
+		    width:800,
+		    height:500,
+		    data:data,
+		    content: 'url:admin.php?mod=product&code=dList',
+			title: '产品查询'
+		});
+	}
+	$(document).ready(function(){
+		KindEditor.ready(function(K) {K.create('#editor');});
+		$.hook.add('swfuploaded', function (file) { InsertImage(file) });
+	});
+</script>
+{template @admin/footer}

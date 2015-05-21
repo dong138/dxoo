@@ -1,0 +1,154 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->css('#admin/css/product.mgr.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+{~ui('loader')->css('#admin/css/product.mgr')}
+<style type="text/css">
+    .aListContent
+    {
+        padding-top:12px;
+
+    }
+    .aListContent li
+    {
+        padding:5px;
+    }
+    .aListContent li .btn
+    {
+        margin-left:8px;
+    }
+</style>
+<form id="productIfoForm" action="?mod=adplay_q&code=save" method="post" enctype="multipart/form-data" onSubmit="return checkIfClick();">
+  <input id="productID" name="id" type="hidden" value="{$p['id']}" />
+  <div class="idTabs">
+    <div class="navsBar"> <font style="float: left;margin-right: 20px;margin-top: 7px;"> {if $id}编辑问题{else}添加问题{/if}</font>
+      <ul class="navs">
+        <li><a id="nav2Base" href="#p_base">基本信息</a></li>
+      </ul>
+      <font id="autoSaveStatus" style="float: right;margin-top: 7px;margin-right: 40px;_margin-right: 10px;"></font> </div>
+    <div class="items">
+      <div id="p_base">
+        <table width="100%" class="tableborder">
+          <tr>
+            <td width="100" class="td_title">名称：</td>
+            <td><input id="productName" name="name" type="text" size="80" value="{$p['name']}" /></td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">分类：</td>
+            <td>
+                <select name="qtid">
+                    <option value="0">请选择分类</option>
+                {loop $p['qtselect'] $val $key}
+                    <option value="{$key['value']}" {if $p['qtid']==$key['value']}selected="selected"{/if}>{$key['display']}</option>
+                {/loop}
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">显示优先级：</td>
+            <td><input name="order" type="text" size="3" value="{echo (int)$p['order']}" />
+              &nbsp;&nbsp;（数字越大，显示位置越靠前） </td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">问题列表：</td>
+            <td>
+                <div class="aListContent">
+                    <ul class="aListContentUl">
+                        <li>正确：<input name="ansright" type="radio" class="btnRight" value="" onclick="SetRight(this)" />
+                            <input name="answer[]" type="text" size="80" />
+                            <input type="button" value="+" class="btn btnAdd" onclick="AddAnswer(this)" />
+                            <input type="button" value="-" class="btn btnDel" onclick="DelAnswer(this)" style="display:none;" /></li>
+                    </ul>
+                </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script type="text/javascript">
+        function SetRight(btn) {
+            //$('.btnRight').val('');
+            //$(btn).val('1');
+        }
+        function AddAnswer(btn, data)
+        {
+            var li = $(btn).parent().clone();
+            $(li).find('input[name="answer[]"]').val('');
+            $(li).find('.btnDel').show();
+            $(li).find('.btnRight').removeAttr("checked");
+            $('.aListContentUl').append(li);
+
+            if(data!=null)
+            {
+                $(li).find('input[name="answer[]"]').val(data['name']);
+                if(data['isright']==1)  $(li).find('.btnRight').attr("checked","checked");
+            }
+
+            ReIndexAnsright();
+        }
+        function DelAnswer(btn) {
+            $(btn).parent().remove();
+            ReIndexAnsright();
+        }
+        function ReIndexAnsright()
+        {
+            $('.btnRight').each(function (index) {
+                $(this).val(index);
+            });
+        }
+        function checkIfClick()
+        {
+            var errMsg = '';
+            //正确答案判断
+            if ($('.btnRight:checked').length == 0)
+            {
+                errMsg += '请设置一个正确答案！\n';
+            }
+            //答案为空判断
+            var empAns = false;
+            $('input[name="answer[]"]').each(function () {
+                if ($(this).val() == '')
+                {
+                    empAns = true;
+                    return false;
+                }
+            });
+            if (empAns) {
+                errMsg += '请填写每个答案内容！\n';
+            }
+            if (errMsg != '') {
+                alert(errMsg);
+                return false;
+            }
+            return true;
+        }
+        function BindAnswer()
+        {
+            var ansData = {$p["ansData"]};
+            var btnAdd=$('.btnAdd').first();
+            $(ansData).each(function(index, item){
+                if(index==0)
+                {
+                    $('input[name="answer[]"]').val(item['name']);
+                    if(item['isright']==1)  $('.btnRight').attr("checked","checked");
+                }
+                else
+                {
+                    AddAnswer(btnAdd, item);
+                }
+            });
+        }
+
+        BindAnswer();
+    </script>
+
+  </div>
+  <div class="submitArea">
+    <input id="submitButton" type="submit" class="button back2" value="保存" />
+  </div>
+</form>
+{template @admin/footer}

@@ -1,0 +1,58 @@
+<!--{template header}-->
+<!--{~ui('loader')->js('@validform')}-->
+<!--{~ui('loader')->css('@valid.style')}-->
+<link rel="stylesheet" type="text/css" href="styles/edit.css" />
+<form class="registerform" method="post" action="index.php?mod=get_password&code=choice_password">
+	<div class="w edit_box">
+		<h2><span>设置/找回密码</span></h2>
+       	<ul class="edit_title">
+       		<li class="edit_active"><strong>1.</strong>确认账号/验证方式</li>
+       		<li><strong>2.</strong> 验证/修改</li>
+       		<li><strong>3.</strong> 完成 </li>
+       	</ul>
+		<div class="edit_info">您正在通过“绑定的邮箱”方式进行验证 / 修改</div>
+		<div class="edit_main">
+			<table border="0">
+				<tr>
+					<td align="right" class="pad_right">账号</td>
+					<td><input type="text" id="account" name="to" x-webkit-speech="" autofocus="" placeholder="手机号/用户名/邮箱"
+						datatype="*"
+						errormsg="账号不存在错误！"
+						nullmsg="请输入账号！" sucmsg=" "
+					 	class="text" />
+				 	</td>
+				</tr>
+				<tr>
+
+					<td align="right">验证码</td>
+					<td><input type="text" id="captcha" class="yz_number"
+						name="a_code" datatype="*" ajaxurl="?mod=myaccount&code=isCode"
+						errormsg="请填写验证码" nullmsg="请输入验证码！" sucmsg=" " autocomplete="off"
+						maxlength="5" /> <img id="signup-captcha-img" height="30px"
+						width="60px" class="left" src="?mod=myaccount&code=create_code" />
+						<a tabindex="-1" class="changNum" href="javascript:void(0);"
+						onclick="create_code();">看不清楚？换一张</a></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><a id='btn_sub' class="left" href="javascript:void(0);">下一步</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".registerform").Validform({
+			tiptype : 3,
+			btnSubmit : "#btn_sub",
+			postonce : true,
+			showAllError : true
+		});
+	});
+	function create_code() {
+		document.getElementById('signup-captcha-img').src = '?mod=myaccount&code=create_code&aa='
+				+ Math.random() * 10000;
+	}
+</script>
+<!--{template footer}-->

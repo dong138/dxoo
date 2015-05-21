@@ -1,0 +1,99 @@
+<!--{template @admin/header}-->
+{~ui('loader')->css('@tree')} 
+{~ui('loader')->js('@jquery')}
+{~ui('loader')->js('@jquery.tree')}
+
+{~ui('loader')->js('@jquery.autocomplete')}
+{~ui('loader')->css('@jquery.autocomplete')}
+<div style="padding: 10px;">
+	<div class="demo" style="float: left;">
+		<select class="isearcher_filter_list" onchange="iscpChange()"
+			id="iscp_frc_prosta" style="width: 200px; margin: 18px 0px 15px 0px;">
+			<option value="1">根据分类查询</option>
+			<option value="2">根据商圈查询</option>
+			<option value="3">根据商家查询</option>
+		</select>
+		<div id="divTree" style="border: #c3daf9 1px solid; width: 200px; height: 600px; overflow: auto;">
+			{if $type !=3}
+				<div id="tree"></div>
+			{else}
+				<input type="text" class="isearcher_input_words" id="autocomplete" size="28" value="{$product[0]['sellername']}" placeholder="请输入商家" />
+			{/if}
+		</div>
+	</div>
+	<iframe name="hell" frameborder="0" width="80%" height="800"></iframe>
+</div>
+
+
+
+<script type="text/javascript">
+	$(function() {
+		function format(mail) {
+			return mail.sellername;
+		}
+		$("#autocomplete").autocomplete('?mod=search&code=ajaxSeller', {
+			multiple: false,
+			matchSubset:true,
+			multipleSeparator: "",
+			dataType: "json",
+			extraParams: {},
+			parse: function(data) {
+				return $.map(data, function(row) {
+					return {
+						data: row,
+						value: row.sellername,
+						result: row.sellername
+					}
+				});
+			},
+			formatItem: function(item) {
+				return format(item);
+			}
+		}).result(function(e, item) {
+			var type = $("#iscp_frc_prosta").val();
+			window.hell.location = '?mod=ticket&code=product&projectid={$projectid}&type=' + type + '&commonid=' + item.id;
+		});
+	});
+</script>
+
+
+<script type="text/javascript">
+	$(function() {
+		window.hell.location = '?mod=ticket&code=product&projectid={$projectid}';
+		var type ='{$type}';
+		if(type==3){
+			$('#divTree').css('border', '');
+		}else{
+			$('#divTree').css('border', '#c3daf9 1px solid');
+		}
+		$("#iscp_frc_prosta").val(type)
+		tree();
+	});
+	
+	function iscpChange() {
+		var type = $("#iscp_frc_prosta").val();
+		window.location.href = '?mod=ticket&code=toHell&id={$projectid}&type='+ type;
+	}
+	
+	function tree() {
+		var o = {
+			//showcheck: true,
+			onnodeclick : function(item) {
+			window.hell.location = '?mod=ticket&code=product&projectid={$projectid}&type=' + item.checkstate + '&commonid=' + item.id;
+			},
+			url : "?mod=ticket&code=tree"
+		};
+		o.data = [ {
+			"id" : "0",
+			"text" : "全部数据",
+			"value" : "0",
+			"showcheck" : false,
+			complete : false,
+			"isexpand" : false,
+			"checkstate" : $("#iscp_frc_prosta").val(),
+			"hasChildren" : true
+		} ];
+		$("#tree").treeview(o);
+	};
+</script>
+<!--{template @admin/footer}-->

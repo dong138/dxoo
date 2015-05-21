@@ -1,0 +1,56 @@
+<!--{template @admin/header}-->
+{~ui('loader')->css('@jquery.thickbox')}
+{~ui('loader')->js('@jquery.thickbox')}
+<div class="header">
+    <a href="?mod=adplay_cl&code=vlist" style="float: left; display: block;">积分兑换申请列表 </a>
+</div>
+{~ui('isearcher')->load('admin.adplay_cl_list')}
+<table id="productTable" cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+    <thead>
+        <tr class="tr_nav">
+            <td width="60">ID</td>
+            <td width="120">申请时间</td>
+            <td width="120">处理时间</td>
+            <td>申请用户</td>
+            <td>申请类型</td>
+            <td>号码</td>
+            <td>兑换金额</td>
+            <td>花费积分</td>
+            <td>状态</td>
+            <td>管理操作</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!--{loop $list $one}-->
+        <tr>
+            <td>{$one['id']}</td>
+            <td>{$one['addtime']}</td>
+            <td>{$one['dealtime']}</td>
+            <td>{$one['userid']}</td>
+            <td>{echo $one['type'] == 1 ? '话费兑换' :'广告提取现金'}</td>
+            <td>{$one['phone']}</td>
+            <td>{$one['value']}</td>
+            <td>{$one['cost']}</td>
+            <td>{$one['state_name']}</td>
+            <td>       
+                {if $one['state']=='2' || $one['state']=='3'}
+                <a href="?mod=adplay_cl&code=pass&id={$one['id']}&type=$one['type']" onclick="return confirm('您确定要审核通过该申请吗？{echo $one['type']==2 ? '该操作将不可逆，是否审核？':''}');">审核通过</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                {else}
+                	{if $one['type']=='2'}
+                		已审核&nbsp;&nbsp;|&nbsp;&nbsp;
+                	{else}
+                		<a href="?mod=adplay_cl&code=unpass&id={$one['id']}" onclick="return confirm('您确定要取消审核该申请吗？');">取消审核</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                	{/if}
+                {/if}
+                <a href="?mod=adplay_cl&code=del&id={$one['id']}" onclick="return confirm('此操作不可恢复！\n\n您确定要删除吗？');">删除</a>
+            </td>
+        </tr>
+        <!--{/loop}-->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="9">{~page_moyo()}</td>
+        </tr>
+    </tfoot>
+</table>
+{template @admin/footer}

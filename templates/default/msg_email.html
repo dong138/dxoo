@@ -1,0 +1,30 @@
+<!--{template header}-->
+<link rel="stylesheet" type="text/css" href="styles/edit.css"/>
+        <div class="w edit_box">
+        	<h2><span>修改绑定的邮箱</span></h2>
+        	<ul class="edit_title">
+        		<li><strong>1.</strong> 选择验证方式</li>
+        		<li class="edit_active"><strong>2.</strong> 验证/修改</li>
+        		<li><strong>3.</strong> 完成 </li>
+        	</ul>
+        	<div class="edit_info">
+        		您正在通过“绑定的邮箱”方式进行验证 / 修改
+        	</div>
+        	<div class="edit_main">
+	        	<div class="sendinfo">
+	        		<div class="sendinfo_s">
+	        			<p>{$msg}</p>
+	        			<a href="?mod=me&code=setting">返回基本信息</a>
+	        		</div>
+	        		<div class="sendinfo_x">
+	        			<h3>收不到邮件？</h3>
+	        			<ul>
+	        				<li><span>请检查你的垃圾箱或广告箱，邮件有可能被误认为垃圾邮件或广告邮件；</span></li>
+	        				<li>{$email} 向 hi@mail.meituan.com 发送一封任意内容的邮件，几分钟后即可直接登录美团网。</li>
+	        				<li><a href="#">了解如何把美团的邮件列为白名单</a></li>
+	        			</ul>
+	        		</div>
+	        	</div>
+        	</div>
+        </div>
+<!--{template footer}-->

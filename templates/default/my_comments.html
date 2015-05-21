@@ -1,0 +1,182 @@
+<!--{template header}-->
+{~ui('loader')->css('@hl_style')} {~ui('loader')->css('@zoom')}
+<style>
+#report tr td.scenter {
+	text-align: center;
+}
+
+#report div.arrow {
+	margin-left: 30px;
+}
+</style>
+
+<div class="site-ms__right user_nav">{~ui('widget')->load()}</div>
+<div class="site-ms__left">
+	<div class="t_area_out">
+		<div class="nleftL">
+			{if $isComments}
+			<table id="report">
+				<tr>
+					<th width="40%" style="text-align: left">购买商品</th>
+					<th width="40%">评价内容</th>
+					<th width="10%" valign="center">评论分数</th>
+					<th width="10%" valign="center" style="border-right: none;">评价时间</th>
+				</tr>
+				{loop $Commentsed $Comments}
+				<tr>
+					<td>
+						<a href="?view={$Comments['product_id']}" target="_blank">
+							<img id="img2" class="order_img2"
+								src="{$Comments['path']}"
+								title="{$Comments['flag']}" />
+						</a>
+						<div class="order_name">
+							<br>
+							<a href="?view={$Comments['product_id']}" target="_blank">
+								{$Comments['name']} </a>
+						</div>
+					</td>
+
+					<td>$Comments['content']</td>
+					<td valign="center" style="text-align: center;">
+						<span class="vip_step0">
+							{eval for($i = 1; $i <= $Comments['score']; $i++) echo "
+							<i></i>
+							"; }
+						</span>
+					</td>
+					<td valign="center" style="text-align: center;">{echo
+						date('Y-m-d H:i:s',$Comments['timestamp_update'])}</td>
+				</tr>
+				<tr>
+
+					{eval $imgs = $Comments ['imgs'];}
+					{if $imgs}
+					<td colspan="3">
+						{eval
+							$EveryImgs = explode ( ',', $Comments ['imgs'] );
+							$index = -1;
+							$imgs = '';
+						}
+						{loop $EveryImgs $ei}
+						{eval
+							$index++;
+							$imgUrl = imager($ei);
+						}
+						<li style="padding-right: 5px;">
+							<a onclick="add_pics({$index},this);return false">
+								<img width=100px height=100px src=$imgUrl />
+							</a>
+						</li>
+						{/loop}
+					</td>
+					{/if}
+				</tr>
+				{/loop}
+			</table>
+			<div class="pagem product_list_pager">{~page_moyo()}</div>
+			{else}
+			<table id="report">
+				<tr>
+					<th width="30%" style="text-align: left">商品详情</th>
+					<th valign="center" width="30%">订单编号</th>
+					<th valign="center" width="20%">交易时间</th>
+					<th valign="center" width="20%" style="border-right: none;"></th>
+				</tr>
+				{loop $comments $productinfo}
+				<tr>
+					<td>
+						<a href="?view={$productinfo['productid']}" target="_blank">
+							<img id="img2" class="order_img2"
+								src="{$productinfo['path']}"
+								title="{$productinfo['flag']}" />
+							<div class="order_name">
+								<b> {$productinfo['name']}</b>
+							</div>
+						</a>
+					</td>
+					<td valign="center" style="text-align: center;">
+						{$productinfo['orderid']}</td>
+					<td valign="center" style="text-align: center;">{echo (date (
+						'Y-m-d H:i:s', $productinfo['buytime'] ))}</td>
+					<td valign="center" style="text-align: center;">
+						<a href="?view={$productinfo['productid']}#name-comment-block_lh">去评价</a>
+					</td>
+				</tr>
+				{/loop}
+			</table>
+			<center>{$page_arr}</center>
+			{/if}
+		</div>
+	</div>
+</div>
+</div>
+
+<script>
+	var add_pics_cuNum;
+	var add_pics_cuArr;
+	function add_pics(cu, img) {
+		add_pics_cuNum = cu;
+
+		add_pics_cuArr = [];
+		var imgs = $(img).parents('td').find('img');
+
+		imgs.each(function(i){
+			var src = $(this).attr('src');
+			add_pics_cuArr.push(src);
+		});
+		if ($("#zoom").length <= 0) {
+			$("body")
+					.append(
+							'<div id="zoom"><a class="close" onclick="add_pics_close();return false"></a><a href="#previous" class="previous" onclick="add_pics_pre();return false"></a><a href="#next" class="next" onclick="add_pics_next();return false"></a><img id="zoom_img"/><span id="zoom_img_info" style="color:red;margin-top:10px;"></span></div>');
+			$("#zoom").hide();
+		}
+		pic = add_pics_cuArr[cu];
+		add_pics_picMain(pic);
+		$("#zoom").show();
+	}
+	function add_pics_next() {
+		add_pics_cuNum = add_pics_cuNum + 1;
+		if (add_pics_cuNum >= add_pics_cuArr.length) {
+			add_pics_cuNum = add_pics_cuNum - 1;
+			$("#zoom_img_info").text("已经最后一张");
+			$("#zoom_img_info").show();
+			return;
+		}
+		var pic = add_pics_cuArr[add_pics_cuNum];
+		add_pics_picMain(pic);
+	}
+	function add_pics_pre() {
+		add_pics_cuNum = add_pics_cuNum - 1;
+		if (add_pics_cuNum < 0) {
+			add_pics_cuNum = add_pics_cuNum + 1;
+			$("#zoom_img_info").text("已经第一张");
+			$("#zoom_img_info").show();
+			return;
+		}
+		var pic = add_pics_cuArr[add_pics_cuNum];
+		add_pics_picMain(pic);
+	}
+	function add_pics_close() {
+		$("#zoom_img_info").text("");
+		$("#zoom_img_info").hide();
+		$("#zoom").hide();
+	}
+	function add_pics_picMain(pic) {
+		$("#zoom_img_info").text("");
+		$("#zoom_img_info").hide();
+		var s = $(window).width(), o = $(window).height();
+		var img = new Image();
+		img.onload = function() {
+			var iw = this.width;
+			var ih = this.height;
+			var w = (s - iw) / 2;
+			var h = (o - ih) / 2;
+			$("#zoom_img").css("margin-left", w + "px").css("margin-top",
+					h + "px");
+			$("#zoom_img").attr("src", pic);
+		}
+		img.src = pic;
+	}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/dxoo/!svn/ver/177/modules
+END
+subscribe.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/dxoo/!svn/ver/2/modules/subscribe.mod.php
+END
+refund.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/dxoo/!svn/ver/2/modules/refund.mod.php
+END
+article.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/modules/article.mod.php
+END
+upload.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/dxoo/!svn/ver/2/modules/upload.mod.php
+END
+address.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/modules/address.mod.php
+END
+seller.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/81/modules/seller.mod.php
+END
+appi.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/appi.mod.php
+END
+task.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/task.mod.php
+END
+html.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/html.mod.php
+END
+search.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/dxoo/!svn/ver/2/modules/search.mod.php
+END
+seller_join.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/2/modules/seller_join.mod.php
+END
+login.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/dxoo/!svn/ver/2/modules/login.mod.php
+END
+downapp.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/modules/downapp.mod.php
+END
+pingfore.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/dxoo/!svn/ver/2/modules/pingfore.mod.php
+END
+magseller.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/dxoo/!svn/ver/2/modules/magseller.mod.php
+END
+list.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/list.mod.php
+END
+cash.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/cash.mod.php
+END
+test.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/dxoo/!svn/ver/23/modules/test.mod.php
+END
+countdown.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/dxoo/!svn/ver/2/modules/countdown.mod.php
+END
+recharge.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/dxoo/!svn/ver/2/modules/recharge.mod.php
+END
+ad.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/dxoo/!svn/ver/2/modules/ad.mod.php
+END
+wap.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/dxoo/!svn/ver/2/modules/wap.mod.php
+END
+prize.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/dxoo/!svn/ver/2/modules/prize.mod.php
+END
+misc.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/misc.mod.php
+END
+master.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/dxoo/!svn/ver/2/modules/master.mod.php
+END
+ci.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/dxoo/!svn/ver/2/modules/ci.mod.php
+END
+openapi.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/modules/openapi.mod.php
+END
+fund.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/fund.mod.php
+END
+account.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/modules/account.mod.php
+END
+callback.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/dxoo/!svn/ver/2/modules/callback.mod.php
+END
+buy.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/dxoo/!svn/ver/2/modules/buy.mod.php
+END
+style.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/dxoo/!svn/ver/2/modules/style.mod.php
+END
+me.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/115/modules/me.mod.php
+END
+get_password.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/2/modules/get_password.mod.php
+END
+comment.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/modules/comment.mod.php
+END
+myaccount.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/dxoo/!svn/ver/2/modules/myaccount.mod.php
+END
+apiz.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/dxoo/!svn/ver/2/modules/apiz.mod.php
+END
+bankdirect.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/dxoo/!svn/ver/2/modules/bankdirect.mod.php
+END
+choujiang.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/dxoo/!svn/ver/2/modules/choujiang.mod.php
+END
+index.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/dxoo/!svn/ver/25/modules/index.mod.php
+END
+catalog.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/modules/catalog.mod.php
+END
+adplay.mod.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/dxoo/!svn/ver/115/modules/adplay.mod.php
+END

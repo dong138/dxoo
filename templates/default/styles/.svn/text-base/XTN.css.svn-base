@@ -1,0 +1,548 @@
+.icon-login-sprite, .pg-login .icon-password, .pg-login .icon-phone, .pg-login .icon-user {
+    background-image: url(../images/myaccount/icon-login.png);
+    background-repeat: no-repeat;
+}
+#login, html {
+    background: none repeat scroll 0 0 #fff;
+}
+#login .common-tip {
+    margin-bottom: 30px;
+}
+.pg-login {
+    margin-bottom: 70px;
+}
+.pg-login .promotion-banner {
+    float: left;
+    margin: 0 115px 0 0;
+    width: 480px;
+}
+.pg-login .validate-info {
+    background: none repeat scroll 0 0 #fff6db;
+    border: 1px solid #f5d8a7;
+    border-radius: 2px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.pg-login .form--stack .form-field {
+    padding-bottom: 8px;
+}
+.pg-login .form--stack .form-field--higher {
+    padding-bottom: 22px;
+}
+.pg-login .form-field--icon {
+    position: relative;
+}
+.pg-login .form-field--icon .f-text {
+    padding-left: 33px;
+    width: 220px;
+}
+.pg-login .icon {
+    display: inline-block;
+    height: 18px;
+    left: 9px;
+    line-height: 18px;
+    position: absolute;
+    top: 16px;
+    vertical-align: text-top;
+    width: 18px;
+}
+.pg-login .icon-user {
+    background-position: 0 -57px;
+}
+.pg-login .icon-password {
+    background-position: 0 0;
+}
+.pg-login .icon-phone {
+    background-position: 0 -37px;
+}
+.pg-login .form-field--captcha .f-text {
+    width: 62px;
+}
+.pg-login .form-field--auto-login, .pg-login .form-field--auto-login label {
+    font-size: 12px;
+}
+.pg-login .form-field--auto-login .forget-password {
+    float: right;
+}
+.pg-login .verify-mobile {
+    left: 0;
+    margin-top: 3px;
+    position: absolute;
+    top: 43px;
+}
+.pg-login .verify-tip {
+    color: #666;
+    font-size: 12px;
+}
+.pg-login .verify-tip--error {
+    color: #f76120;
+}
+.pg-login .signup-guide {
+    color: #666;
+}
+.pg-login .oauth-wrapper {
+    margin-top: 50px;
+}
+.pg-login .oauth-wrapper h3 {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.pg-login .sms-guide {
+    width: auto;
+}
+.around-position-qrcode, .block-download .block-qrcode-cartbuy, .block-download .block-qrcode-growth, .block-download .block-qrcode-lottery, .block-download .block-qrcode-orderbuy, .qrcode-dealbuy, .qrcode-dialog .qrcode-dialog-coupon, .qrcode-dialog .qrcode-dialog-message, .qrcode-sprite, .simple-stick-qrcode .account-growth, .simple-stick-qrcode .account-qrcode-growth, .simple-stick-qrcode .account-xiaomei, .simple-stick-qrcode .account-xiaomei .account-qrcode-account, .simple-stick-qrcode .account-xiaomei .account-qrcode-balance, .simple-stick-qrcode .account-xiaomei .account-qrcode-collection, .simple-stick-qrcode .account-xiaomei .account-qrcode-coupon, .simple-stick-qrcode .account-xiaomei .account-qrcode-credit, .simple-stick-qrcode .account-xiaomei .account-qrcode-lottery, .simple-stick-qrcode .account-xiaomei .account-qrcode-orders, .simple-stick-qrcode .account-xiaomei .account-qrcode-rate, .simple-stick-qrcode .account-xiaomei .account-qrcode-refund, .simple-stick-qrcode .index-xiaomei, .simple-stick-qrcode .stick-qrcode-category, .simple-stick-qrcode .stick-qrcode-deal, .simple-stick-qrcode .stick-qrcode-index, .simple-stick-qrcode .stick-qrcode-login, .simple-stick-qrcode .stick-qrcode-search, .simple-stick-qrcode .weixin-xiaomei, .simple-stick-qrcode .weixin-xiaomei .qrcode, .stick-qrcode .account-growth, .stick-qrcode .account-qrcode-growth, .stick-qrcode .account-xiaomei, .stick-qrcode .account-xiaomei .account-qrcode-account, .stick-qrcode .account-xiaomei .account-qrcode-balance, .stick-qrcode .account-xiaomei .account-qrcode-collection, .stick-qrcode .account-xiaomei .account-qrcode-coupon, .stick-qrcode .account-xiaomei .account-qrcode-credit, .stick-qrcode .account-xiaomei .account-qrcode-lottery, .stick-qrcode .account-xiaomei .account-qrcode-orders, .stick-qrcode .account-xiaomei .account-qrcode-rate, .stick-qrcode .account-xiaomei .account-qrcode-refund, .stick-qrcode .index-xiaomei, .stick-qrcode .stick-qrcode-category, .stick-qrcode .stick-qrcode-deal, .stick-qrcode .stick-qrcode-index, .stick-qrcode .stick-qrcode-login, .stick-qrcode .stick-qrcode-search, .stick-qrcode .weixin-xiaomei, .stick-qrcode .weixin-xiaomei .qrcode, .wdRightLink {
+    background-image: url(../images/myaccount/qrcode.png);
+    background-repeat: no-repeat;
+}
+.simple-stick-qrcode, .stick-qrcode {
+    left: 50%;
+    margin-left: 500px;
+    position: fixed;
+    z-index: 40;
+}
+.simple-stick-qrcode .stick-qrcode__pos, .stick-qrcode .stick-qrcode__pos {
+    height: 74px;
+    left: 17px;
+    position: absolute;
+    top: 128px;
+    width: 74px;
+}
+.simple-stick-qrcode .index-xiaomei, .stick-qrcode .index-xiaomei {
+    background-position: 0 -1685px;
+    display: inline-block;
+    height: 255px;
+    outline: 0 none;
+    position: relative;
+    vertical-align: top;
+    width: 114px;
+}
+.simple-stick-qrcode .index-xiaomei .close, .stick-qrcode .index-xiaomei .close {
+    height: 20px;
+    position: absolute;
+    right: 6px;
+    top: 110px;
+    width: 20px;
+}
+.simple-stick-qrcode .stick-qrcode-index, .stick-qrcode .stick-qrcode-index {
+    background-position: 0 -2411px;
+}
+.simple-stick-qrcode .stick-qrcode-category, .stick-qrcode .stick-qrcode-category {
+    background-position: 0 -2259px;
+}
+.simple-stick-qrcode .stick-qrcode-deal, .stick-qrcode .stick-qrcode-deal {
+    background-position: 0 -2335px;
+}
+.simple-stick-qrcode .stick-qrcode-search, .stick-qrcode .stick-qrcode-search {
+    background-position: 0 -2563px;
+}
+.simple-stick-qrcode .stick-qrcode-login, .stick-qrcode .stick-qrcode-login {
+    background-position: 0 -2487px;
+}
+.simple-stick-qrcode .weixin-xiaomei, .stick-qrcode .weixin-xiaomei {
+    background-position: 0 -2849px;
+    display: inline-block;
+    height: 242px;
+    outline: 0 none;
+    position: relative;
+    vertical-align: top;
+    width: 108px;
+}
+.simple-stick-qrcode .weixin-xiaomei .qrcode, .stick-qrcode .weixin-xiaomei .qrcode {
+    background-position: 0 -2773px;
+    height: 74px;
+    left: 17px;
+    position: absolute;
+    top: 106px;
+    width: 74px;
+}
+.simple-stick-qrcode .weixin-xiaomei .close, .stick-qrcode .weixin-xiaomei .close {
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 87px;
+    width: 20px;
+}
+.simple-stick-qrcode .account-xiaomei, .stick-qrcode .account-xiaomei {
+    background-position: 0 -936px;
+    display: inline-block;
+    height: 263px;
+    outline: 0 none;
+    position: relative;
+    vertical-align: top;
+    width: 119px;
+}
+.simple-stick-qrcode .account-xiaomei .stick-qrcode__pos, .stick-qrcode .account-xiaomei .stick-qrcode__pos {
+    height: 74px;
+    left: 26px;
+    position: absolute;
+    top: 150px;
+    width: 74px;
+}
+.simple-stick-qrcode .account-xiaomei a, .stick-qrcode .account-xiaomei a {
+    text-decoration: none;
+}
+.simple-stick-qrcode .account-xiaomei .title, .stick-qrcode .account-xiaomei .title {
+    color: #666;
+    left: 2px;
+    position: absolute;
+    text-align: center;
+    top: 12px;
+    width: 120px;
+}
+.simple-stick-qrcode .account-xiaomei .title strong, .stick-qrcode .account-xiaomei .title strong {
+    color: #f76120;
+}
+.simple-stick-qrcode .account-xiaomei .close, .stick-qrcode .account-xiaomei .close {
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 132px;
+    width: 20px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-orders, .stick-qrcode .account-xiaomei .account-qrcode-orders {
+    background-position: 0 -708px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-refund, .stick-qrcode .account-xiaomei .account-qrcode-refund {
+    background-position: 0 -860px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-lottery, .stick-qrcode .account-xiaomei .account-qrcode-lottery {
+    background-position: 0 -632px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-collection, .stick-qrcode .account-xiaomei .account-qrcode-collection {
+    background-position: 0 -328px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-rate, .stick-qrcode .account-xiaomei .account-qrcode-rate {
+    background-position: 0 -784px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-credit, .stick-qrcode .account-xiaomei .account-qrcode-credit {
+    background-position: 0 -480px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-balance, .stick-qrcode .account-xiaomei .account-qrcode-balance {
+    background-position: 0 -252px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-coupon, .stick-qrcode .account-xiaomei .account-qrcode-coupon {
+    background-position: 0 -404px;
+}
+.simple-stick-qrcode .account-xiaomei .account-qrcode-account, .stick-qrcode .account-xiaomei .account-qrcode-account {
+    background-position: 0 -176px;
+}
+.simple-stick-qrcode .account-qrcode-growth, .stick-qrcode .account-qrcode-growth {
+    background-position: 0 -556px;
+    height: 74px;
+    left: 17px;
+    position: absolute;
+    top: 60px;
+    width: 74px;
+}
+.simple-stick-qrcode .account-growth, .stick-qrcode .account-growth {
+    background-position: 0 0;
+    display: inline-block;
+    height: 174px;
+    outline: 0 none;
+    position: relative;
+    vertical-align: top;
+    width: 110px;
+}
+.simple-stick-qrcode .account-growth .close, .stick-qrcode .account-growth .close {
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 132px;
+    width: 20px;
+}
+.simple-stick-qrcode {
+    margin-left: 489px;
+    position: absolute;
+    top: 191px;
+}
+.simple-stick-qrcode .account-xiaomei {
+    background-position: 0 -1068px;
+    height: 130px;
+}
+.simple-stick-qrcode .account-xiaomei .stick-qrcode__pos {
+    left: 28px;
+    top: 20px;
+}
+.simple-stick-qrcode .account-xiaomei .close {
+    top: 0;
+}
+#question-stick {
+    color: #666;
+    height: 102px;
+    left: 50%;
+    margin-left: 500px;
+    position: fixed;
+    width: 32px;
+    z-index: 2;
+}
+#question-stick .question-enter {
+    background-color: #fff6db;
+    border: 1px solid #f5d8a7;
+    font: 700 16px/20px SimSun;
+    height: 90px;
+    padding-top: 10px;
+    text-align: center;
+    width: 30px;
+}
+#question-stick .questions {
+    background-color: #fff6db;
+    border: 1px solid #f5d8a7;
+    bottom: 0;
+    color: #2bb8aa;
+    font: 12px/24px SimSun;
+    padding: 10px 15px;
+    position: absolute;
+    right: 0;
+    width: 222px;
+}
+#question-stick .questions li {
+    list-style: square outside none;
+    margin-left: 15px;
+}
+#question-stick .questions .ques-title {
+    color: #666;
+    font: 16px/24px SimSun;
+    list-style: none outside none;
+}
+.block-download {
+	background:url(../images/myaccount/download.png) no-repeat;
+    height: 174px;
+    margin: 20px 0;
+    position: relative;
+}
+.block-download .block__qrcode {
+    height: 100px;
+    left: 159px;
+    position: absolute;
+    top: 36px;
+    width: 100px;
+}
+.block-download .download__btn {
+    height: 36px;
+    position: absolute;
+    top: 100px;
+}
+.block-download .download__btn-iphone {
+    left: 299px;
+    width: 150px;
+}
+.block-download .download__btn-android {
+    left: 460px;
+    width: 160px;
+}
+.block-download .download__tip {
+    bottom: 80px;
+    color: #555;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    right: 20px;
+    text-align: center;
+    width: 360px;
+}
+.block-download .download__tip strong {
+    color: #ff8900;
+}
+.block-download .download__tip .extra {
+    color: #dcdcdc;
+    font-size: 16px;
+}
+.block-download .block-qrcode-growth {
+    background-position: 0 -1379px;
+}
+.block-download .block-qrcode-lottery {
+    background-position: 0 -1481px;
+}
+.block-download .block-qrcode-cartbuy {
+    background-position: 0 -1277px;
+}
+.block-download .block-qrcode-orderbuy {
+    background-position: 0 -1583px;
+}
+.qrcode-dealbuy {
+    background-position: 0 -1942px;
+    height: 111px;
+    position: absolute;
+    right: 2px;
+    top: 0;
+    width: 147px;
+}
+.qrcode-dialog {
+    float: right;
+}
+.qrcode-dialog h4 {
+    color: #666;
+    font-size: 18px;
+}
+.qrcode-dialog .title__large {
+    font-size: 24px;
+}
+.qrcode-dialog .title__large strong {
+    color: #f76120;
+}
+.qrcode-dialog .download {
+    margin-top: 18px;
+    position: relative;
+}
+.qrcode-dialog .link {
+    margin-left: 120px;
+}
+.qrcode-dialog .link .btn {
+    display: block;
+    margin-top: 13px;
+}
+.qrcode-dialog .qrcode {
+    position: absolute;
+    right: 180px;
+}
+.qrcode-dialog .qrcode .down__qrcode {
+    display: block;
+    height: 100px;
+    width: 100px;
+}
+.qrcode-dialog .qrcode-dialog-coupon {
+    background-position: 0 -2055px;
+}
+.qrcode-dialog .qrcode-dialog-message {
+    background-position: 0 -2157px;
+}
+.around-position-qrcode {
+    background-position: 0 -1201px;
+    height: 74px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 74px;
+}
+.wdRightLink {
+    background-position: 0 -2639px;
+    display: inline-block;
+    height: 132px;
+    outline: 0 none;
+    position: relative;
+    width: 88px;
+    z-index: 40;
+}
+.component-login-section .icon-password, .component-login-section .icon-phone, .component-login-section .icon-user, .icon-login-sprite {
+	background:url(../images/myaccount/icon-login.png);
+    background-repeat: no-repeat;
+}
+.component-login-section {
+    width: 260px;
+}
+.component-login-section .validate-info {
+    background: none repeat scroll 0 0 #fff6db;
+    border: 1px solid #f5d8a7;
+    border-radius: 2px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.component-login-section h2 {
+    color: #666;
+    font-weight: 400;
+}
+.component-login-section h2 a {
+    color: #666;
+    float: right;
+    font-size: 12px;
+    padding-right: 16px;
+    position: relative;
+}
+.component-login-section h2 .login-type i {
+	background:url(../images/myaccount/sp-login.png) no-repeat -72px 1px;
+    height: 14px;
+    margin-top: -7px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 14px;
+}
+.component-login-section h2 .login-type--normal i {
+    background-position: -57px 1px;
+}
+.component-login-section .form--stack .form-field {
+    padding-bottom: 8px;
+}
+.component-login-section .form--stack .form-field--higher {
+    padding-bottom: 22px;
+}
+.component-login-section .form-field--icon {
+    position: relative;
+}
+.component-login-section .form-field--icon .f-text {
+    padding-left: 33px;
+    width: 220px;
+}
+.component-login-section .icon {
+    display: inline-block;
+    height: 18px;
+    left: 9px;
+    line-height: 18px;
+    position: absolute;
+    top: 16px;
+    vertical-align: text-top;
+    width: 18px;
+}
+.component-login-section .icon-user {
+    background-position: 0 -57px;
+}
+.component-login-section .icon-password {
+    background-position: 0 0;
+}
+.component-login-section .icon-phone {
+    background-position: 0 -37px;
+}
+.component-login-section .form-field--captcha .f-text {
+    width: 62px;
+}
+.component-login-section .form-field--auto-login, .component-login-section .form-field--auto-login label {
+    font-size: 12px;
+}
+.component-login-section .form-field--auto-login .forget-password {
+    float: right;
+}
+.component-login-section .verify-mobile {
+    left: 0;
+    margin-top: 3px;
+    position: absolute;
+    top: 43px;
+}
+.component-login-section .verify-tip {
+    color: #666;
+    font-size: 12px;
+}
+.component-login-section .verify-tip--error {
+    color: #f76120;
+}
+.component-login-section .signup-guide {
+    color: #666;
+}
+.component-login-section .oauth-wrapper {
+    margin-top: 50px;
+}
+.component-login-section .oauth-wrapper h3 {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.component-login-section .sms-guide {
+    width: auto;
+}
+.component-login-section--dialog {
+    margin: 0 20px;
+}
+.component-login-section--dialog .oauth-wrapper {
+    margin-top: 30px;
+}
+.component-login-section--dialog .common-tip--login {
+    margin: 5px 0;
+    padding: 6px;
+}
+.component-login-section--page {
+    float: left;
+}

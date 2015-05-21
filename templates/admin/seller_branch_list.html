@@ -1,0 +1,56 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{~ui('loader')->js('#admin/js/cplace.mgr.ajax')}
+<table cellspacing="1" cellpadding="4" width="100%" align="center"
+	class="tableborder">
+	<tr class="header">
+		<td colspan="5">当前分店：<font color="red">{$branch['name']}</font></td>
+	</tr>
+	<tr class="banner">
+		<td colspan="7">1、是否设置分店？ <font class="ini"
+			src="catalog.enabled"></font>（点击按钮：绿色开启、灰色关闭）<br />
+			2、输入框为空时，查询所有当前商家分店下的分店<br />
+			3、输入框不为空时，查询当前商家分店下该商品，然后设置为分店<br />
+		<div class="isearcher">
+			<p class="searcher_li">
+			<input id="iscp_input" value="{$key}" class="isearcher_input_words" type="text"/>
+			<input id="iscp_button" class="btn btn-primary btn-small" type="button" value="搜索" />
+		</div>
+		</td>
+	</tr>
+	<tr class="tr_nav">
+		<td width="6%">编号</td>
+		<td width="20%">商家名称</td>
+		<td width="20%">商家地址</td>
+		<td width="20%">商家电话</td>
+		<td width="6%">是否精选</td>
+	</tr>
+	{loop $seller $one}
+	<tr>
+		<td>{$one['id']}</td>
+		<td>{$one['sellername']}</td>
+		<td>{$one['selleraddress']}</td>
+		<td>{$one['sellerphone']}</td>  
+		<td>
+			{eval $num = logic('branch')->Exists({$one['id']})}
+			<a href="javascript:void(0)" onclick="branch_update({$one['id']},{$branch['id']},{echo $num ? 0:1},this)">
+			<img id="img{$one['id']}" src="templates/admin/images/{echo $num ? 'btn_enable.png':'btn_disable.gif' }"></img>
+			</a>
+		</td>
+	</tr>
+	{/loop}
+</table>
+<script type="text/javascript">
+	$(function(){
+		$('#iscp_button').click(function(){
+			var iscp=$('#iscp_input').val();
+			var strKey='?mod=branch&code=seller&id={$branch['id']}&key='+iscp;
+			window.location = strKey;
+		});
+	});
+	function doa(obj,id){
+		window.location = '?mod=cream&code=cream&op=order&cid={$city['cityid']}&order='+obj.value+'&id='+id;
+	}
+</script>
+<!--{template @admin/footer}-->

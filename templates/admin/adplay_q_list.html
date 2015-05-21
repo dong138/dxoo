@@ -1,0 +1,39 @@
+<!--{template @admin/header}-->
+{~ui('loader')->css('@jquery.thickbox')}
+{~ui('loader')->js('@jquery.thickbox')}
+<div class="header">
+    <a href="?mod=adplay_q&code=vlist" style="float: left; display: block;">问题列表 </a>
+    <a href="?mod=adplay_q&code=add&~iiframe=yes" class="b_add" style="text-decoration: none;">添加问题</a>
+</div>
+{~ui('isearcher')->load('admin.adplay_q_list')}
+<table id="productTable" cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+    <thead>
+        <tr class="tr_nav">
+            <td width="80">ID</td>
+            <td width="80">排序</td>
+            <td>名称</td>
+            <td width="150">分类</td>
+            <td>管理操作</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!--{loop $list $one}-->
+        <tr>
+            <td>{$one['id']}</td>
+            <td>{$one['order']}</td>
+            <td>{$one['name']}</td>
+            <td>{$one['qtname']}</td>
+            <td>
+                <a href="?mod=adplay_q&code=edit&id={$one['id']}&~iiframe=yes">编辑</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="?mod=adplay_q&code=del&id={$one['id']}" onclick="return confirm('此操作不可恢复！\n\n您确定要删除吗？');">删除</a>
+            </td>
+        </tr>
+        <!--{/loop}-->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="9">{~page_moyo()}</td>
+        </tr>
+    </tfoot>
+</table>
+{template @admin/footer}

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>TreeAsnySample</title>
+    {~ui('loader')->css('@tree')}
+</head>
+<body>
+<div style="padding:10px;"> 
+  <div class="demo">
+    <div style="margin-bottom:5px;">
+
+        <a class="button" href="javascript:void(0);" id="reflashnode0">Refresh root-0</a>
+    </div>
+    <div style="border-bottom: #c3daf9 1px solid; border-left: #c3daf9 1px solid; width: 250px; height: 500px; overflow: auto; border-top: #c3daf9 1px solid; border-right: #c3daf9 1px solid;">
+        <div id="tree">
+            
+        </div>
+        
+    </div>
+  </div>
+</div>
+
+{~ui('loader')->js('@jquery')}
+{~ui('loader')->js('@jquery.tree')}
+   
+    <script type="text/javascript">
+
+        function load() {
+            var o = {
+          		//showcheck: true,
+				onnodeclick:function(item){alert(item.text);},          
+         		url: "?mod=test&code=tree"
+            };
+            o.data = [ {
+                "id" : "分类列表",
+                "text" : "分类列表",
+                "value" : "86",
+                "showcheck" : false,
+                complete : false,
+                "isexpand" : false,
+                "checkstate" : 0,
+                "hasChildren" : true
+            }];                  
+            $("#tree").treeview(o);            
+            $("#reflashnode10").click(function(e) {
+                $("#tree").reflash("root-0"); //"root-0" is id of the node to be reloaded
+            });
+
+        }   
+         load();
+    </script>
+</body>
+</html>

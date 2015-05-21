@@ -1,0 +1,257 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->css('#admin/css/product.mgr.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+{~ui('loader')->js('@jquery.autocomplete')}
+{~ui('loader')->css('@jquery.autocomplete')}
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@json2')}
+<style type="text/css">
+    .aListContent
+    {
+        padding-top:12px;
+
+    }
+    .aListContent li
+    {
+        padding:5px;
+    }
+    .aListContent li .btn
+    {
+        margin-left:8px;
+    }
+</style>
+<script type="text/javascript">
+    var __Global_ID = "{$p['id']}";
+
+    function DeleteImage(id) {
+        if (!confirm('确认删除？')) return;
+        $.get('?mod=adplay_ad&code=Del_Ad_Image&adid=' + __Global_ID + '&id=' + id + $.rnd.stamp(), function (data) {
+            if (data == 'ok') {
+                if (__Global_ID == '') {
+                    $('#imgs').val($('#imgs').val().replace(id + ',', ''));
+                }
+                $('#img_li_for_' + id).slideUp();
+            }
+        });
+    }
+
+    function InsertImage(file) {
+        if (__Global_ID == '') {
+            $('#imgs').val($('#imgs').val() + file.id + ',');
+            ShowUploadImage(file);
+            return;
+        }
+        $.get('?mod=adplay_ad&code=Add_Ad_Image&adid=' + __Global_ID + '&id=' + file.id + $.rnd.stamp(), function (data) {
+            if (data == 'ok') {
+                ShowUploadImage(file);
+            }
+        });
+    }
+
+    function ShowUploadImage(file) {
+        var tpl = $('#img_li_TPL').html();
+        tpl = tpl.replace(/\[id\]/g, file.id);
+        tpl = tpl.replace(/#http\:\/\/\[url\]\//g, file.url);
+        $('#img_li_TPL').before('<li id="img_li_for_' + file.id + '">' + tpl + '</li>');
+    }
+
+    function BindQ(qtid)
+    {
+        $("#qSel option").remove();
+        $("#qSel").append("<option value=''>请选择问题</option>");
+        if (qtid == '0')
+        {
+            return;
+        }
+        $.getJSON('?mod=adplay_q&code=GetList_Select&qtid=' + qtid + $.rnd.stamp(), {},  
+                function(data){
+		        	$(data).each(function () {
+		                $("#qSel").append("<option value='"+this.value+"'>"+this.display+"</option>");
+		            });
+                }
+         );
+        /* 
+        $.get('?mod=adplay_q&code=GetList_Select&qtid=' + qtid + $.rnd.stamp(), function (data) {
+            var inofes = JSON.parse(data);
+            $(data).each(function () {
+                $("#qSel").append("<option value='"+this.value+"'>"+this.display+"</option>");
+            });
+        }); */
+    }
+
+    $(document).ready(function () {
+        KindEditor.ready(function (K) { K.create('#editor'); });
+        $.hook.add('swfuploaded', function (file) { InsertImage(file) });
+    });
+</script>
+<script type="text/javascript">
+	$(function() {
+		function format(mail) {
+			return mail.sellername;
+		}
+		$("#autocomplete").autocomplete('?mod=search&code=ajaxSeller', {
+			multiple: false,
+			matchSubset:true,
+			multipleSeparator: "",
+			dataType: "json",
+			extraParams: {},
+			parse: function(data) {
+				return $.map(data, function(row) {
+					return {
+						data: row,
+						value: row.sellername,
+						result: row.sellername
+					}
+				});
+			},
+			formatItem: function(item) {
+				return format(item);
+			}
+		}).result(function(e, item) {
+			$('#sellerids').val(item.id);//设置商家
+		});
+		
+		(function (cid) {
+			$('#allCityList').html('<option value="-1">正在加载</option>');
+			$.get('admin.php?mod=product&code=quick&op=listCity&icity=' + cid
+					+ $.rnd.stamp(), function(data) {
+				$('#allCityList').html(data);
+			});
+		})("{$p['cityid']}");
+	});
+</script>
+<form id="productIfoForm" action="?mod=adplay_ad&code=save" method="post" enctype="multipart/form-data" onSubmit="return checkIfClick();">
+  <input id="adid" name="id" type="hidden" value="{$p['id']}" />
+  <div class="idTabs">
+    <div class="navsBar"> <font style="float: left;margin-right: 20px;margin-top: 7px;"> {if $id}编辑广告{else}添加广告{/if}</font>
+      <ul class="navs">
+          <li><a id="nav2Base" href="#p_base">1.基本信息</a></li>
+          <li><a id="nav2Image" href="#p_image">2.广告图片</a></li>
+      </ul>
+      <font id="autoSaveStatus" style="float: right;margin-top: 7px;margin-right: 40px;_margin-right: 10px;"></font> </div>
+    <div class="items">
+      <div id="p_base">
+        <table width="100%" class="tableborder">
+          <tr>
+            <td width="100" class="td_title">名称：</td>
+            <td><input name="name" type="text" size="80" value="{$p['name']}" /></td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">关联问题：</td>
+            <td>
+                <select id="qtSel" onchange="BindQ($(this).val())">
+                    <option value="0">请选择分类</option>
+                {loop $p['qtselect'] $val $key}
+                    <option value="{$key['value']}" {if $p['qt_select']==$key['value']}selected="selected"{/if}>{$key['display']}</option>
+                {/loop}
+                </select>&nbsp;
+                <select id="qSel" name="qid">
+                    <option value="0">请选择问题</option>
+                {loop $p['qselect'] $val $key}
+                    <option value="{$key['value']}" {if $p['qid']==$key['value']}selected="selected"{/if}>{$key['display']}</option>
+                {/loop}
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">投放城市：</td>
+            <td><select name="city" id="allCityList">
+				<option value="-1">正在加载</option>
+				</select>
+			</td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">商家：</td>
+            <td><input type="hidden" id="sellerids" name="sellerid" value="{$p['sellerid']}">
+				<input type="text" id="autocomplete" size="40" value="{$p['sellername']}" placeholder="请输入商家" />
+			</td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">显示优先级：</td>
+            <td><input name="order" type="text" size="3" value="{echo (int)$p['order']}" />
+              &nbsp;&nbsp;（数字越大，显示位置越靠前） </td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">总价：</td>
+            <td><input name="money" type="text" size="20" value="{$p['money']}" /></td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">可玩次数：</td>
+            <td><input name="times" type="text" size="20" value="{$p['times']}" /></td>
+          </tr>
+          <tr>
+            <td width="100" class="td_title">错误次数：</td>
+            <td><input name="everybody_times" type="text" size="20" value="{$p['everybody_times']}" /></td>
+          </tr>
+            <tr>
+                <td width="100" class="td_title">广告展示url：</td>
+                <td><input name="urlad" type="text" size="80" value="{$p['urlad']}" /></td>
+            </tr>
+          <tr>
+            <td width="100" class="td_title">广告内容：</td>
+            <td><textarea id="editor" name="content" style="width:90%;min-height:300px;">{echo thtmlspecialchars($p['content'])}</textarea></td>
+          </tr>
+        </table>
+      </div>
+      <div id="p_image">
+        <table width="100%" class="tableborder">
+          <tr>
+            <td width="150" class="td_title">产品多图片展示：<br/>
+              <font style="font-weight:bold;color:red;">图片尺寸：450*268</font></td>
+            <td><input type="hidden" name="imgs" id="imgs" value="" />
+              <ul class="img_scroll">
+                {loop $p['pic'] $id}
+                {if $id > 0}
+                <li id="img_li_for_{$id}"> <a href="{echo imager($id, IMG_Original)}" class="thickbox"><img class="pro_image_tiny" src="{echo imager($id, IMG_Tiny)}" /></a>
+                  <input type="text" value="{echo logic('upload')->Field($id, 'intro')}" onFocus="introFocus(this)" onBlur="introChange({$id}, this)" />
+                  <a href="?#deleteImage" onClick="DeleteImage($id);return false;">[ 删除 ]</a> </li>
+                {/if}
+                {/loop}
+                <li id="img_li_TPL"> <a href="#http://[url]/" target="_blank"><img src="#http://[url]/" width="80" height="80" /></a>
+                  <input type="text" value="" onFocus="introFocus(this)" onBlur="introChange([id], this)" />
+                  <a href="?#deleteImage" onClick="DeleteImage([id]);return false;">[ 删除 ]</a> </li>
+              </ul>
+              {~logic('upload')->html()}
+              *点击删除图片时会实时删除服务器上的图片，请慎重 <br>
+              <font color="red">*如果提示 Acces Deined 错误，请检查“全局设置-上传设置”里面对应的图片上传权限是否有打开</font></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script type="text/javascript">
+        function checkIfClick()
+        {
+            var errMsg = '';
+            if ($('input[name="name"]').val() == '') {
+                errMsg += '请填写名称！\n';
+            }
+            if ($('#qSel').val() == '') {
+                errMsg += '请选择关联问题！\n';
+            }
+            if ($('input[name="money"]').val() == '' || !parseFloat($('input[name="money"]').val()))
+            {
+                errMsg += '请设置一个正确的总价值！\n';
+            }
+            if ($('input[name="times"]').val() == '' || !parseInt($('input[name="times"]').val())) {
+                errMsg += '请设置一个正确的可玩次数值！\n';
+            }
+            if (errMsg != '') {
+                alert(errMsg);
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+  </div>
+  <div class="submitArea">
+    <input id="submitButton" type="submit" class="button back2" value="保存" />
+  </div>
+</form>
+{template @admin/footer}

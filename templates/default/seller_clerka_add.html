@@ -1,0 +1,104 @@
+<!--{template header}-->
+<!--{~ui('loader')->js('@validform')}-->
+<!--{~ui('loader')->css('@valid.style')}-->
+<div class="site-ms__right user_nav">{template seller_menu}</div>
+<div class="site-ms__left">
+	<div class="t_area_out">
+		<div class="t_area_in">
+			<div class="nleftL">
+			<form id="registerform" action="?mod=seller&code=clerka&op=dosave" method="post">
+				<input type="hidden" name="id" id="id" value="{$clerka['id']}">
+				<table class="tab_list" >
+					<tr>
+						<td>员工编号</td>
+						<td><input id="number" name="number" ajaxurl="?mod=seller&code=ckNumber&id={$clerka['id']}" nullmsg="员工编号不允许为空" sucmsg=" " datatype="*" value="{$clerka['number']}"/></td>
+						<td><div class="Validform_checktip"></div></td>
+					</tr>
+					<tr>
+						<td width="20%">姓名</td>
+						<td width="40%"><input name="name" id="name" nullmsg="姓名不允许为空" errormsg="姓名2-12位" sucmsg=" " datatype="*2-12" value="{$clerka['name']}"/></td>
+						<td width="40%"><div class="Validform_checktip"></div></td>
+					</tr>
+					<tr>
+						<td>性别</td>
+						<td colspan="2">
+							<select name="gender" id="gender">
+							  <option value ="0" {if $clerka['gender'] == 0}selected="selected"{/if}>男</option>
+							  <option value ="1" {if $clerka['gender'] == 1}selected="selected"{/if}>女</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>年龄</td>
+						<td><input id="age" name="age" nullmsg="年龄不允许为空" errormsg="姓名10-100" sucmsg=" " datatype="n2-2" value="{$clerka['age']}"/></td>
+						<td><div class="Validform_checktip"></div></td>
+					</tr>
+					<tr>
+						<td>手机号</td>
+						<td><input id="phone" name="phone" ajaxurl="?mod=seller&code=ckPhone&id={$clerka['id']}" nullmsg="请输入手机号！" sucmsg=" " errormsg="手机号不正确" datatype="/^1[3456789][0-9]{9}$/" value="{$clerka['phone']}"/></td>
+						<td><div class="Validform_checktip"></div></td>
+					</tr>
+					<tr>
+						<td>用户名</td>
+						<td><input id="username" name="username" ajaxurl="?mod=seller&code=ckUn&id={$clerka['id']}" nullmsg="请输入用户名！" sucmsg=" " errormsg="用户名不正确6-18位" datatype="*6-18" value="{$clerka['username']}"/></td>
+						<td><div class="Validform_checktip"></div></td>
+					</tr>
+					{if $clerka['id']}
+					<tr>
+						<td>密码</td>
+						<td><input type="password" id="password" name="password" datatype="updatePwd" errormsg="密码6-32位" sucmsg=" "/></td>
+						<td><div class="Validform_checktip"></div></td>
+					</tr>
+					{else}
+					<tr>
+						<td>密码</td>
+						<td><input type="password" id="password" name="password" datatype="addPwd" errormsg="密码6-32位" nullmsg="请输入密码！" sucmsg=" "/></td>
+						<td><div class="Validform_checktip"></div></td>
+					</tr>
+					{/if}
+					<tr>
+						<td>是否启用</td>
+						<td colspan="2">
+							<select name="type" id="type">
+							  <option value ="1" {if $clerka['type'] == 1}selected="selected"{/if}>是</option>
+							  <option value ="2" {if $clerka['type'] == 2}selected="selected"{/if}>否</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center" style="border-bottom:1px solid #ccc;"><input id="mysun" type="submit" value="提交"/></td>
+					</tr>
+				</table>
+			</form>
+			<script type="text/javascript">
+				$(function(){
+					$("#registerform").Validform({
+						tiptype:2,
+						postonce:true,
+						datatype:{//传入自定义datatype类型【方式二】;
+							"addPwd":function(value,element){
+								if(value.length >= 6 && value.length <= 32){
+									return true;
+								}else{
+									return false;
+								}
+							},
+							"updatePwd":function(value,element){
+								if(value.length == 0){
+									return true;
+								}else if(value.length >= 6 && value.length <= 32){
+									return true;
+								}else{
+									return false;
+								}
+							}
+						}
+					});
+				})
+			</script>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!--{template footer}-->

@@ -1,0 +1,585 @@
+<style>
+.hl_rightMenu {
+	width: 90px;
+	background-color: #fff;
+	overflow: hidden;
+	position: absolute;
+	left: 5px;
+	top: 35%;
+	position: fixed;
+	border: 1px solid #dddddd;
+	border-bottom: none;
+	display: none;
+	z-index: 9999;
+}
+
+.hl_rightMenu ul li {
+	float: left;
+	width: 90px;
+	border-bottom: 1px solid #ddd;
+	display: block;
+}
+
+.hl_rightMenu ul li a {
+	padding: 5px;
+	width: 80px;
+	overflow: hidden;
+	display: block;
+	color: #666;
+	font-size: 12px;
+	line-height: 30px;
+	text-indent: 30px;
+}
+
+.hl_rightMenu ul li a:hover {
+	text-decoration: none;
+}
+
+.hl_rightMenu .hula_meishi a {
+	background: url(images/hl_food_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_meishi a:hover {
+	color: #fff;
+	background: #DD9E72 url(images/hl_food_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_meishi_active,.hula_meishi_active a,.hula_meishi_active a:hover {
+	color: #fff !important;
+	background: #DD9E72 url(images/hl_food_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_daijinquan a {
+	background: url(images/juan_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_daijinquan a:hover {
+	color: #fff;
+	background: #C9B174 url(images/juan_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_daijinquan_active,.hula_daijinquan_active a,.hula_daijinquan_active a:hover
+	{
+	color: #fff !important;
+	background: #C9B174 url(images/juan_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_choujiang a {
+	background: url(images/hl_sing_a.png) no-repeat c10px center;
+}
+
+.hl_rightMenu .hula_choujiang a:hover {
+	color: #fff;
+	background: #B4C562 url(images/hl_sing_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_choujiang_active,.hula_choujiang_active a,.hula_choujiang_active a:hover
+	{
+	color: #fff !important;
+	background: #B4C562 url(images/hl_sing_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_xiuxianyule a {
+	background: url(images/hl_media_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_xiuxianyule a:hover {
+	color: #fff;
+	background: #FA856F url(images/hl_media_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_xiuxianyule_active,.hula_xiuxianyule_active a,.hula_xiuxianyule_active a:hover
+	{
+	color: #fff !important;
+	background: #FA856F url(images/hl_media_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_jiudian a {
+	background: url(images/hl_hotel_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_jiudian a:hover {
+	color: #fff;
+	background: #67C5D8 url(images/hl_hotel_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_jiudian_active,.hula_jiudian_active a,.hula_jiudian_active a:hover
+	{
+	color: #fff !important;
+	background: #67C5D8 url(images/hl_hotel_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_shenghuofuwu a {
+	background: url(images/hl_life_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_shenghuofuwu a:hover {
+	color: #fff;
+	background: #E9B535 url(images/hl_life_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_shenghuofuwu_active,.hula_shenghuofuwu_active a,.hula_shenghuofuwu_active a:hover
+	{
+	color: #fff !important;
+	background: #E9B535 url(images/hl_life_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_tutechan a {
+	background: url(images/hl_shop_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_tutechan a:hover {
+	color: #fff;
+	background: #23BFB2 url(images/hl_shop_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_tutechan_active,.hula_tutechan_active a,.hula_tutechan_active a:hover
+	{
+	color: #fff !important;
+	background: #23BFB2 url(images/hl_shop_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_yinshiyuqi a {
+	background: url(images/hl_women_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_yinshiyuqi a:hover {
+	color: #fff;
+	background: #C979DE url(images/hl_women_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hula_yinshiyuqi_active,.hula_yinshiyuqi_active a,.hula_yinshiyuqi_active a:hover
+	{
+	color: #fff !important;
+	background: #C979DE url(images/hl_women_hover.png) no-repeat 10px center;
+	display: block;
+}
+
+.hl_rightMenu .hula_lvyou a {
+	background: url(images/hl_travel_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_lvyou a:hover {
+	color: #fff;
+	background: #99CC99 url(images/hl_travel_hover.png) no-repeat 10px
+		center;
+	display: block;
+}
+
+.hula_lvyou_active,.hula_lvyou_active a,.hula_lvyou_active a:hover {
+	color: #fff !important;
+	background: #99CC99 url(images/hl_travel_hover.png) no-repeat 10px
+		center;
+	display: block;
+}
+
+.hl_rightMenu .hula_gongyipin a {
+	background: url(images/huapin_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_gongyipin a:hover {
+	color: #fff;
+	background: #FFCCCC url(images/huapin_hover.png) no-repeat 10px
+		center;
+	display: block;
+}
+
+.hula_gongyipin_active,.hula_gongyipin_active a,.hula_gongyipin_active a:hover
+	{
+	color: #fff !important;
+	background: #FFCCCC url(images/huapin_hover.png) no-repeat 10px
+		center;
+	display: block;
+}
+
+.hl_rightMenu .hula_youxilei a {
+	background: url(images/youxi_a.png) no-repeat 10px center;
+}
+
+.hl_rightMenu .hula_youxilei a:hover {
+	color: #fff;
+	background: #666699 url(images/youxi_hover.png) no-repeat 10px
+		center;
+	display: block;
+}
+
+.hula_youxilei_active,.hula_youxilei_active a,.hula_youxilei_active a:hover
+	{
+	color: #fff !important;
+	background: #666699 url(images/youxi_hover.png) no-repeat 10px
+		center;
+	display: block;
+}
+</style>
+<div class="hl_rightMenu">
+
+	<ul>
+		{loop $product $cata}
+		<li id="hula_{$cata['flag']}" class="hula_{$cata['flag']}"><a
+			href="#{$cata['flag']}">{$cata['name']}</a></li> {/loop}
+	</ul>
+
+</div>
+
+
+
+<script type="text/javascript">
+	$(function() {
+
+		$(".hula_meishi").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#meishi").offset().top
+			}, 500);
+		})
+
+		$(".hula_jiudian").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#jiudian").offset().top
+			}, 500);
+		})
+		$(".hula_gongyipin").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#gongyipin").offset().top
+			}, 500);
+		})
+		$(".hula_xiuxianyule").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#xiuxianyule").offset().top
+			}, 500);
+		})
+		$(".hula_lvyou").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#lvyou").offset().top
+			}, 500);
+		})
+		$(".hula_tutechan").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#tutechan").offset().top
+			}, 500);
+		})
+		$(".hula_yinshiyuqi").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#yinshiyuqi").offset().top
+			}, 500);
+		})
+		$(".hula_daijinquan").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#daijinquan").offset().top
+			}, 500);
+		})
+		$(".hula_shenghuofuwu").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#shenghuofuwu").offset().top
+			}, 500);
+		})
+		$(".hula_youxilei").click(function() {
+			$("html,body").animate({
+				scrollTop : $("#youxilei").offset().top
+			}, 500);
+		})
+	});
+
+	$(function() {
+
+		$(".hl_rightMenu").css("top",
+				($(window).height() - $(".hl_rightMenu").height()) / 2);
+
+	});
+
+	$(function() {
+
+		var meishi_top = $("#meishi").offset().top - 400;
+		var jiudian_top = $("#jiudian").offset().top - 400;
+		var yule_top = $("#xiuxianyule").offset().top - 400;
+		var travel_top = $("#lvyou").offset().top - 400;
+		var life_top = $("#shenghuofuwu").offset().top - 400;
+		var techan_top = $("#tutechan").offset().top - 400;
+
+		var yinshi_top = $("#yinshiyuqi").offset().top - 400;
+		var daijinquan_top = $("#daijinquan").offset().top - 400;
+		var gongyipin_top = $("#gongyipin").offset().top - 400;
+		var youxilei_top = $("#youxilei").offset().top - 400;
+		//var chouijang_top = $("#choujiang").offset().top - 400;
+
+		$(window).scroll(function() {
+			var scroH = $(this).scrollTop();
+			if (meishi_top > scroH) {
+				setCss(0);
+			}
+			if (scroH >= meishi_top) {
+				$(".hl_rightMenu").show();
+			} else {
+				$(".hl_rightMenu").hide();
+			}
+			//美食
+			if (scroH >= meishi_top && scroH < jiudian_top) {
+				setCss(1);
+			}
+			//酒店
+			if (scroH >= jiudian_top && scroH < yule_top) {
+				setCss(2);
+			}
+			//娱乐
+			if (scroH >= yule_top && scroH < travel_top) {
+				setCss(3);
+			}
+			//旅游
+			if (scroH >= travel_top && scroH < life_top) {
+				setCss(4);
+			}
+			//生活
+			if (scroH >= life_top && scroH < techan_top) {
+				setCss(5);
+			}
+			//特产
+			if (scroH >= techan_top && scroH < yinshi_top) {
+				setCss(6);
+			}
+			//银饰
+			if (scroH >= yinshi_top && scroH < daijinquan_top) {
+				setCss(7);
+			}
+			//代金券
+			if (scroH >= daijinquan_top && scroH < gongyipin_top) {
+				setCss(8);
+			}
+			//工艺品gongyipin
+			if (scroH >= gongyipin_top && scroH < youxilei_top) {
+				setCss(9);
+			}
+			//游戏
+			if (scroH >= youxilei_top) {
+				setCss(10);
+			}
+		});
+	});
+
+	function setCss(type) {
+		if (type == 0) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+
+		}
+		if (type == 1) {
+			$("#hula_meishi").attr("class", "hula_meishi_active");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 2) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian_active");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 3) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule_active");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 4) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou_active");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 5) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu_active");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 6) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan_active");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 7) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi_active");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 8) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan_active");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 9) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin_active");
+			$("#hula_youxilei").attr("class", "hula_youxilei");
+		}
+		if (type == 10) {
+			$("#hula_meishi").attr("class", "hula_meishi");
+			$("#hula_jiudian").attr("class", "hula_jiudian");
+			$("#hula_xiuxianyule").attr("class", "hula_xiuxianyule");
+			$("#hula_lvyou").attr("class", "hula_lvyou");
+			$("#hula_shenghuofuwu").attr("class", "hula_shenghuofuwu");
+			$("#hula_tutechan").attr("class", "hula_tutechan");
+			$("#hula_yinshiyuqi").attr("class", "hula_yinshiyuqi");
+			$("#hula_daijinquan").attr("class", "hula_daijinquan");
+			$("#hula_gongyipin").attr("class", "hula_gongyipin");
+			$("#hula_youxilei").attr("class", "hula_youxilei_active");
+		}
+	}
+</script>
+
+
+
+
+
+<!-- 主页 -->
+<div class="product_wrap">
+	{loop $product $cata}
+	<div class="cat-floor__head">
+		<div class="sub-categories">
+			{if $cata['subclass']} {loop $cata['subclass'] $subc} <a
+				href="{$subc['url']}">{$subc['name']}</a> {/loop} {/if} <a
+				class="sub-categories_last" href="{$cata['url']}">全部</a>
+		</div>
+		<a href="{$cata['url']}" class="sub-name" id="{$cata['flag']}">{$cata['name']}</a>
+	</div>
+	<div class="product_item">
+		<style type="text/css">
+.deal-tile__detail .price {
+	max-width: 101px;
+	_width: 101px;
+}
+
+.deal-tile__title {
+	padding: 10px 15px 0;
+}
+
+.deal-tile__detail {
+	padding: 0 15px;
+	height: 35px;
+}
+</style>
+		{if $cata['product']} {loop $cata['product'] $item} {eval $icc++}
+		<div class="t_area_out template2">
+			<div class="t_area_in">
+				<div class="deal-tile__cover">
+					<div class="deal-tile__cover_img mt">{eval
+						ui('iimager')->single($item['id'], $item['imgs'][0])}</div>
+					<div class="deal-tile__cover_tag">
+						{if $item['linkid']}<i><span title="多个套餐">多种套餐</span></i>{/if}
+						{eval logic('product_tag')->html($item['id'])}
+					</div>
+				</div>
+				<div class="deal-tile__title">
+					<a href="?view={$item['id']}" target="_blank"
+						title="{$item['name']}">{$item['name']}</a>
+				</div>
+				<div class="deal-tile__detail">
+					<div class="price">&yen;{$item['nowprice']}</div>
+					<div class="at_shuzi">
+						<span>原价:</span><b class="prime_cost ">&yen;{$item['price']}</b>
+					</div>
+					<div class="deal_g">
+						<a class="gotosee" href="?view={$item['id']}" target="_blank">去看看</a>
+					</div>
+				</div>
+				<div class="deal-tile__extra">
+					{if $item['presell']}
+					<div class="yufu">
+						<span>{TUANGOU_STR}价:</span><b>&yen;{$item['presell']['price_full']}</b>
+					</div>
+					{/if}
+					<div id="tuanState" class="mb_0626">
+						已售<b>{$item['sells_count']}</b>
+					</div>
+				</div>
+			</div>
+		</div>
+		{/loop} {/if}
+	</div>
+	<a class="category-floor__foot " href="{$cata['url']}">查看全部<b>{$cata['name']}</b></a>
+	{/loop}
+</div>
+</div>
+<div class="site-ms__right">
+	<!--{~ui('widget')->load('index_home')}-->
+</div>
+</div>

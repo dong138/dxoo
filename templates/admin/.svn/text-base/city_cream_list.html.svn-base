@@ -1,0 +1,60 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{~ui('loader')->js('#admin/js/cplace.mgr.ajax')}
+<table cellspacing="1" cellpadding="4" width="100%" align="center"
+	class="tableborder">
+	<tr class="header">
+		<td colspan="4">城市区域管理 / 当前城市：<font color="red">{$city['cityname']}</font></td>
+	</tr>
+	<tr class="banner">
+		<td colspan="7">1、是否开启精选？ <font class="ini"
+			src="catalog.enabled"></font>（点击按钮：绿色开启、灰色关闭）<br />
+			2、输入框为空时，查询所有当前城市本周精选<br />
+			3、输入框不为空时，查询当前城市下该商品，然后选择为本周精选<br />
+		<div class="isearcher">
+			<p class="searcher_li">
+			<input id="iscp_input" value="{$key}" class="isearcher_input_words" type="text"/>
+			<input id="iscp_button" class="btn btn-primary btn-small" type="button" value="搜索" />
+		</div>
+		</td>
+	</tr>
+	<tr class="tr_nav">
+		<td width="6%">编号</td>
+		<td width="36%">产品名称</td>
+		<td width="20%">商家名称</td>
+		<td width="6%">是否精选</td>
+		{if $isCream}
+		<td width="6%">排序</td>
+		{/if}
+	</tr>
+	{loop $product $one}
+	<tr>
+		<td>{$one['id']}</td>
+		<td><label >{$one['name']}</label></td>
+		<td>{$one['sellername']}</td>
+		<td>
+			{eval $num = logic('cream')->Exists({$city['cityid']},{$one['id']})}
+			<a href="javascript:void(0)" onclick="cream_update({$city['cityid']},{$one['id']},{echo $num ? 0:1},this)">
+			<img id="img{$one['id']}" src="templates/admin/images/{echo $num ? 'btn_enable.png':'btn_disable.gif' }"></img>
+			</a>
+		</td>
+		{if $isCream}
+		<td><input id="order{$one['id']}" value="{$one['creamorder']}" class="th2s" type="text" onblur="doa(this,{$one['creamid']});"/></td>
+		{/if}
+	</tr>
+	{/loop}
+</table>
+<script type="text/javascript">
+	$(function(){
+		$('#iscp_button').click(function(){
+			var iscp=$('#iscp_input').val();
+			var strKey='?mod=cream&code=product&cid={$city['cityid']}&key='+iscp;
+			window.location = strKey;
+		});
+	});
+	function doa(obj,id){
+		window.location = '?mod=cream&code=cream&op=order&cid={$city['cityid']}&order='+obj.value+'&id='+id;
+	}
+</script>
+<!--{template @admin/footer}-->

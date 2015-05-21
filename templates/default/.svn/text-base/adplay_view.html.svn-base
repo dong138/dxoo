@@ -1,0 +1,186 @@
+<!--{template header}-->
+<!--{~ui('loader')->css('seller')}-->
+<!--{~ui('loader')->js('@lhgdialog')}-->
+<style type="text/css">
+    .shopInt_info p
+    {
+        font-size:16px;
+        font-weight:bolder;
+    }
+    .answers li
+    {
+        height:30px;
+        line-height:30px;
+    }
+    .answers li input
+    {
+        margin-right:2px;
+    }
+</style>
+<div class="site-ms__left"> {~ui('loader')->js('@time.lesser')}
+  <div class="t_area_out">
+    <div class="shopInt">
+      <div class="shopName"><a href="?mod=adplay&code=view&id={$info['id']}" target="_blank">{$info['name']}</a></div>
+      <div class="deal-tile__cover">{eval ui('iimager')->adplay_multis($info['id'], $info['pic'])}</div>
+      <div class="deal-tile__con">
+        <dl class="shopInt_info">
+          <p><em>名称：</em>{$info[name]}</p>
+          {if MEMBER_ID>0}
+          <p><em>状态：</em>{echo $anslog?'<span style="color:green;font-weight:bolder;">未玩</span>':'<span style="color:red;font-weight:bolder;">已玩</span>'}</p>
+          {/if}
+          <p><em>总价：</em>{$info[money]}</p>
+          <p><em>奖金：</em>￥{echo $info[money]/$info[times]}元</p>
+          <p><em>可玩次数：</em>{$info[times]}</p>
+          <p><em>已玩次数：</em>{$info[times_played]}</p>
+          <p><em>推出时间：</em>{echo date('Y-m-d H:i',$info[addtime])}</p>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="content-navbar" id="content-navbar-id">
+    <ul>
+      <li class="name-cur"><span id="name-address">广告内容</span></li>
+    </ul>
+    <div style="clear:both;"></div>
+  </div>
+  <script type="text/javascript">
+      /* if(!($.browser.msie && $.browser.version<7)){
+          $("#content-navbar-id").fixbox({distanceToBottom:200,threshold:8});
+      } */
+</script>
+  <div class="mainbox">
+    <div class="main">
+        <a class="detail-centit" id="name-address-block"> <span style="font-weight:bolder;">内容</span> </a>
+        <div class="position-wrapper">
+            <div class="address-list">
+                <div class="biz-wrapper" style="float:left;padding:8px;">
+                    {$info['content']}
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <a class="detail-centit"> <span style="font-weight:bolder;">{$qinfo['name']}</span> </a>
+        <div class="position-wrapper">
+            <div class="address-list">
+                <div class="biz-wrapper" style="float:left;padding:8px;">
+                    <ul class="answers">
+                        {loop $ainfoes $aitem}
+                        <li><input name="answer" id="answer_{$aitem['id']}" type="radio" data-id="{$aitem['id']}" /><label for="answer_{$aitem['id']}">{$aitem['name']}</label></li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="deal_g">
+				<a id='submit' href="javascript:void(0)" class="gotosee">去看看</a>
+			</div>
+        </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    var id = {$info['id']};
+    var nextAd = '{$nextAd}';
+    var urlAd = "{$info['urlad']}";
+    
+    function NextAD()
+    {
+        if(nextAd=='0')
+        {
+            window.location='?mod=adplay';
+            return;
+        }
+        window.location='?mod=adplay&code=view&id='+nextAd;
+    }
+
+    $('#submit').click(function () {	    	
+        var count=$('input[name="answer"]:checked');
+        if(!count.length){dialog('信息提示','请选择答案！',0,'alert');return;};
+      	var aid = $(count).attr('data-id');
+        $.get('?mod=adplay&code=answer&id=' + id + '&aid=' + aid + $.rnd.stamp(), function (data) {
+        	switch(data)
+	    	{
+	    		case '1':
+	    			dialog('信息提示','请先登录！','?mod=account&code=login','alert');
+	    			break;
+	    		case '2':
+	    			dialog('信息提示','请先绑定手机号！','?mod=me&code=setting','alert');
+	    			break;
+	    		case '3':
+	    			dialog('信息提示','多次回答错误！您可以玩其他广告！','?mod=adplay','alert');
+	    			break;
+	    		case '4':
+	    			dialog('信息提示','您所在的地区不可玩，您可以玩其他广告！','?mod=adplay','alert');
+	    			break;
+	    		case '5':
+    	    		dialog('信息提示','此广告已经结束，请换个广告重试！',-1,'alert');
+    	    		break;
+    	    	case '6':
+    	    		dialog('信息提示','您已经玩过此广告，不能重复玩同一个广告！',-1,'alert');
+    	    		break;
+    	    	case 'ok':
+    	    		dialog('信息提示','恭喜您！回答正确！','?mod=adplay','alert');
+    	    		break;
+    	    	default:
+    	    		dialog('信息提示','回答错误！请仔细思考后重试！',0,'alert');
+	    	} 
+        });
+    });
+    
+    function dialog(title,content,url,ico){
+    	$.dialog({
+    		lock: true,
+    	    max: false,
+    	    min: false,
+    		fixed: true,
+    	    drag: false,
+    	    resize: false,
+    		title: title,
+    		content: content,
+    	    icon: ico+'.gif',
+    	    ok: function () {
+    	    	switch(url)
+    	    	{
+	    	    	case -1:
+	    	    		history.go(-1);
+	    	    		break;
+	    	    	case 0:
+	    	    		break;
+	    	    	default:
+	    	    		window.location=url;
+    	    	} 
+    	    }
+   		});
+    }
+    
+	function dialog_url(title,content,url,ico){
+    	var api =$.dialog({
+    		id: 'CQX007',
+    		lock: true,
+    	    max: false,
+    	    min: false,
+    		fixed: true,
+    	    drag: false,
+    	    resize: false,
+    		title: title,
+    		content: content,
+    	    icon: ico+'.gif',
+    	    ok: function () {
+    	    	if(url){
+    	    		window.location=url;
+    	    		return;
+    	    	}
+    	    	NextAD();
+    	    },
+    	    cancel: function () {
+    	    	window.location='?mod=adplay';
+   	    		return;
+    	    }
+   		});
+    	api.content('恭喜您！回答正确！\n是否进行产品代金劵购买？\n点击“确定”进入购买页面，“取消”继续下一个广告。').title('提示');
+    }
+</script>
+<div class="site-ms__right"> 
+<!--{~ui('widget')->load('index_home')}-->
+</div>
+<!--{template footer}--> 

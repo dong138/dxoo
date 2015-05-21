@@ -1,0 +1,76 @@
+<!--{template @admin/header}-->
+
+
+    <table cellspacing="1" cellpadding="4" width="100%" align="center"
+           class="tableborder">
+        <tr class="header">
+            <td colspan="12"><b style="float: left;">分润列表</b></td>
+        </tr>
+        <tr class="">
+            <td colspan="5">
+                <div class="tr_select">
+                    <form action="admin.php" method="get">
+                        <input value="profit" name="mod" type="hidden"/>
+                        <input value="lists" name="code" type="hidden"/>
+                        <input value="$_GET['sellerid']" name="sellerid" type="hidden"/>
+                        年份
+                        <select name="year">
+                            <option></option>
+                            <!--{loop $years $i $year}-->
+                            {if $year==$_GET['year']}
+                            <option selected value="$year">$year</option>
+                            {else}
+                            <option value="$year">$year</option>
+                            {/if}
+                            <!--{/loop}-->
+                        </select>
+                        月份
+                        <select name="month">
+                            <option></option>
+                            <!--{loop $months $i $month}-->
+                            {if $month==$_GET['month']}
+                            <option selected value="$month">$month</option>
+                            {else}
+                            <option value="$month">$month</option>
+                            {/if}
+                            <!--{/loop}-->
+                        </select>
+                        <input id="iscp_button" class="btn btn-primary btn-small" type="submit" value="搜索" />
+                    </form>
+                </div>
+
+            </td>
+            <td>
+               本月分润： $sums 元
+            </td>
+        </tr>
+        <tr class="tr_nav">
+            <td width="10%">消费时间</td>
+            <td width="10%">产品名称</td>
+            <td width="10%">销售单价</td>
+            <td width="8%">结算单价</td>
+            <td width="7%">数量</td>
+            <td width="7%">利润</td>
+        </tr>
+        <!--{if empty($result)}-->
+        <tr>
+            <td colspan="12">暂时还没有数据
+            </td>
+        </tr>
+        <!--{/if}-->
+        <!--{loop $result $i $value}-->
+        <tr onmouseover="this.className='tr_hover'"
+            onmouseout="this.className='tr_normal'">
+            <td>{$value['usetime']}</td>
+            <td>{$value['name']}</td>
+            <td>{$value['productprice']}</td>
+            <td>{$value['fundprice']}</td>
+            <td>{$value['mutis']}</td>
+            <td>{$value['commission']}</td>
+        </tr>
+        <!--{/loop}-->
+    </table>
+    {~page_moyo()}
+    <center>{$page_arr}</center>
+
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

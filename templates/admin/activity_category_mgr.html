@@ -1,0 +1,43 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@json2')}
+<form action="{$action}" id="subForm" method="post" enctype="multipart/form-data">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+		<tr class="header">
+			<td colspan="2">活动分类信息</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">活动分类名称</td>
+			<td align="right"><input name="activity_name" type="text" id="activity_name" value="{$activity['name']}" datatype="*"  errormsg="请输入" sucmsg=" " /></td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">配置信息</td>
+			<td align="right"><input name="configkey" type="text" id="configkey" size="80" value="{$activity['configkey']}" datatype="*"  errormsg="请输入" sucmsg=" " /></td>
+		</tr>
+	</table>
+	<br>
+	<center>
+	<input type="hidden" name="id" value="{$activity[id]}"/>
+	<input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交">
+	</center>
+</form>
+<script type="text/javascript">
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+</script>
+{template @admin/footer}

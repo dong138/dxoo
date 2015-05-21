@@ -1,0 +1,50 @@
+<!--{template @admin/header}-->
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="12"><b style="float: left;">商家分店管理</b> <a
+				style="float: left; margin-left: 5px"
+				href="?mod=branch&amp;code=Addbranch" class="back1 back2">添加商家分店</a></td>
+		</tr>
+		{if !empty($seller)}
+		<tr>
+			<td colspan="12">
+				<div class="tr_select">
+					请输入您要搜索的商家关键词： <input name="keyword" value="{$keyword}"
+						id="keyword" type="text" class="isearcher_input_words" />
+					<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+				</div>
+			</td>
+		</tr>
+		{/if}
+		<tr class="tr_nav">
+			<td width="5%">序号</td>
+			<td width="10%">分店名称</td>
+			<td width="10%">添加时间</td>
+			<td width="9%" align="center">管理</td>
+		</tr>
+		<!--{if empty($branch)}-->
+		<tr>
+			<td colspan="12">暂时还没有商家分店，请<a
+				href="?mod=branch&code=addbranch">点此添加商家</a>。
+			</td>
+		</tr>
+		<!--{/if}-->
+		<!--{loop $branch $i $value}-->
+		<tr onmouseover="this.className='tr_hover'"
+			onmouseout="this.className='tr_normal'">
+			<td>{$value['id']}</td>
+			<td>{$value['name']}</td>
+			<td>{echo date('Y-m-d H:i:s', $value['addstime'])}</td>
+			<td align="center"><a
+				href="?mod=branch&code=editbranch&id={$value['id']}">修改</a> -
+				<a href="#" title="点此删除该商家分店"
+				onclick="if(confirm('您确认要删除该商家分店吗？')){window.location.href='?mod=branch&code=delete&id={$value['id']}'}">删除</a></td>
+		</tr>
+		<!--{/loop}-->
+	</table>
+	<a href="?mod=branch&code=addbranch" class="back1 back2">添加商家分店</a> <br>
+	<center>{$page_arr}</center>
+</form>
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

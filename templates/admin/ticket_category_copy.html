@@ -1,0 +1,108 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->addon('picker.date')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@jquery.autocomplete')}
+{~ui('loader')->css('@jquery.autocomplete')}
+<form id="ticket_category_copy_form" action="{$action}" method="post" enctype="multipart/form-data">
+ <table cellspacing="1" cellpadding="4" width="560" align="center" class="tableborder">
+  <tr class="header"> <td colspan="2"></td> </tr>
+   <tr>
+    <td class="td_title">商家</td>
+    <td> <input type="text" class="isearcher_input_words" id="autocomplete" size="28" value="" placeholder="请输入商家" datatype="*"  errormsg="请输入" sucmsg="信息验证通过！"/> </td>
+   </tr>
+   <tr>
+   	<td class="td_title">优惠券月份</td>
+   	<td><input type="text" 
+		onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy年MM月',startDate:'{echo date('Y-m', time());}',vel:'pushtime'})"
+		 size="28" class="Wdate ca-items" name="pushtime" value="{echo date('Y年m月', time());}"  datatype="*" errormsg="请选择" sucmsg=" "/>
+	<input name="pushtime" type="hidden" id="pushtime" value="{echo date('Y-m', time());}" datatype="*"  errormsg="请输入" sucmsg=" " /></td>
+   </tr>
+    <tr>
+    <td class="td_title">可用次数</td>
+    <td>
+     <input type="text" class="ca-items" id="num" name="num"  size="28" datatype="n" sucmsg=" "/>
+     </td>
+    <tr>
+     <td colspan="2">
+      <center>
+      <input type="hidden" class="ca-items" name="sellerid" id="auto" value="" />
+       <input type="hidden" class="ca-items" name="projectid" value="{$projectid}" />
+     	<!-- <input type="button" value="保存" class="button" onclick="ticket_category_copy_form_submit(this)" /> -->
+     	<input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交">
+      </center>
+      </td>
+      </tr>
+   </table>
+   </form>
+   
+   <script >
+   var api = frameElement.api, W = api.opener;
+   $(function () {
+		//初始化验证表单
+		$("#ticket_category_copy_form").Validform({
+			tiptype:3,
+			callback:function(form){
+				//AJAX提交表单
+	            $(form).ajaxSubmit({
+	                beforeSubmit: showRequest,
+	                success: showResponse,
+	                url: $("#ticket_category_copy_form").attr("action"),
+	                type: "post",
+	                dataType: "json",
+	                timeout: 6000
+	            });
+	            return false;
+			}
+		});
+
+	    //表单提交前
+	    function showRequest() {
+			$("#submitButton").val("正在提交...");
+	        $("#submitButton").prop("disabled", true);
+	    }
+	    //表单提交后
+	    function showResponse(data, textStatus) {
+	        if (data.status =='y') { //成功
+				 setTimeout(function () {
+					 api.reload();
+	             }, 0);
+	        }else{
+	        	$.dialog.alert(data.info);
+	        }
+	   	}
+	});
+   $(function() {
+		function format(mail) {
+			return mail.sellername;
+		}
+		$("#autocomplete").autocomplete('?mod=search&code=ajaxSeller', {
+			multiple: false,
+			matchSubset:true,
+			multipleSeparator: "",
+			dataType: "json",
+			extraParams: {},
+			parse: function(data) {
+				return $.map(data, function(row) {
+					return {
+						data: row,
+						value: row.sellername,
+						result: row.sellername
+					}
+				});
+			},
+			formatItem: function(item) {
+				return format(item);
+			}
+		}).result(function(e, item) {
+			$("#auto").val(item.id);
+			//alert($("#auto").val());return;
+			//window.hell.location = '?mod=ticket&code=product&id={$projectid}&type=' + type + '&commonid=' + item.id;
+		});
+	});
+ 
+   </script>

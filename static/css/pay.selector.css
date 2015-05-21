@@ -1,0 +1,66 @@
+/** * @package css * @name pay.selector.css * @date 2014-09-01 17:24:23 */ .paytype_list {
+	margin: 10px auto;
+	padding: 10px 20px 15px 20px;
+	border: 0;
+	background: #f9f9f9;
+}
+.paytype_list .title {
+	padding: 7px 0;
+	font-weight: 600;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 15px;
+	font-weight: 600;
+	padding-bottom: 5px;
+	color: #333;
+	margin: 0 0 10px;
+}
+#payment_clear {
+	height: 20px;
+}
+#payment_total_money {
+	position: absolute;
+	font-weight: 600;
+}
+#payment_remain_money {
+	position: absolute;
+	display: none;
+	font-weight: 600;
+}
+.P_diso {
+	border-bottom: 1px #eee solid;
+	padding-bottom: 13px;
+	margin-bottom: 15px;
+}
+.pay_tr b {
+	font-weight: 500;
+}
+.pay_tr em {
+	background: #fff;
+	background: #fff;
+	width: 135px;
+	float: left;
+	padding: 2px;
+	border: 1px solid #eee;
+	padding-left: 10px;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: middle;
+}
+.pay_tr em img {
+	vertical-align: middle;
+}
+.submit_div {
+	margin: 10px 0 20px;
+	float: right;
+}
+.submit_div .back_rem {
+	text-align: right;
+	padding: 10px 0;
+}
+#timeLimit {
+	text-align: right;
+	width: 100%;
+	display: block;
+	margin-bottom: 10px;
+}
+.banks{width:880px; overflow:hidden;overflow:hidden;}.banks h3,.xtn_banks{width:880px; height:30px; line-height:30px; font-weight:normal; border-bottom:1px solid #ccc; background:#eee; color:#444; font-size:16px; text-indent:25px;}.xtn_banks{margin-top: 20px; margin-bottom: 30px;}#gs_bank,#jt_bank,#jh_bank,#zs_bank,#zg_bank,#ny_bank,#ms_bank,#bj_bank,#zx_bank,#pf_bank,#xy_bank,#gf_bank,#gd_bank,#yz_bank,#pa_bank,#hx_bank,#nb_bank,#sh_bank,#tj_bank,#nj_bank{float:left; margin-left:25px; margin-top:10px;}.Order_mennu{width:880px; height:40px; overflow:hidden; padding-left:20px;}.Order_mennu input{float:left;}.dn { display: none; }.db { display: block; }.di { display: inline; }.dib { display: inline-block;   }.h30 { height: 30px; }.lh30 {  line-height:30px;}.ml5 {margin-left:5px; }.p5 { padding:5px; }.pt5 {padding-top:5px; }.pb5 { padding-bottom:5px; }.pl5 {padding-left:5px; }.pr5 {padding-right:5px; }.fw { font-family: '微软雅黑'; }.l { float: left; }.r { float: right; }.w126{ width:126px;}.bank_list{cursor: pointer; width:150px; float: left;}.bank_list span{border: 1px solid #EEEEEE;}.bank_radio{float: left; margin-top: 10px;}/*背景*/.formBg{ background:url(../images/ibank/gr_bank.png) no-repeat left top;}.formBg1{ background-position:0 -3621px;}.formBg2{ background-position:0 -3273px;}.formBg3{ background-position:0 -3414px;}.formBg4{ background-position:0 -3367px;}.formBg5{ background-position:0 -2815px;}.formBg6{ background-position:0 -3319px;}.formBg7{ background-position:0 -1446px;}.formBg8{ background-position:0 -1487px;}.formBg9{ background-position:0 -120px;}.formBg10{ background-position:0 -1687px;}.formBg11{ background-position:-15px -1085px;}.formBg12{ background-position:0 -2371px;}.formBg13{ background-position:0 -522px;}.formBg14{ background-position:0 -1928px;}.formBg15{ background-position:0 -3099px;}.formBg16{ background-position:0 -602px;}.formBg17{ background-position:0 -40px;}.formBg18{ background-position:0 -1969px;}.formBg19{ background-position:0 -80px;}.formBg20{ background-position:0 -2410px;}.formBg21{ background-position:0 -3221px;}.formBg22{ background-position:0 -3500px;}.formBg23{ background-position:0 -642px;}.formBg24{ background-position:0 -1004px;}.formBg25{ background-position:0 -2048px;}.formBg26{ background-position:0 -2859px;}.formBg27{ background-position:0 -3669px;}.formBg28{ background-position:0 -3722px;}

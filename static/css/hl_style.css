@@ -1,0 +1,45 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;word-wrap:break-word;
+}
+body,html{ font-family:"Microsoft YaHei";color:#666; font-size:14px;
+}
+body{ background: url(../images/img/body_bg.jpg) repeat;}
+table{border-collapse:collapse;border-spacing:0;
+}
+img{border:none;
+}
+input.dialog{height:0; height:0; font-size:0; line-height:0; border:none;
+}
+ul,ol,li{list-style:none;
+}
+.category-floor__foot:hover{color: #fff; background:#2DB8AD;}
+.pl_box{ width: 708px; margin:auto; overflow: hidden;}
+.pl_tab{height: 35px; line-height: 35px; background: #F4F4F4;}
+.pl_tab li{ border-right: 1px solid #ddd; text-align: center;float: left; padding: 0px 15px; cursor: pointer; color: #222;}
+.pl_tab span{float: right; margin-right: 10px;}
+.pl_tab .item{background: #E8E8E8;}
+.pl_tab li:hover{background: #E8E8E8;}
+.pl_list{width: 100%; overflow: hidden; display: none;}
+.pl_list h3{width: 100%; height: 35px; line-height: 35px; color: #999999; font-size: 14px;}
+.pl_list ul{width: 100%; overflow: hidden; display: block;}
+.pl_list ul li{float: left; border-bottom: 1px dashed #DDDDDD; padding-bottom: 10px; display: block; overflow: hidden; margin-top: 10px;}
+.pl_list_main{ color: #222; line-height: 22px;}
+.pl_list .store_ask{line-height: 22px; color: #FF8900;}
+.pl_list_title{width: 700px; height: 15px; line-height: 15px; overflow: hidden; padding: 10px 0px 5px 0px;}
+.pl_list_title span{ display: block; overflow: hidden; float: left;}
+.pl_list_title .vip_name{ color: #999999; padding-right: 5px;}
+.pl_list_title .vip_time{ font-size: 12px; color: #888;padding-left: 5px;}
+.pl_list_title .vip_step0{ float: right; width: 60px; height: 12px; background: url(../images/img/dj.png) repeat-x 0px -16px;}
+.pl_list_title .vip_step0 i{display: block; width: 12px; height: 12px; background: url(../images/img/dj.png) no-repeat 0px 0px}
+
+.vip_step0{ float: right; width: 60px; height: 12px; background: url(../images/img/dj.png) repeat-x 0px -16px;}
+.vip_step0 i{display: block; width: 12px; height: 12px; background: url(../images/img/dj.png) no-repeat 0px 0px; float: left;}; float: left;}
+
+.pl_list_title .vip_ico0{background: url(../images/img/vip_icos.png) no-repeat 0px -119px; width: 15px; height: 15px;}
+.pl_list_title .vip_ico1{background: url(../images/img/vip_icos.png) no-repeat 0px -136px; width: 15px; height: 15px;}
+.pl_list_title .vip_ico2{background: url(../images/img/vip_icos.png) no-repeat 0px -153px; width: 15px; height: 15px;}
+.pl_list_title .vip_ico3{background: url(../images/img/vip_icos.png) no-repeat 0px -170px; width: 15px; height: 15px;}
+.pl_list_title .vip_ico4{background: url(../images/img/vip_icos.png) no-repeat 0px -187px; width: 15px; height: 15px;}
+.pl_list_title .vip_ico5{background: url(../images/img/vip_icos.png) no-repeat 0px -204px; width: 15px; height: 15px;}
+.pl_list_title .vip_ico6{background: url(../images/img/vip_icos.png) no-repeat 0px -221px; width: 15px; height: 15px;}
+.pl_list_pics{width: 708px; overflow: hidden;}
+

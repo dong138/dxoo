@@ -1,0 +1,41 @@
+{eval
+    $citys = logic('city')->getList();
+    $models =logic('Npushnews_test')->getDModelList();
+}
+<form action="?mod=Npushnews_test" target="_blank" method="post">
+<div>
+    城市：<select name="cityid">
+        {loop $citys $i $c}
+            <option value="$c['cityid']" {if $c['cityid']==$_GET['cityid']}selected{/if}>$c['cityname']</option>
+        {/loop}
+        </select>
+    项目：<select name="modelid">
+            {loop $models $i $c}
+            <option value="$c['id']">$c['name']</option>
+            {/loop}
+        </select>
+    天数：<input type="number" min="0" max="30" step="1" value="0" list="days" name="days"/>
+        <datalist id="days">
+            <option value="0">
+            <option value="1">
+            <option value="2">
+            <option value="3">
+            <option value="4">
+            <option value="5">
+            <option value="6">
+            <option value="7">
+        </datalist>
+    时间段：<input type="text"  list="timeStartList" style="width: 60px" name="times"/>
+    <datalist id="timeStartList">
+        <option value="00:00">
+        <option value="00:30">
+        <option value="09:00">
+        <option value="12:00">
+        <option value="14:00">
+        <option value="18:00">
+        <option value="22:00">
+        <option value="23:59">
+    </datalist>
+    <input name="bottom" type="submit" id="bottom" value="测试" class="btn btn-primary btn-small">
+</div>
+</form>

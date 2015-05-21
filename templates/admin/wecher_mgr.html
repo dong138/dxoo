@@ -1,0 +1,48 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@json2')}
+<form action="{$action}" id="subForm" method="post" enctype="multipart/form-data">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="2">微信产品信息</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">产品ID：</td>
+			<td align="right"><input name="pid" type="text" id="productid" value="{$wecher['pid']}" datatype="*"  errormsg="请输入" sucmsg=" " />格式为(1,2,3,4,)</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">是否禁用</td>
+			<td align="right">
+			<select name="status" datatype="*" errormsg="请输入" sucmsg=" ">
+				<option {if $wecher['status']==0}selected{/if} value="0">禁用</option>
+				<option {if $wecher['status']==1}selected{/if} value="1">启用</option>
+			</select>
+		</tr>
+	</table>
+	<br>
+	<center>
+	<input type="hidden" name="id" value="{$wecher[id]}"/>
+	<input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交">
+	</center>
+</form>
+<script type="text/javascript">
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+</script>
+{template @admin/footer}

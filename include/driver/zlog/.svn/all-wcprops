@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/dxoo/!svn/ver/1/include/driver/zlog
+END
+admin.apiz.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/1/include/driver/zlog/admin.apiz.php
+END
+error.apiz.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/1/include/driver/zlog/error.apiz.php
+END
+system.zlog.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/1/include/driver/zlog/system.zlog.php
+END
+product.apiz.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/1/include/driver/zlog/product.apiz.php
+END
+wips.apiz.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/driver/zlog/wips.apiz.php
+END
+coupon.apiz.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/1/include/driver/zlog/coupon.apiz.php
+END
+master.zlog.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/1/include/driver/zlog/master.zlog.php
+END

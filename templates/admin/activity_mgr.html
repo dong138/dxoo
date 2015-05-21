@@ -1,0 +1,50 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@json2')}
+<form action="{$action}" id="subForm" method="post" enctype="multipart/form-data">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="2">产品信息</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">活动名称：</td>
+			<td>
+				<input type="text" value="{$activity['name']}" name="aname" id="aname" datatype="*" errormsg="请选择产品" sucmsg=" ">
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">产品ID：</td>
+			<td align="right"><input name="productid" type="text" id="productid" value="{$activity['productid']}" datatype="*"  errormsg="请输入" sucmsg=" " />格式为(1,2,3,4,)</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">活动标记</td>
+			<td align="right"><input name="flag" type="text" id="flag" value="{$activity['flag']}" datatype="*" errormsg="请输入" sucmsg=" " /></td>
+		</tr>
+	</table>
+	<br>
+	<center>
+	<input type="hidden" name="id" value="{$activity[id]}"/>
+	<input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交">
+	</center>
+</form>
+<script type="text/javascript">
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+</script>
+{template @admin/footer}

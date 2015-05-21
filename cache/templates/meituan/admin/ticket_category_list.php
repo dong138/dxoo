@@ -1,0 +1,158 @@
+<? include handler('template')->file('@admin/header'); ?>
+<?=ui('loader')->js('#admin/js/sdb.parser')?> 
+<?=ui('loader')->addon('picker.date')?>
+<?=ui('loader')->js('@jquery.hook')?>
+<?=ui('loader')->js('@jquery.idTabs')?>
+<?=ui('loader')->js('@jquery.form')?>
+<?=ui('loader')->js('@jquery.thickbox')?>
+<?=ui('loader')->css('@jquery.thickbox')?>
+
+<?=ui('loader')->css('#admin/css/product.mgr')?>
+<?=ui('loader')->addon('editor.kind')?>
+<?=ui('loader')->js('@lhgdialog')?>
+<?=ui('loader')->js('@validform')?>
+<?=ui('loader')->css('@valid.style')?>
+<?=ui('loader')->js('@json2')?>
+<form method="post"  action="<?=$action?>">
+<input type="hidden" name="FORMHASH" value='<?=FORMHASH?>'/>
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="12"><b style="float: left;">优惠券分类管理</b> <a
+				style="float: left; margin-left: 5px"
+				href="?mod=ticket&code=Add&id=<?=$id?>" class="back1 back2">添加优惠券分类</a></td> 
+		</tr>
+<? if(!empty($list)) { ?>
+		<tr>
+			<td colspan="12">
+				<div class="tr_select">
+					请输入您要搜索的优惠券关键词： <input name="keyword" value="<?=$keyword?>" id="keyword" type="text" class="isearcher_input_words" />
+					<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+				</div>
+			</td>
+		</tr>
+		
+<? } ?>
+<tr class="tr_nav">
+			<td width="5%">ID</td>
+			<td width="5%">分类</td>
+			<td width="5%">优惠券名称</td>
+			<td width="5%">折扣/金额</td>
+			<td width="5%">图片</td>
+			<td width="5%">开始日期</td>
+			<td width="5%">截止日期</td>
+			<td width="20%">商家信息</td>
+			<td width="15%" align="center">管理</td>
+		</tr>
+<? if(empty($list)) { ?>
+		<tr>
+			<td colspan="12">暂时还没有优惠券分类，请<a
+				href="?mod=ticket&code=Add&id=<?=$id?>">点此添加优惠券分类</a>。
+			</td>
+		</tr>
+		
+<? } ?>
+<? if(is_array($list)) { foreach($list as $i => $value) { ?>
+<tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'">
+			<td><?=$value['id']?></td>
+			<td><?=$category[$value['categoryid']-1]['name']?></td>
+			<td><?=$value['name']?></td>
+			<td><?=$value['sale_price']?></td>
+			<td><?=$value['pic']?></td>
+			<td><? echo date('Y-m-d', $value['begintime']); ?></td>
+			<td><? echo date('Y-m-d', $value['overtime']); ?></td>
+			<td>
+			 <!-- <? echo var_dump(logic('ticket')->sellers($value['id']));; ?> -->
+ 
+<? if(is_array(logic('ticket')->sellers($value['id']))) { foreach(logic('ticket')->sellers($value['id']) as $i => $val) { ?>
+<span><?=$val['sellername']?>,<? echo date("Y-m", strtotime($val['pushtime'])); ?>,已用<?=$val['usednum']?>次,可用<?=$val['num']?>次</span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:void(0);" onclick="dialog(<?=$val['id']?>);">[ 修改  ]</a></br>
+<? } } ?>
+</td>
+			<td align="center">
+				<a href="?mod=ticket&code=Edit&id=<?=$value['id']?>">[ 修改 ]</a> 
+				<a href="javascript:void(0);" title="点此删除该优惠券"
+				onclick="if(confirm('您确认要删除该优惠券分类吗？')){window.location.href='?mod=ticket&code=Deleteticket&id=<?=$value['id']?>'}">[ 删除 ]</a> 
+				<a href="javascript:void(0);" onclick="if(confirm('您确认要复制该优惠券分类吗？')){window.location.href='?mod=ticket&code=do_category_copy&projectid=<?=$value['id']?>'}">[ 复制 ]</a> 
+				<a href="?mod=ticket&code=toHell&id=<?=$value['id']?>">[ 优惠券管理 ]</a>
+				<a target="_blank" href="<? echo ini ( 'settings.iweb_site_url' ); ?>/?mod=couponticket&keys=<? echo encrypt($value['id']); ?>">[ 领取地址 ]</a>
+			</td>
+		</tr>
+<? } } ?>
+</table>
+	<center><?=page_moyo()?></center>
+	<table>
+		<tr>
+			<td colspan="12">请注意：<br>1、商家各项金额数据中，均不包括实物订单中用户支付的商品运输费用。<br>2、添加商家时绑定的商家用户将成为商家分类<?=TUANGOU_STR?>券的管理者，<font
+				color=red>商家用户可前台登陆、查看旗下<?=TUANGOU_STR?>券、核对和消费</font>！
+			</td>
+		</tr>
+	</table>
+	<a href="?mod=ticket&code=Add&id=<?=$id?>" class="back1 back2">添加优惠券分类</a> <br>
+</form>
+<script type="text/javascript">
+function dialog(data){
+	 var api = $.dialog({
+		lock: true,
+	    max: false,
+	    min: false,
+		fixed: true,
+	    drag: false,
+	    resize: true,
+	    width:600,
+	    height:400,
+	    data:data,
+	    content: 'url:admin.php?mod=sellerTicket&code=edit&id='+data,
+		title: '修改'
+	});
+}
+ //$('.quxiao').click(function(){api.close();});
+/* var comment_mgr_box = null;
+function dialog(e)
+{
+//var dom = event.target;
+var action = $(dom).attr('action');
+var projectid = $(dom).attr('projectid');
+if (action == 'do_category_copy')
+{
+comment_mgr_box = artDialog.load('admin.php?mod=ticket&code=do_category_copy&projectid='+projectid, {title:action});
+}
+return false;
+}
+*/
+/* function js_strto_time(str_time){
+    var new_str = str_time.replace(/:/g,'-');
+    new_str = new_str.replace(/ /g,'-');
+    var arr = new_str.split("-");
+    var datum = new Date(Date.UTC(arr[0],arr[1]-1,arr[2],arr[3]-8,arr[4],arr[5]));
+    return strtotime = datum.getTime()/1000;
+} */
+
+/*  function ticket_category_copy_form_submit(m)
+{
+var pushtime = $("#pushtime").val();
+var timestamp = Date.parse(new Date())/1000;
+if(js_strto_time(pushtime)-2 > timestamp){alert("不能超过当前日期!");return false;}
+var url = $('#ticket_category_copy_form').attr('action');
+var formhash = $('#ticket_category_copy_form input[name=FORMHASH]').val();
+var fields = {'FORMHASH':formhash};
+$.each($('#ticket_category_copy_form .ca-items'), function(i, input){
+fields[$(input).attr('name')] = $(input).val();
+});
+$.notify.loading('正在保存数据...');
+$.post(url, fields, function(result) {
+$.notify.loading(false);
+if (result.replace(/^\s+|\s+$/g, "") == 'ok')
+{
+comment_mgr_box && comment_mgr_box.close();
+$.notify.success('保存成功！');
+api.reload();
+}
+else
+{
+$.notify.failed(result);
+}
+});
+}  */
+</script>
+<? include handler('template')->file('@admin/footer'); ?>

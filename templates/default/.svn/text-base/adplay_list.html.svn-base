@@ -1,0 +1,53 @@
+
+<style>
+    .exp .site-fs {
+        width: 938px;
+        margin: 0 0 15px;
+        float: left;
+        border: 1px solid #ededed;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .exp .site-fs__cell {
+        padding: 5px 0;
+    }
+
+    .exp .site-fs__sort_w {
+        border-bottom: none;
+        padding: 2px 0;
+    }
+
+    .exp .site-fs__sort-t, .exp .site-fs__sort-s a {
+        border-right: none;
+    }
+
+    .exp .site-fs__sort-t {
+        padding-right: 16px;
+    }
+</style>
+<div class="product_item">
+    {loop $list $item}
+    <div class="t_area_out template4" style="height:auto;">
+        <div class="shopList">
+            <div class="deal-tile__cover">{eval ui('iimager')->adplay_single($item['id'], $item['pic'])}</div>
+            <div class="deal-tile__title">
+                <h2><a href="?mod=adplay&code=view&id={$item['id']}" title="{$item['name']}">{$item['name']}</a></h2>
+                <dl class="shopList_info">
+                	{if MEMBER_ID>0}
+                		<p><em>状态：</em>{echo $item['userid']==null?'<span style="color:green;font-weight:bolder;">未玩</span>':'<span style="color:red;font-weight:bolder;">已玩</span>'}</p>
+                	{/if}
+                    <p><em>奖金：</em>￥{echo $item[money]/$item[times]}元</p>
+                    <p><em>已玩次数：</em>{if {$item[times_played]}>={$item[times]}}<span style="color:red;">已结束</span>{else}{$item[times_played]}/{$item[times]}{/if}</p>
+                    <p><em>推出时间：</em>{echo date('Y-m-d H:i',$item[addtime])}</p>
+                </dl>
+            </div>
+        </div>
+    </div>
+    {/loop}
+    <div class="product_list_pager">{~page_moyo()}</div>
+</div>
+</div>
+<div class="site-ms__right">
+    <!--{~ui('widget')->load('index_home')}-->
+</div>
+</div>

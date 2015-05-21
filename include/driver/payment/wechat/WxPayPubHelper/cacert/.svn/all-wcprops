@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/dxoo/!svn/ver/12/include/driver/payment/wechat/WxPayPubHelper/cacert
+END
+apiclient_key.pem
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/dxoo/!svn/ver/12/include/driver/payment/wechat/WxPayPubHelper/cacert/apiclient_key.pem
+END
+apiclient_cert.pem
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/dxoo/!svn/ver/12/include/driver/payment/wechat/WxPayPubHelper/cacert/apiclient_cert.pem
+END

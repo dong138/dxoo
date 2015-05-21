@@ -1,0 +1,91 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@json2')}
+<form action="{echo ('admin.php?mod=signin')}" id="subForm" method="post" enctype="multipart/form-data">
+    <table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+        <tr class="header">
+            <td colspan="2">签到页面信息设置</td>
+        </tr>
+        <tr>
+            <td bgcolor="#F4F8FC" class="td_title">签到描述：</td>
+            <td align="right"><textarea name="description" id="editor">{echo thtmlspecialchars($cfg['description']);}</textarea></td>
+        </tr>
+        <tr>
+            <td width="150" class="td_title">顶部图片：<br/>
+                <font style="font-weight:bold;color:red;">图片尺寸：450*268</font></td>
+
+            <td><input type="hidden" name="pic" id="imgs" value="$cfg['pic']" />
+                <ul class="img_scroll">
+                    {loop $cfg['pic'] $id}
+                    {if $id > 0}
+                    <li id="img_li_for_{$id}"> <a href="{echo imager($id, IMG_Original)}" class="thickbox"><img class="pro_image_tiny" src="{echo imager($id, IMG_Tiny)}" /></a>
+                        <a href="?#deleteImage" onClick="DeleteImage($id);return false;">[ 删除 ]</a> </li>
+                    {/if}
+                    {/loop}
+                    <li id="img_li_TPL"> <a href="#http://[url]/" target="_blank"><img src="#http://[url]/" width="80" height="80" /></a>
+                        <a href="?#deleteImage" onClick="DeleteImage([id]);return false;">[ 删除 ]</a> </li>
+                </ul>
+                {~logic('upload')->html()}
+                *点击删除图片时会实时删除服务器上的图片，请慎重 <br>
+                <font color="red">*如果提示 Acces Deined 错误，请检查“全局设置-上传设置”里面对应的图片上传权限是否有打开</font></td>
+        </tr>
+    </table>
+    <br>
+    <center>
+        <input type="hidden" name="id" value="{$list[id]}"/>
+        <input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交">
+    </center>
+</form>
+<script type="text/javascript">
+    var __Global_ID = "{$cfg[id]}";
+    function DeleteImage(id) {
+        if (!confirm('确认删除？')) return;
+        $.get('?mod=activity&code=Delimage_web&aid=' + __Global_ID + '&id=' + id + $.rnd.stamp(), function (data) {
+            if (data == 'ok') {
+                if (__Global_ID == '') {
+                    $('#imgs').val($('#imgs').val().replace(id + ',', ''));
+                }
+                $('#img_li_for_' + id).slideUp();
+            }
+        });
+    }
+
+    function InsertImage(file) {
+        if (__Global_ID == '') {
+            $('#imgs').val($('#imgs').val() + file.id + ',');
+            ShowUploadImage(file);
+            return;
+        }
+        $.get('?mod=activity&code=Addimage_web&aid=' + __Global_ID + '&id=' + file.id + $.rnd.stamp(),
+        function (data) {
+            console.log(data);
+            if (data == 'ok') {
+                ShowUploadImage(file);
+            }
+        });
+    }
+
+    function ShowUploadImage(file) {
+
+        var tpl = $('#img_li_TPL').html();
+        tpl = tpl.replace(/\[id\]/g, file.id);
+        tpl = tpl.replace(/#http\:\/\/\[url\]\//g, file.url);
+        $('#img_li_TPL').before('<li id="img_li_for_' + file.id + '">' + tpl + '</li>');
+    }
+    $(document).ready(function(){
+        KindEditor.ready(function(K) {K.create('#editor');});
+        $.hook.add('swfuploaded', function (file) { InsertImage(file) });
+    });
+</script>
+{template @admin/footer}

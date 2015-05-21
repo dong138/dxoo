@@ -1,0 +1,33 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('#admin/js/sdb.parser')}
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="4">
+			未开启城市的将不显示，您可以到区域管理启用 （<a target="main" href="admin.php?mod=tttuangou&amp;code=city">城市区域</a>）
+			</td>
+		</tr>
+		<tr>
+			<td>城市中文名称（用于前台展示）</td>
+			<td>拼音名称（用于URL地址）</td>
+			<td align="center">管理</td>
+		</tr>
+		<!--{if !empty($city_list)}-->
+		<!--{loop $city_list $value}-->
+		<tr onmouseover="this.className='tr_hover'"
+			onmouseout="this.className='tr_normal'">
+			<td>{$value['cityname']} {if
+				$value['cityid']==$default_city_id}(默认城市){/if}</td>
+			<td>{$value['shorthand']}</td>
+			<td align="center"><a href="?mod=group&code=catalog&cid={$value['cityid']}">管理热门团购</a></td>
+		</tr>
+		<!--{/loop}-->
+		<!--{/if}-->
+		<tr class="footer">
+			<td colspan="4"><div align=right></div></td>
+		</tr>
+	</table>
+	<center></center>
+</form>
+{template @admin/footer}

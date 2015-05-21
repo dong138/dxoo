@@ -1,0 +1,80 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Hell</title>
+    {~ui('loader')->css('@tree')}
+</head>
+<body>
+<div style="padding:10px;"> 
+  <div class="demo" style="float:left;">
+    <div style="border-bottom: #c3daf9 1px solid; border-left: #c3daf9 1px solid; width: 200px; height: 600px; overflow: auto; border-top: #c3daf9 1px solid; border-right: #c3daf9 1px solid;">
+        <div id="tree">
+            
+        </div>
+        
+    </div>
+  </div>
+<<<<<<< .mine
+   <div>
+<!-- 	<input id="isc_checkbox" name="choibox" type="checkbox" />全选
+	<input id="isc_input" type="text"/>
+	<input id="isc_button" type="button" value="搜索" /> -->
+	<iframe name="hell" frameborder="0" width="80%" height="600px"></iframe>
+  </div>
+=======
+<iframe name="hell" frameborder="0" width="80%" height="600px"></iframe>
+>>>>>>> .r35
+</div>
+{~ui('loader')->js('@jquery')}
+{~ui('loader')->js('@jquery.tree')}
+
+
+<script type="text/javascript">
+	function load() {
+	    var o = {
+	  		//showcheck: true,
+			onnodeclick:function(item){
+<<<<<<< .mine
+				//alert('?mod=ticket&code=product&categoryid=' + item.id);
+				window.hell.location = '?mod=ticket&code=product&categoryid=' + item.id;
+=======
+			//alert(item.value);
+			window.hell.location = '?mod=ticket&code=product&catalog='+ item.value +'&catalogid='+ item.id;
+>>>>>>> .r35
+			},          
+	 		url: "?mod=ticket&code=tree"
+	    };
+	    o.data = [ {
+	        "id" : "0",
+	        "text" : "分类列表",
+	        "value" : "0",
+	        "showcheck" : false,
+	        complete : false,
+	        "isexpand" : false,
+	        "checkstate" : 0,
+	        "hasChildren" : true
+	    }];                  
+	    $("#tree").treeview(o);            
+	}   
+	load();
+	 $(function(){
+	 	window.hell.location = '?mod=ticket&code=product&ticketid={$ticket['id']}';
+	 });
+/* 	$(function(){
+		window.hell.location = '?mod=ticket&code=product&id={$ticketid}&d={$tickets}';
+	});
+<<<<<<< .mine
+    $('#isc_checkbox').bind("click", function () {
+    	if($("input[type='checkbox']").is(':checked')){
+			alert("关联");
+    	}else{
+    		alert("取消关联");
+    	}
+    }); */
+=======
+
+>>>>>>> .r35
+</script>
+</body>
+</html>

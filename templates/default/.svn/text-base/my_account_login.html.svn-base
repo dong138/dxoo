@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登录|{SYS_NAME}欢迎您！</title>
+<link rel="stylesheet" type="text/css" href="styles/combo.css" />
+<link rel="stylesheet" type="text/css" href="styles/XTN.css" />
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/Check.js"></script>
+<!--[if IE 6]>
+        <script src="js/DD_belatedPNG_0.0.8a-min.v86c6ab94.js"></script>
+        <![endif]-->
+<!--[if lt IE 9]>
+        <script src="js/html5shiv.min-min.v01cbd8f0.js"></script>
+        <![endif]-->
+</head>
+
+<body id="login">
+	<header id="site-mast" class="site-mast site-mast--mini">
+		<div class="site-mast__branding cf">
+			<a class="site-logo sp-header-new-hd" href="index.php" gaevent="header/logo">{SYS_NAME}</a>
+		</div>
+	</header>
+	<div class="site-body pg-login cf">
+		<div class="promotion-banner">
+			<img alt="【城市/多城市/全国】专题名称" src="images/myaccount/left_img.jpg"
+				width="480" height="370" />
+		</div>
+		<div class="component-login-section component-login-section--page">
+			<div class="validate-info" style="display: none"></div>
+			<h2>
+				<a href="javascript:void(0)" class="login-type"
+					id="J-mobile-login-link">
+					手机动态码登录
+					<i></i>
+				</a>
+				<a href="javascript:void(0)" class="login-type login-type--normal"
+					id="J-login-link" style="display: none;">
+					普通方式登录
+					<i></i>
+				</a>
+				账号登录
+			</h2>
+			<!--普通方式登录-->
+			<form id="J-login-form" action="{$action1}" method="post" onsubmit="return normalLoginCK();" class="form form--stack">
+				<span style="display: none">
+					<input type="hidden" name="csrf" value="" />
+				</span>
+				<div id="J-normal-login-tip" class="common-tip common-tip--login"
+					style="display: none"></div>
+				<div class="form-field form-field--icon">
+					<i class="icon icon-user"></i>
+					<input type="text" id="login-email" class="f-text" name="username" value="{$un}"
+						placeholder="手机号/用户名/邮箱" />
+				</div>
+				<div class="form-field form-field--icon">
+					<i class="icon icon-password"></i>
+					<input type="password" id="login-password" class="f-text"
+						name="password" placeholder="密码" />
+				</div>
+				<div class="form-field form-field--auto-login">
+					<a tabindex="-1" href="?mod=get_password"
+						class="forget-password">忘记密码？</a>
+					<input type="checkbox" checked name="remember_username"
+						id="remember-username" class="select-checkbox f-check" />
+					<label class="normal" for="remember-username">记住账号</label>
+					<input type="checkbox" name="keeplogin" id="keeplogin" class="select-checkbox f-check" />
+					<label class="normal" for="keeplogin">下次自动登录</label>
+				</div>
+				<div class="form-field form-field--ops">
+					<input type="hidden" name="fingerprint" class="J-fingerprint"
+						value="" />
+					<input type="hidden" name="origin" value="account-login" />
+					<input type="submit" class="btn" name="commit" value="登录" />
+				</div>
+			</form>
+			<!--手机动态码登录-->
+			<form id="J-mobile-login-form" method="post" action="{$action2}" onsubmit="return smsLoginCK();" class="form form--stack" style="display: none;">
+				<span style="display: none">
+					<input type="hidden" name="csrf" value="" />
+				</span>
+				<div id="J-mobile-login-tip" class="common-tip common-tip--login"
+					style="display: none"></div>
+				<div class="J-info form-field form-field--icon form-field--higher">
+					<i class="icon icon-phone"></i>
+					<input type="text" id="login-mobile" class="f-text" name="username"
+						value="" placeholder="手机号" />
+					<p class="verify-mobile">
+						<input type="button" class="btn-normal btn-mini" id="J-verify-btn"
+							value="免费获取手机动态码" onclick="SendCode(this,60)" />
+						<span class="verify-tip" id="J-verify-tip"></span>
+					</p>
+				</div>
+				<div class="form-field form-field--icon">
+					<i class="icon icon-password"></i>
+					<input type="text" name="password" id="login-verify-code"
+						class="f-text" autocomplete="off" value="" placeholder="动态码" />
+				</div>
+				<div class="form-field form-field--auto-login">
+					<input type="checkbox" value="1" checked name="remember_mobile"
+						id="remember-mobile" class="select-checkbox f-check" />
+					<label class="normal" for="remember-mobile">记住手机</label>
+				</div>
+				<div class="form-field form-field--ops">
+					<input type="hidden" name="cityid" value="1" />
+					<input type="hidden" name="origin" value="account-login" />
+					<input type="hidden" name="fingerprint" class="J-fingerprint"
+						value="" />
+					<input type="submit" class="btn" name="commit" value="登录" />
+				</div>
+			</form>
+
+			<p class="signup-guide">
+				还没有账号？
+				<a href="?mod=myaccount&code=register"
+					gaevent="loginemotion/content/signup">免费注册</a>
+			</p>
+		</div>
+		<div class="stick-qrcode" style="display: none;">
+			<a class="index-xiaomei" href="#" gaevent="stickqrcode/login"
+				hidefocus="true">
+				<span class="stick-qrcode__pos stick-qrcode-login"></span>
+				<span class="close"></span>
+			</a>
+		</div>
+	</div>
+	<!--footer-->
+	<footer class="site-info-w site-info-w--mini">
+		<div class="site-info">
+			<div class="site-info-nav cf">
+				<ul>
+					<li class="first">关于{SYS_NAME}</li>
+					<li>{SYS_NAME}承诺</li>
+					<li>加入我们</li>
+					<li>商家入驻</li>
+					<li>帮助中心</li>
+					<li class="last">{SYS_NAME}手机版</li>
+				</ul>
+				<a class="site-info-nav__commitment" href="#">
+					<img width="276" height="24" src="images/myaccount/footer_img.png"
+						alt="{SYS_NAME}保障" />
+				</a>
+			</div>
+			<div class="copyright">
+				<p>技术支持：云商科技
+					Copyright©2014-2016,www.52hula.cn|ICP证：滇ICP备14005736号</p>
+			</div>
+		</div>
+	</footer>
+	</div>
+</body>
+
+</html>

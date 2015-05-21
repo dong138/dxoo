@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.sdk
+END
+RequestHandler.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.sdk/RequestHandler.class.php
+END
+ClientResponseHandler.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.sdk/ClientResponseHandler.class.php
+END
+ResponseHandler.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.sdk/ResponseHandler.class.php
+END
+TenpayHttpClient.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.sdk/TenpayHttpClient.class.php
+END

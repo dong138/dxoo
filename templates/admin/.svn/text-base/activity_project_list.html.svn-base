@@ -1,0 +1,65 @@
+<!--{template @admin/header}-->
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="12"><b style="float: left;">活动项目管理</b> <a
+				style="float: left; margin-left: 5px"
+				href="?mod=activity&code=Addproject&cid={$id}" class="back1 back2">添加活动项目</a></td>
+		</tr>
+		{if !empty($list)}
+		<tr>
+			<td colspan="12">
+				<div class="tr_select">
+					请输入您要搜索的众筹关键词： <input name="keyword" value="{$keyword}" id="keyword" type="text" class="isearcher_input_words" />
+					<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+				</div>
+			</td>
+		</tr>
+		{/if}
+		<tr class="tr_nav">
+			<td width="4%">ID</td>
+			<td width="10%">标题</td>
+			<td width="4%">开始时间</td>
+			<td width="7%">结束时间</td>
+			<td width="7%">每天可玩次数</td>
+			<td width="7%">总可玩次数</td>
+			<td width="7%">签到奖励数</td>
+			<td width="7%">状态</td>
+			<td width="7%">添加时间</td>
+			<td width="15%" align="center">管理</td>
+		</tr>
+		<!--{if empty($list)}-->
+		<tr>
+			<td colspan="12">暂时还没有活动项目，请<a
+				href="?mod=activity&code=Addproject&cid={$id}">点此添加活动项目</a>。
+			</td>
+		</tr>
+		<!--{/if}-->
+		<!--{loop $list $i $value}-->
+		<tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'">
+			<td>{$value['id']}</td>
+			<td>{$value['title']}</td>
+			<td>{echo date('Y-m-d', $value['begintime'])}</td>
+			<td>{echo date('Y-m-d', $value['overtime'])}</td>
+			<td>{$value['day_times']}</td>
+			<td>{$value['times']}</td>
+			<td>{$value['lottery_num']}</td>
+			<td>{echo $value['status']==1 ? '显示' : '不显示'}</td>
+			<td>{echo date('Y-m-d', $value['addtime'])}</td>
+			<td align="center">
+				[<a href="?mod=activity&code=EditProject&id={$value['id']}&cid={$id}">修改</a> -<a href="javascript:vold(0);" title="点此删除该众筹"
+				onclick="if(confirm('您确认要删除该活动项目吗？')){window.location.href='?mod=activity&code=Deleteproject&id={$value['id']}'}">删除</a>
+				]
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</table>
+	<tfoot>
+        <tr>
+            <td colspan="9">{~page_moyo()}</td>
+        </tr>
+    </tfoot>
+	<a href="?mod=activity&code=Addproject&cid={$id}" class="back1 back2">添加活动项目</a> <br>
+</form>
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

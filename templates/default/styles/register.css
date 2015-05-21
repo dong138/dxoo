@@ -1,0 +1,272 @@
+
+.pg-unitive-signup .signup__header .current .icon--email, .pg-unitive-signup .signup__header .current .icon--phone, .pg-unitive-signup .signup__header li .icon--email, .pg-unitive-signup .signup__header li .icon--phone, .pg-unitive-signup .signup__header li:hover .icon--email, .pg-unitive-signup .signup__header li:hover .icon--phone, .theme header .site-logo, .theme--cloud header .site-logo, .theme--waimai header .site-logo, .unitive-signup-sprite, header .site-logo--meituan {
+    background-image:url(../images/myaccount/unitive.png);
+    background-repeat: no-repeat;
+}
+.pg-unitive-signup, .pg-unitive-signuped, .pg-unitive-signupok, html {
+    background: none repeat scroll 0 0 #fff;
+}
+header {
+    border-bottom: 2px solid #DD66C2;
+    min-width: 980px;
+}
+header .wrapper {
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 980px;
+}
+header .site-delimiter, header .site-logo, header .site-name {
+    float: left;
+}
+header .site-delimiter {
+    border-right: 1px solid #e8e8e8;
+    height: 24px;
+    margin: 6px 15px 0;
+}
+header .site-name {
+    color: #666;
+    line-height: 36px;
+}
+header .site-logo {
+    height: 36px;
+    overflow: hidden;
+    text-indent: -100px;
+    width: 134px;
+}
+header .site-logo--meituan {
+    background-position: 0 -58px;
+    overflow: hidden;
+    text-indent: -1000px;
+    width: 54px;
+}
+header .login-block {
+    float: right;
+    line-height: 36px;
+}
+header .login-block .tip {
+    color: #666;
+    margin-right: 10px;
+}
+header .login-block .login {
+    padding: 3px 10px;
+}
+.pg-unitive-signup .content {
+    margin: 0 auto 30px;
+    min-height: 300px;
+    padding-top: 30px;
+    width: 980px;
+}
+.pg-unitive-signup .signup__header {
+    border-bottom: 2px solid #eee;
+    margin-bottom: 30px;
+}
+.pg-unitive-signup .signup__header li {
+    border-bottom: 2px solid #eee;
+    float: left;
+    height: 12px;
+    line-height: 12px;
+    margin-bottom: -2px;
+    padding: 10px 20px;
+    position: relative;
+}
+.pg-unitive-signup .signup__header li a {
+    color: #333;
+}
+.pg-unitive-signup .signup__header li .icon {
+    float: left;
+    font-size: 0;
+    margin-right: 5px;
+}
+.pg-unitive-signup .signup__header li .icon--email {
+    background-position: 0 -47px;
+    height: 11px;
+    width: 14px;
+}
+.pg-unitive-signup .signup__header li .icon--phone {
+    background-position: 0 -107px;
+    height: 13px;
+    width: 9px;
+}
+.pg-unitive-signup .signup__header .current, .pg-unitive-signup .signup__header li:hover {
+    border-bottom-color: #DD66C2;
+}
+.pg-unitive-signup .signup__header .current a, .pg-unitive-signup .signup__header li:hover a {
+    color: #DD66C2;
+    text-decoration: none;
+}
+.pg-unitive-signup .signup__header .current .icon--email, .pg-unitive-signup .signup__header li:hover .icon--email {
+    background-position: 0 -36px;
+}
+.pg-unitive-signup .signup__header .current .icon--phone, .pg-unitive-signup .signup__header li:hover .icon--phone {
+    background-position: 0 -94px;
+}
+.pg-unitive-signup .form-field .unitive-tip {
+    color: #999;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 24px;
+    margin-left: 4px;
+    padding: 6px 0;
+    vertical-align: top;
+}
+.pg-unitive-signup .form-field--vcode .f-text {
+    width: 120px;
+}
+.pg-unitive-signup .form-field--mobile, .pg-unitive-signup .form-field--pwd {
+    padding-bottom: 27px;
+}
+.pg-unitive-signup .form-field--mobile .verify-wrapper {
+    left: 110px;
+    position: absolute;
+    top: 50px;
+}
+.pg-unitive-signup .form-field--mobile .verify-wrapper .verify-tip {
+    color: #f76120;
+}
+.pg-unitive-signup .email-auto {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 2px #f3f3f3;
+    color: #666;
+    left: 110px;
+    overflow: hidden;
+    position: absolute;
+    top: 44px;
+    width: 258px;
+    z-index: 1;
+}
+.pg-unitive-signup .email-auto .email-title {
+    height: 26px;
+    line-height: 200%;
+    padding: 0 5px;
+}
+.pg-unitive-signup .email-auto .email-list li {
+    cursor: pointer;
+    height: 26px;
+    line-height: 200%;
+    padding: 0 5px;
+}
+.pg-unitive-signup .email-auto .email-list .current {
+    background: none repeat scroll 0 0 #f6f6f6;
+    color: #000;
+}
+footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+footer .copyright {
+    background: none repeat scroll 0 0 #fff;
+    padding: 0;
+}
+footer .copyright a, footer .copyright span {
+    color: #999;
+}
+.pg-unitive-signuped .content, .pg-unitive-signupok .content {
+    margin-bottom: 100px;
+    padding-top: 100px;
+}
+.pg-unitive-signuped .mainbox, .pg-unitive-signupok .mainbox {
+    margin: 0 auto;
+    width: 550px;
+}
+.pg-unitive-signuped .mainbox__head, .pg-unitive-signupok .mainbox__head {
+    color: #333;
+    margin-bottom: 20px;
+    padding-left: 60px;
+    position: relative;
+}
+.pg-unitive-signuped .mainbox__head .icon, .pg-unitive-signupok .mainbox__head .icon {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.pg-unitive-signuped .mainbox__head .email, .pg-unitive-signupok .mainbox__head .email {
+    color: #f76120;
+}
+.pg-unitive-signuped .mainbox__head .tips, .pg-unitive-signupok .mainbox__head .tips {
+    color: #999;
+    line-height: 18px;
+}
+.pg-unitive-signuped .mainbox__content, .pg-unitive-signupok .mainbox__content {
+    margin-bottom: 60px;
+}
+.pg-unitive-signuped .mainbox__content .form-field, .pg-unitive-signupok .mainbox__content .form-field {
+    padding-left: 60px;
+}
+.pg-unitive-signuped .mainbox__tip, .pg-unitive-signupok .mainbox__tip {
+    color: #999;
+    font-size: 12px;
+}
+.pg-unitive-signuped .mainbox__tip li, .pg-unitive-signupok .mainbox__tip li {
+    list-style-position: inside;
+    list-style-type: disc;
+}
+.pg-unitive-signupok .content {
+    margin-bottom: 150px;
+    padding-top: 150px;
+}
+.pg-unitive-signupok .mainbox {
+    width: 300px;
+}
+.pg-unitive-signupok .jump-field {
+    color: #999;
+    font-size: 12px;
+}
+.pg-unitive-signupok .jump-field .em {
+    color: #f76120;
+}
+.pg-unitive-signupok .resend-email {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: #DD66C2;
+    cursor: pointer;
+}
+.pg-unitive-signupok .resend-email:hover {
+    text-decoration: underline;
+}
+.pg-unitive-signuped .resend-result {
+    color: #f76120;
+}
+.theme header .site-logo {
+    background-position: 0 -58px;
+}
+.theme--waimai header {
+    border-bottom-color: #f6ac1d;
+}
+.theme--waimai header .site-logo {
+    background-position: 0 -120px;
+    width: 128px;
+}
+.theme--waimai .btn {
+    background-color: #e7a423;
+    background-image: linear-gradient(to bottom, #ffb72b, #e7a423);
+    background-size: 100% auto;
+    border-color: #be8518;
+    color: #fff;
+}
+.theme--waimai .btn:active {
+    background: none repeat scroll 0 0 #f6ac1d;
+}
+.theme--waimai a {
+    color: #f6ac1d;
+}
+.theme--cloud header {
+    border-color: #0082e5;
+}
+.theme--cloud header .site-logo {
+    background-position: 0 0;
+    width: 133px;
+}
+.theme--cloud .btn {
+    background-color: #0077d1;
+    background-image: linear-gradient(to bottom, #0089f1, #0077d1);
+    background-size: 100% auto;
+    border-color: #024b83;
+    color: #fff;
+}
+.theme--cloud .btn:active {
+    background: none repeat scroll 0 0 #0082e5;
+}
+.theme--cloud a {
+    color: #0082e5;
+}

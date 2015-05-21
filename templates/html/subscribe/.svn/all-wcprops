@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/dxoo/!svn/ver/2/templates/html/subscribe
+END
+undo.validate.mail.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/dxoo/!svn/ver/2/templates/html/subscribe/undo.validate.mail.html
+END
+undo.validate.sms.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/dxoo/!svn/ver/2/templates/html/subscribe/undo.validate.sms.html
+END
+dosub.validate.mail.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/dxoo/!svn/ver/2/templates/html/subscribe/dosub.validate.mail.html
+END
+dosub.validate.sms.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/dxoo/!svn/ver/2/templates/html/subscribe/dosub.validate.sms.html
+END

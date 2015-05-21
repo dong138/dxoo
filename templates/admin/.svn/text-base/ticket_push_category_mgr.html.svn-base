@@ -1,0 +1,168 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->css('#admin/js/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@json2')}
+<form action="{$action}" id="subForm" method="post" enctype="multipart/form-data">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+		<tr class="header">
+			<td colspan="2">优惠券推送信息</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">优惠券推送名称</td>
+			<td align="right"><input name="name" type="text" id="name" value="{$list['name']}" datatype="*"  errormsg="请输入" sucmsg=" " /></td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">是否设为默认推送</td>
+			<td align="right">
+				<select name="is_default" id="is_default" datatype="*"  errormsg="请输入" sucmsg=" " >
+					<option value=" ">===请选择===</option>
+					<option value="0" {if $list['is_default'] == '0'}selected="selected"{/if} >否</option>
+					<option value="1" {if $list['is_default'] == '1'}selected="selected"{/if} >是</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">关注后推送时间</td>
+			<td align="right"><input name="pushtime" type="text" id="pushtime" value="{$list['pushtime']}" datatype="n"  errormsg="请输入" sucmsg=" " /></td>
+		</tr>
+<!-- 		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">添加日期</td>
+			<td align="right">
+			<input type="text"
+				onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy年MM月dd日 HH时mm分ss秒',startDate:'{echo date('Y-m-d H:i:s', $list['addtime'] ? $list['addtime'] : time());}',vel:'addtime'})"
+				size="35" class="Wdate" value="{echo date('Y年m月d日 H时i分s秒', $list['addtime'] ? $list['addtime'] : time());}"  datatype="*" errormsg="请选择" sucmsg=" "/>
+			<input name="addtime" type="hidden" id="addtime" value="{echo date('Y-m-d H:i:s', $list['addtime'] ? $list['addtime'] : time());}" datatype="*"  errormsg="请输入" sucmsg=" " /></td>
+		</tr> -->
+		<tr>
+            <td width="150" class="td_title">图片：<br/>
+              <font style="font-weight:bold;color:red;">图片尺寸：450*268</font></td>
+            <td><input type="hidden" name="pic" id="imgs" value="" />
+              <ul class="img_scroll">
+                {loop $list['pic'] $id}
+                {if $id > 0}
+                <li id="img_li_for_{$id}"> <a href="{echo imager($id, IMG_Original)}" class="thickbox"><img class="pro_image_tiny" src="{echo imager($id, IMG_Tiny)}" /></a>
+                  <input type="text" value="{echo logic('upload')->Field($id, 'intro')}" onFocus="introFocus(this)" onBlur="introChange({$id}, this)" />
+                  <a href="?#deleteImage" onClick="DeleteImage($id);return false;">[ 删除 ]</a> </li>
+                {/if}
+                {/loop}
+                <li id="img_li_TPL"> <a href="#http://[url]/" target="_blank"><img src="#http://[url]/" width="80" height="80" /></a>
+                  <input type="text" value="" onFocus="introFocus(this)" onBlur="introChange([id], this)" />
+                  <a href="?#deleteImage" onClick="DeleteImage([id]);return false;">[ 删除 ]</a> </li>
+              </ul>
+              {~logic('upload')->html()}
+              *点击删除图片时会实时删除服务器上的图片，请慎重 <br>
+              <font color="red">*如果提示 Acces Deined 错误，请检查“全局设置-上传设置”里面对应的图片上传权限是否有打开</font></td>
+         </tr>
+	</table>
+	<br>
+	<center>
+	<input type="hidden" name="id" value="{$list['id']}"/>
+	<input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交" onclick="return sumbitCheck(this);">
+	</center>
+</form>
+<script type="text/javascript">
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+	
+	function DeleteImage(id) {
+	    if (!confirm('确认删除？')) return;
+	    $.get('?mod=ticket_push&code=Delimage&aid=' + '{$list['id']}' + '&id=' + id + $.rnd.stamp(), function (data) {
+	        if (data == 'ok') {
+	            if ('{$list['id']}' == '') {
+	                $('#imgs').val($('#imgs').val().replace(id + ',', ''));
+	            }
+	            $('#img_li_for_' + id).slideUp();
+	        }
+	    });
+	}
+	
+	function InsertImage(file) {
+	    if ('{$list['id']}' == '') {
+	        $('#imgs').val($('#imgs').val() + file.id + ',');
+	        ShowUploadImage(file);
+	        return;
+	    }
+	    $.get('?mod=ticket_push&code=Addimage&aid=' + '{$list['id']}' + '&id=' + file.id + $.rnd.stamp(), function (data) {
+	        if (data == 'ok') {
+	            ShowUploadImage(file);
+	        }
+	    });
+	}
+	
+	function ShowUploadImage(file) {
+	    var tpl = $('#img_li_TPL').html();
+	    tpl = tpl.replace(/\[id\]/g, file.id);
+	    tpl = tpl.replace(/#http\:\/\/\[url\]\//g, file.url);
+	    $('#img_li_TPL').before('<li id="img_li_for_' + file.id + '">' + tpl + '</li>');
+	}
+
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+	
+	function addconfig(){
+		if($('#item_box tr:last input:first').attr('value')){
+			$('#item_box tr:first').clone().appendTo("#item_box");  
+		}
+	}
+	
+    function delItemTr(obj) {
+        $.dialog.confirm("您确定要删除这个吗？", function () {
+        	if ($('#item_box tr').length > 1){
+        		$(obj).parent().parent().remove(); //删除节点
+        	}
+        });
+    }
+		
+	function dialog(data){
+		$.dialog({
+			lock: true,
+		    max: false,
+		    min: false,
+			fixed: true,
+		    drag: false,
+		    resize: false,
+		    width:800,
+		    height:500,
+		    data:data,
+		    content: 'url:admin.php?mod=product&code=vList',
+			title: '产品查询'
+		});
+	}
+	$(document).ready(function(){
+		KindEditor.ready(function(K) {K.create('#editor');});
+		$.hook.add('swfuploaded', function (file) { InsertImage(file) });
+	});
+    function sumbitCheck(me){
+        var timestamp_update = $("#addtime").val();
+        //alert(js_strto_time(timestamp_update)+"===={echo time();}");return;
+        if(js_strto_time(timestamp_update)-2 > "{echo time();}"){alert("不能超过当前日期!");return false;}
+
+    }
+    function js_strto_time(str_time){
+        var new_str = str_time.replace(/:/g,'-');
+        new_str = new_str.replace(/ /g,'-');
+        var arr = new_str.split("-");
+        var datum = new Date(Date.UTC(arr[0],arr[1]-1,arr[2],arr[3]-8,arr[4],arr[5]));
+        return strtotime = datum.getTime()/1000;
+    }
+</script>
+{template @admin/footer}

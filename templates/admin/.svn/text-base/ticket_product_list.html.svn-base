@@ -1,0 +1,82 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{~ui('loader')->js('#admin/js/cplace.mgr.ajax')}
+<table cellspacing="1" cellpadding="4" width="100%" align="center"
+	class="tableborder">
+	<tr class="header">
+		<td colspan="4">优惠券管理：<font color="red">{$ticket['name']}</font></td>
+	</tr>
+	<tr class="banner">
+		<td colspan="7">1、是否开启关联优惠券？ <font class="ini" src="catalog.enabled"></font>（点击按钮：绿色开启、灰色关闭）<br />
+		<div class="isearcher">
+			<p class="searcher_li">
+			<input id="iscp_input" value="{$key}" class="isearcher_input_words" type="text"/>
+			<input id="iscp_button" class="btn btn-primary btn-small" type="button" value="搜索" /> &nbsp;&nbsp;&nbsp;
+			{if $type}<input type="checkbox" id="isSelect" onclick="allProduct();" name="isSelect"><label for="isSelect">关联当前所有产品</label>{/if}
+		</div>
+		</td>
+	</tr>
+	<tr class="tr_nav">
+		<td width="6%">编号</td>
+		<td width="36%">产品名称</td>
+		<td width="20%">商家名称</td>
+		<td width="6%">是否关联</td>
+	</tr>
+	{loop $product $one}
+	<tr>
+		<td>{$one['id']}</td>
+		<td><label >{$one['flag']}</label></td>
+		<td>{$one['sellername']}</td>
+		<td>
+			{eval $num = logic('ticket')->Exists({$project['id']},{$one['id']})}
+			<a href="javascript:void(0)" data="?mod=ticket&code=updateAjax&projectid={$projectid}&productid={$one['id']}&sellerid={$one['sellerid']}" 
+			onclick="update({$one[id]},{echo $num ? 1:0},this,{echo $num ? 1:0})">
+			<img id="img{$one['id']}" src="templates/admin/images/{echo $num ? 'btn_enable.png':'btn_disable.gif' }"></img>
+			</a>
+		</td>
+	</tr>
+	{/loop}
+</table>
+<center>{~page_moyo()}</center>
+<script type="text/javascript">
+	$(function(){
+		$('#iscp_button').click(function(){
+			var iscp=$('#iscp_input').val();
+			var strKey='?mod=ticket&code=product&type={$type}&projectid={$projectid}&commonid={$commonid}&key='+iscp;
+			window.location = strKey;
+		});
+	});
+	
+	function allProduct(){
+		var status=0;
+		if($('#isSelect').prop("checked") == true){
+			if (confirm('是否关联当前查询的产品？'))
+				status=0;
+		}else{
+			if (confirm('是否取消关联当前查询的产品？'))
+				status=1;
+		}
+		
+		$.ajax({
+			type: "get",
+			url: "?mod=ticket&code=updateAjaxAll",
+			data: { 
+				"projectid":"{$projectid}",
+				"commonid":"{$commonid}",
+				"type":"{$type}",
+				"status":status
+			},
+			//dataType: "json",
+			beforeSend: function(XMLHttpRequest) {
+				//TODO
+			},
+			success: function(data) {
+				location.reload();
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+			}
+		});
+	}
+</script>
+<!--{template @admin/footer}-->

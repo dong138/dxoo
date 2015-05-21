@@ -1,0 +1,63 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{~ui('loader')->js('@lhgdialog')}
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+		<tr class="header">
+			<td colspan="12"><b style="float: left;">商家优惠券管理</b> <a
+				style="float: left; margin-left: 5px"
+				href="?mod=sellerTicket&code=Add&id={$id}" class="back1 back2">添加商家优惠券</a></td>
+		</tr>
+		{if !empty($list)}
+		<tr>
+			<td colspan="12">
+				<div class="tr_select">
+					请输入您要搜索的商家优惠券关键词： <input name="keyword" value="{$keyword}" id="keyword" type="text" class="isearcher_input_words" />
+					<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+				</div>
+			</td>
+		</tr>
+		{/if}
+		<tr class="tr_nav">
+			<td width="10%">ID</td>
+			<td width="10%">商家名称</td>
+			<td width="10%">推送年/月</td>
+			<td width="10%">已用次数</td>
+			<td width="10%">总次数</td>
+			<td width="10%">添加日期</td>
+			<td width="10%">状态</td>
+			<td width="10%" align="center">管理</td>
+		</tr>
+		<!--{if empty($list)}-->
+		<tr>
+			<td colspan="12">暂时还没有优惠券分类，请<a
+				href="?mod=sellerTicket&code=Add&id={$id}">点此添加商家优惠券分类</a>。
+			</td>
+		</tr>
+		<!--{/if}-->
+		<!--{loop $list $i $value}-->
+		<tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'">
+			<td>{$value['id']}</td>
+			<td>{$value['sellername']}</td>
+			<td>{echo substr($value['pushtime'], 0, 10)}</td>
+			<td>{$value['usednum']}</td>
+			<td>{$value['num']}</td>
+			<td>{echo date('Y-m-d', $value['addtime'])}</td>
+			<td>{if $value['status'] == '0'}已过期{elseif $value['status'] == '1'}未过期{/if}</td>
+			<td align="center">
+				<a href="?mod=sellerTicket&code=Edit&id={$value['id']}">[ 修改 ]</a> 
+			</td>
+		</tr>
+		<!--{/loop}-->
+		</table>
+	<center>{~page_moyo()}</center>
+	<table>
+		<tr>
+			<td colspan="12">请注意：<br>1、商家各项金额数据中，均不包括实物订单中用户支付的商品运输费用。<br>2、添加商家时绑定的商家用户将成为商家分类{TUANGOU_STR}券的管理者，<font
+				color=red>商家用户可前台登陆、查看旗下{TUANGOU_STR}券、核对和消费</font>！
+			</td>
+		</tr>
+	</table>
+	<a href="?mod=sellerTicket&code=Add&id={$id}" class="back1 back2">添加商家优惠券</a> <br>
+</form>
+{template @admin/footer}

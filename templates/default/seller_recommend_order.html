@@ -1,0 +1,68 @@
+<!--{template header}-->
+<div class="site-ms__right user_nav">
+    {template seller_menu}
+</div>
+<div class="site-ms__left">
+    <div class="t_area_out">
+        <div class="t_area_in">
+            <div>
+                <form action="index.php" method="get">
+                    <input value="seller" name="mod" type="hidden"/>
+                    <input value="recommendorder" name="code" type="hidden"/>
+                    年份
+                    <select name="year">
+                        <option></option>
+                        <!--{loop $years $i $year}-->
+                        {if $year==$_GET['year']}
+                        <option selected value="$year">$year</option>
+                        {else}
+                        <option value="$year">$year</option>
+                        {/if}
+                        <!--{/loop}-->
+                    </select>
+                    月份
+                    <select name="month">
+                        <option></option>
+                        <!--{loop $months $i $month}-->
+                        {if $month==$_GET['month']}
+                        <option selected value="$month">$month</option>
+                        {else}
+                        <option value="$month">$month</option>
+                        {/if}
+                        <!--{/loop}-->
+                    </select>
+                    <input id="iscp_button" class="btn btn-primary btn-small" type="submit" value="搜索" />
+                    <span style="margin-left: 50px;">
+                    本月分润： $sums 元
+                    </span>
+                </form>
+
+            </div>
+            <div class="nleftL">
+                {~ui('loader')->css('#html/isearcher/style')}
+                {~ui('loader')->js('#html/isearcher/main')}
+                <table class="tab_list">
+                    <tr>
+                        <th width="10%">消费时间</th>
+                        <th width="16%">产品</th>
+                        <th width="12%">产品售价</th>
+                        <th width="12%">数量</th>
+                        <th width="12%">提成</th>
+                    </tr>
+                    {loop $orders $i $order}
+                    <tr>
+                        <td>$order['usetime']</td>
+                        <td>$order['name']</td>
+                        <td>$order['productprice']</td>
+                        <td>$order['mutis']</td>
+                        <td>$order['commission']</td>
+                    </tr>
+                    {/loop}
+                </table>
+                {~page_moyo()}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--{template footer}-->

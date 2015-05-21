@@ -1,0 +1,65 @@
+<!--{template @admin/header}-->
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="12"><b style="float: left;"> 时间段管理</b> <a
+				style="float: left; margin-left: 5px"
+				href="?mod=npushnews&code=times_create&numid={$numid}&modelid={$modelid}" class="back1 back2">添加 时间段</a></td>
+		</tr>
+		{if !empty($list)}
+		<!-- <form method="post" action="admin.php?mod=npushnews&code=list_times">
+		<tr>
+			<td colspan="12">
+				<div class="tr_select">
+					请输入您要搜索的活动关键词： <input name="keyword" value="{$keyword}" id="keyword" type="text" class="isearcher_input_words" />
+					<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+				</div>
+			</td>
+		</tr>
+		</form> -->
+		{/if}
+		<tr class="tr_nav">
+			<td width="8%">分类ID</td>
+			<td width="10%">标题</td>
+			<td width="15%">认证次数/每天</td>
+			<td width="10%">模块</td>
+			<td width="10%">开始</td>
+			<td width="10%">结束</td>
+			<td width="10%">状态</td>
+			<td width="10%">添加时间</td>
+			<td width="20%" align="center">管理</td>
+		</tr>
+		<!--{if empty($list)}-->
+		<tr>
+			<td colspan="12">暂时还没有 时间段，请<a
+				href="?mod=npushnews&code=times_create&numid={$numid}&modelid={$modelid}">点此添加 时间段</a>。
+			</td>
+		</tr>
+		<!--{/if}-->
+		<!--{loop $list $i $value}-->
+		<tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'">
+			<td>{$value['id']}</td>
+			<td>{$value['name']}</td>
+			<td>{$value['num']}</td>
+			<td>{$value['modelname']}</td>
+			<td>{$value['begintime']}</td>
+			<td>{$value['endtime']}</td>
+			<td>{echo $value['status']==1 ? '显示' : '不显示'}</td>
+			<td>{echo date('Y-m-d', $value['addtime'])}</td>
+			<td><a href="?mod=npushnews&code=times_modify&id={$value['id']}">[ 编辑
+					]</a> <a href="?mod=npushnews&code=times_delete&id={$value['id']}"
+				onclick="return confirm('确认要删除吗？');">[ 删除 ]</a>
+				<!--{loop $list_type $n $val}-->
+				<a href="?mod=npushnews&code=relevance&timesid={$value['id']}&typeid={$val['id']}">[{$val['name']}]</a> 
+				<!--{/loop}-->
+			</td>
+		</tr>
+		<!--{/loop}-->
+		<tr>
+			<td colspan="12">请注意：<br><font color=red></font>
+			</td>
+		</tr>
+	</table>
+	<a href="?mod=npushnews&code=times_create&numid={$numid}&modelid={$modelid}" class="back1 back2">添加 时间段</a> <br>
+	<center>{$page_arr}</center>
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

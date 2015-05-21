@@ -1,0 +1,173 @@
+<?php
+
+/**
+ * 模块：优惠券分类管理
+ * @name ticket.mod.php
+ * @version 1.0
+ */
+class ModuleObject extends MasterObject {
+	
+	function ModuleObject($config) {
+		$this->MasterObject ( $config );
+		$runCode = Load::moduleCode ( $this );
+		$this->$runCode ();
+	}
+	
+	//首页绑定
+	function Main() {
+		$this->CheckAdminPrivs ( 'ticket' );
+		header ( 'Location: ?mod=ticket&code=vlist' );
+	}
+	
+	//分类列表
+	function vList() {
+		$this->CheckAdminPrivs ( 'ticket' );
+		$keyword = post ( 'keyword', 'txt' );
+		$action='admin.php?mod=ticket&code=vlist';
+		if($keyword){
+			$filter =' (id like "%'.$keyword.'%" or name like "%'.$keyword.'%" or num like "%'.$keyword.'%")';
+		}else{
+			$filter=1;
+		}
+		$list = logic ( 'ticket' )->get_list ( $filter );
+		$category = logic( 'ticket' )->get_category ( );
+		include handler ( 'template' )->file ( '@admin/ticket_category_list' );
+	}
+	
+	//添加
+	function Add() {
+		$this->CheckAdminPrivs ( 'ticket' );
+		$action = '?mod=ticket&code=Doticket';
+		$ticket = logic ('ticket' )->get_one ( $id );
+		$category = logic ('ticket')->get_category ( );
+		include handler ( 'template' )->file ( '@admin/ticket_category_mgr' );
+	}
+	
+	//添加&编辑处理
+	function Doticket() {
+		$this->CheckAdminPrivs ( 'ticket' );
+		extract ( $this->Get );
+		extract ( $this->Post );
+		$rebate = array (
+				'categoryid' => $categoryid,
+				'name' =>$name,
+				'num' => $num,
+				'url' => encrypt($url),
+				'begintime' => strtotime($begintime),
+				'overtime' => strtotime($overtime),
+				'addtime'=>time()
+		);
+		if($id){
+			unset($rebate['addtime']);
+			$rebate = array_merge($rebate, array('updatetime'=>time()));
+			logic('ticket')->update($id, $rebate) ? $this->Messager ( "更新成功", '?mod=ticket' ) : $this->Messager('更新失败', '?mod=ticket');
+		}else{
+			logic('ticket')->add($rebate) ? $this->Messager ( "添加成功", '?mod=ticket' ) : $this->Messager('添加失败', '?mod=ticket');
+		}
+	}
+	
+	//编辑
+	function Edit() {
+		$this->CheckAdminPrivs ( 'ticket' );
+		extract ( $this->Get );
+		extract ( $this->Post );
+		$action = '?mod=ticket&code=Doticket';
+		$ticket = logic( 'ticket' )->get_one ( $id );
+		$category = logic( 'ticket' )->get_category ( );
+		include handler ( 'template' )->file ( '@admin/ticket_category_mgr' );
+	}
+
+	//删除
+	function Deleteticket() {
+		$this->CheckAdminPrivs ( 'ticket' );
+		$id = get('id', 'int');
+		logic ( 'ticket' )->delete ( $id );
+		$this->Messager ( '删除成功！', '?mod=ticket' );
+	}
+	
+	
+	//========以下对 优惠券 & 商品 进行关联========
+	function product(){
+		$this->CheckAdminPrivs ( 'ticket' );
+		$ticketid = get ( 'id', 'int' );
+		
+		$catalog = get ( 'catalog', 'txt' );
+		$catalogid = get ( 'catalogid', 'int' );
+		$key = get ( 'key', 'txt' );
+		
+		if($key){
+			//key存在则是查询product产品用于关联为当前优惠券分类
+			$product = logic ( 'ticket' )->product_list ( $catalogid, $key );
+		}else{
+			if($catalog){ //树形单击
+				$product = logic ( 'ticket' )->product_list ( $ticketid, "" ,logic ( 'catalog' )->Filter ( $catalog, 'product' ) );
+			}else{
+				//key不存在则查询ticket获取当前已关联产品
+				$product = logic ( 'ticket' )->ticket_list ( $ticketid );
+			}
+		}
+
+		$ticket = logic ( 'ticket' )->get_one ( $ticketid );
+<<<<<<< .mine
+		$tickets = 55;
+		if($categoryid){
+			$product = logic ( 'ticket' )->product_list ( $ticketid, "" ,$categoryid );
+		}
+// 		if($key){
+// 			//key存在则是查询product产品用于关联为当前优惠券分类
+// 			$product = logic ( 'ticket' )->product_list ( $ticketid, $key );
+// 		}else{
+// 			//key不存在则查询ticket获取当前已关联产品
+// 			$product = logic ( 'ticket' )->ticket_list ( $ticketid );
+// 		}
+=======
+>>>>>>> .r35
+		include handler ( 'template' )->file ( '@admin/ticket_product_list' );
+	}
+	
+	function toHell(){
+		$ticketid = get ( 'id', 'int' );
+		include handler ('template')->file('@admin/hell');
+	}
+
+	function updateAjax(){
+		$this->CheckAdminPrivs ( 'ticket', 'ajax' );
+		$ticketid = get ( 'categoryid', 'int' );
+		$productid = get ( 'productid', 'int' );
+		$type = get ( 'type', 'int' );
+		
+		$ticketid || exit();
+		$productid || exit();
+		
+		if($type){//添加、删除
+			logic ( 'ticket' )->deleteRel ( $ticketid, $productid );
+			echo  "0" ;
+		}else{
+			$add = logic ( 'ticket' )->addRel ( $ticketid, $productid );
+			echo $add >0 ? "0" : "1";//0成功1失败
+		}
+		
+	}
+	
+	function tree(){
+		$parent = post ( 'id', 'int' );
+		$parent || $parent = 0;
+		$list=logic('catalog')->GetList($parent);
+		$ret = array();
+		foreach ($list as $i => $one)
+		{
+			$ret[] = array(
+					"id" => $one['id'],
+					"text" => $one['name'],
+					"value" => $one['flag'],
+					"showcheck" => true,
+					"complete" => false,
+					"isexpand" => false,
+					"checkstate" => 0,
+					"hasChildren" => true
+			);
+		}
+		echo jsonEncode($ret);
+	}
+}
+?>

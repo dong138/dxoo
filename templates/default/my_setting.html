@@ -1,0 +1,140 @@
+<!--{template header}-->
+<!--{~ui('loader')->js('@lhgdialog')}-->
+<style>
+.field label {
+	width: 95px;
+	text-align: right;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="styles/edit.css"/>
+<div class="site-ms__right user_nav">{~ui('widget')->load()}</div>
+<div class="site-ms__left">
+	<div class="t_area_out">
+		<div class="t_area_in">
+			<div class="nleftL">
+				<ul class="edit_menu left">
+					<li class="active">
+						<a href="#">基本信息</a>
+					</li>
+					<li>
+						<a href="#">安全中心</a>
+					</li>
+					<li>
+						<a href="#">个人资料</a>
+					</li>
+					<li>
+						<a href="#">邮件订阅</a>
+					</li>
+					<li>
+						<a href="?mod=me&code=address">收货地址</a>
+					</li>
+				</ul>
+
+				<div class="edidBox left">
+					<table border="0">
+						<tr>
+							<td width="60px">手机号：</td>
+							<td width="150px">{echo {$user['phone']}?{$user['phone']}:'尚未绑定手机'}</td>
+							<td>
+							{if $user['phone']}
+								<a href="?mod=me&code=choice_verify&way=1">更换</a>
+							{else}
+								<a id="bindPhone" href="javascript:void(0)">立即绑定</a>
+							{/if}
+							</td>
+						</tr>
+						<tr>
+							<td>邮 箱：</td>
+							<td>
+							{echo {$user['email']}?{$user['email']}:'尚未绑定邮箱'}
+							</td>
+							
+							<td>
+							{if {$user['email']} && {$user['checked']}==1}
+								<a id="changeEmail" href="?mod=me&code=choice_verify&way=2" class="click_show">更换</a>
+							{elseif {$user['email']} && {$user['checked']}!=1}
+								 未验证，<a id="agianEmail" href="javascript:void(0)" class="click_show">立即验证</a>
+							{else}
+								<a id="bindEmail" href="javascript:void(0)" class="click_show">立即绑定</a>
+							{/if}
+						</tr>
+						<tr>
+							<td>用户名：</td>
+							<td id="user_name" >{$user['name']}</td>
+							<td>
+								<a id="editUsername" href="javascript:void(0)" class="click_show">修改</a>
+							</td>
+						</tr>
+						{eval $has = logic('myaccount')->hasPwd();}
+						<tr>
+							<td>密 码：</td>
+							{if $has}
+								<td>••••••</td>
+							{else}
+								<td>还没设置密码</td>
+							{/if}
+							<td>
+								{if $has}
+									<a id="editPassword" href="javascript:void(0)" id="click_show">修改</a>
+								{else}
+									<a href="?mod=get_password">设置密码</a>
+								{/if}
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!--修改密码-->
+				<div class=""></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$(function(){ 
+	$('#bindEmail').click(function(){
+		dialog('邮箱绑定','url:?mod=me&code=bind_mail',550,280);
+	});
+	$('#bindPhone').click(function(){
+		dialog('手机绑定','url:?mod=me&code=bind_phone',550,280);
+	});
+	$('#editUsername').click(function(){
+		dialog('修改用户名','url:?mod=me&code=edit_username',420,200);
+	});
+	$('#editPassword').click(function(){
+		dialog('修改密码','url:?mod=me&code=edit_password',500,250);
+	});
+	$('#agianEmail').click(function(){
+		$.ajax({
+			type: "POST",
+			url: "?mod=myaccount&code=againMail",
+			dataType: "json",
+			beforeSend: function(XMLHttpRequest) {
+				$('#agianEmail').text("发送中...");
+			},
+			timeout: 20000,
+			success: function(data, textStatus) {
+				$('#agianEmail').text("验证邮件已发送");
+				$("#agianEmail").unbind("click");
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				$.dialog.alert("邮件发送失败！");
+			} 
+		});
+	});
+}); 
+function dialog(title,content,width,height){
+	$.dialog({
+		lock: true,
+	    max: false,
+	    min: false,
+		fixed: true,
+	    drag: false,
+	    resize: false,
+	    width:width,
+	    height:height,
+		title: title,
+		content: content
+	});
+}
+</script>
+<!--{template footer}-->

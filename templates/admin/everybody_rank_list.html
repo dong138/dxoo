@@ -1,0 +1,135 @@
+<!--{template @admin/header}-->
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="tr_nav">
+			<td width="2%">排名</td>
+			<td width="10%">名次</td>
+			<td width="10%">手机号</td>
+			<td width="10%">微信号</td>
+			<td width="6%">用户名</td>
+			<td width="7%">产品名称</td>
+			<td width="7%">操作</td>
+		</tr>
+		<!--{if empty($list)}-->
+		<tr>
+			<td colspan="12">暂时还没有排名 </td>
+		</tr>
+		<!--{/if}-->
+		<!--{loop $res $i $value}-->
+		<tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'">
+			<td>{echo $i+1}</td>
+			<td>{$value['prize']}等奖</td>
+			<td>{$value['phone']}</td>
+			<td>{$value['openid']}</td>
+			<td>{$value['username']}</td>
+			<td>{$value['flag']}</td>
+			<td>
+			{if $value['status']==1}
+				<input id="btn_{$i}" type="button" class="button" value="已发送">
+			{elseif $value['status']==2}
+				{if $value['userid']==0 && $value['openid']}
+					<input id="btn_{$value['prize']}" onclick="send_wecher_product($value['productid'],&apos;$value['openid']&apos;,{$value['prize']});" type="button" class="button" value="发送到微信">
+				{else}
+					<input id="btn_{$value['prize']}" onclick="send_product($value['productid'],$value['userid'],{$value['prize']});" type="button" class="button" value="发送">
+				{/if}
+			{/if}
+			</td>
+		</tr>
+		<!--{/loop}-->
+		<tr>
+			<td colspan="12">请注意：<br>1、商家各项金额数据中，均不包括实物订单中用户支付的商品运输费用。<br>2、添加商家时绑定的商家用户将成为商家产品{TUANGOU_STR}券的管理者，<font
+				color=red>商家用户可前台登陆、查看旗下{TUANGOU_STR}券、核对和消费</font>！
+			</td>
+		</tr>
+	</table>
+	<center>{$page_arr}</center>
+</form>
+<script type="text/javascript">
+	function send_wecher_product(productid,openid,prize){
+		$.ajax({
+	        type : "get",
+	        async : false,
+	        url : "http://192.168.1.200/weixin/index.php?s=/home/YsIndex/iwebwecher/productid/" + productid +"/openid/" + openid +"/prize/" +prize , //实际上访问时产生的地址为: ajax.ashx?callbackfun=jsonpCallback&id=10
+	        cache : false, //默认值true
+	        jsonp: "callbackfun",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+	        jsonpCallback:"jsonpCallback",
+	            //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+	            //如果这里自定了jsonp的回调函数，则success函数则不起作用;否则success将起作用
+	        success : function(json){
+	            alert(json.msg);
+	        },
+	        error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert(errorThrown);
+			}
+	    });
+	}
+	
+	function jsonpCallback(data) //回调函数
+	{  
+	    //TODO
+	}
+	function send_product(productid,userid,prize){
+		 $.ajax({
+				type: "post",
+				url: "?mod=everybody&code=checkout",
+				data: { 
+					"productid":productid,
+					"userid":userid,
+					"FORMHASH":'{FORMHASH}'
+				},
+				dataType: "json",
+				beforeSend: function(XMLHttpRequest) {
+					$("#btn_"+prize).val("正在提交...");
+					$("#btn_"+prize).prop("disabled", true);
+				},
+				success: function(data) {
+					if(data.status == 2){
+						$.ajax({
+							type: "post",
+							url: "?mod=everybody&code=Checkout_rank_save",
+							data: { 
+								"product_id":productid,
+								"num_buys":1,
+								"extmsg":'众筹产品',
+								"userid":userid,
+								"FORMHASH":'{FORMHASH}'
+							},
+							dataType: "json",
+							success: function(data) {
+								if(data.status == 'ok'){
+
+									$.post("./?mod=callback", { sign: data.id, pid: 1 ,is_flish:1},     
+										   function (data, textStatus){          
+									}, "json");
+									
+									alert('发送成功！');
+									$("#btn_"+prize).val("已发送");
+									$("#btn_"+prize).prop("disabled", true);
+								}else if (data.status='failed'){
+									alert(data.msg);
+									$("#btn_"+prize).val("重新发送");
+									$("#btn_"+prize).prop("disabled", false);
+								}
+							},
+							error: function (XMLHttpRequest, textStatus, errorThrown) {
+								$("#btn_"+prize).val("重新发送");
+								$("#btn_"+prize).prop("disabled", false);
+								alert('发送失败！请稍后再试' + errorThrown);
+							}
+						});
+					}else{
+						alert(data.msg);
+						$("#btn_"+prize).val("已发送");
+						$("#btn_"+prize).prop("disabled", true);
+					}
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+					$("#btn_"+prize).val("重新发送");
+					$("#btn_"+prize).prop("disabled", false);
+					alert('发送失败！请稍后再试' + errorThrown);
+				}
+			});
+	}
+</script>
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

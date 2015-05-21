@@ -1,0 +1,68 @@
+<!--{template @admin/header}-->
+{~ui('loader')->css('@jquery.thickbox')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('isearcher')->load('admin.product_list')}
+{~ui('loader')->js('@lhgdialog')}
+<table id="productTable" cellspacing="1" cellpadding="4" width="100%"
+	align="center" class="tableborder">
+	<thead>
+		<tr class="tr_nav">
+			<td width="2%">选择</td>
+			<td width="2%">ID</td>
+			<td width="18%">产品名称（悬浮查看长标题）</td>
+			<td width="12%">显示设定</td>
+			<td width="8%">是否套餐</td>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{loop $list $one}-->
+		<tr>
+			<td><input id="{$one['id']}" onclick="product(this);" type="button" class="button" value="选择"></td>
+			<td id="id_{$one['id']}">{$one['id']}</td>
+			<td id="name_{$one['id']}" title="【{$one['id']}】{$one['name']}">
+				<a href="{conf site_url}/?view={$one['id']}" target="_blank">{$one['flag']}</a>
+			</td>
+			<td>
+				{if $one['display']==PRO_DSP_None} 不在前台显示 {elseif
+				$one['display']==PRO_DSP_City} 限定城市显示
+				<br />
+				({echo logic('misc')->City('name', $one['city'])}) {elseif
+				$one['display']==PRO_DSP_Global} 全部城市显示 {/if}
+				<div style="color: #808080;" title="显示优先级">TOP
+					+{$one['order']}</div>
+			</td>
+			<td>
+				{if $one['linkid']}
+				<a href="?mod=product&code=editlink&id={$one['linkid']}">套餐</a>
+				{else}否{/if}
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="9">{~page_moyo()}</td>
+		</tr>
+	</tfoot>
+</table>
+<script type="text/javascript">
+	//窗口API
+	var api = frameElement.api, W = api.opener;
+	function product(_this){
+		var type =api.data;
+
+		var id= $(_this).attr('id');
+		var productid=$('#id_'+id).text();
+		var productname=$('#name_'+id).text();
+		
+		if(type==1){
+			$('#productid', W.document).val($.trim(productid));
+			$('#productname', W.document).val($.trim(productname));
+		}else if(type==2){
+			$('#vouchid', W.document).val($.trim(productid));
+			$('#vouchname', W.document).val($.trim(productname));
+		}
+		api.close();
+	}
+</script>
+{template @admin/footer}

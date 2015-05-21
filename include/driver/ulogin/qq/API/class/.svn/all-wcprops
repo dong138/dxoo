@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/1/include/driver/ulogin/qq/API/class
+END
+ErrorCase.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dxoo/!svn/ver/1/include/driver/ulogin/qq/API/class/ErrorCase.class.php
+END
+Recorder.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dxoo/!svn/ver/1/include/driver/ulogin/qq/API/class/Recorder.class.php
+END
+Oauth.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/dxoo/!svn/ver/1/include/driver/ulogin/qq/API/class/Oauth.class.php
+END
+URL.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/dxoo/!svn/ver/1/include/driver/ulogin/qq/API/class/URL.class.php
+END
+QC.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/dxoo/!svn/ver/1/include/driver/ulogin/qq/API/class/QC.class.php
+END

@@ -1,0 +1,1 @@
+/** * @package js * @name error.clear.js * @date 2011-12-07 13:42:08 */ window.onerror = function() {return true;};

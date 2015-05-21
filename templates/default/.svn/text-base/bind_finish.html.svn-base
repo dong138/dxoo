@@ -1,0 +1,27 @@
+<!--{template header}-->
+<link rel="stylesheet" type="text/css" href="styles/edit.css"/>
+        <div class="w edit_box">
+        	<h2><span>修改绑定的{$title}</span></h2>
+        	<ul class="edit_title">
+        		<li><strong>1.</strong> 选择验证方式</li>
+        		<li><strong>2.</strong> 验证/修改</li>
+        		<li class="edit_active"><strong>3.</strong> 完成 </li>
+        	</ul>
+        	<div class="edit_main">
+	        	<table border="0">
+	        		<tr>
+        			<td colspan="2">
+        				<div class="edit_staue2">
+        					<h2>{$msg}</h2>
+        				</div>
+        			</td>
+        		</tr>
+	        		<tr>
+	        			<td></td>
+	        			<td><a class="left end" href="?mod=me&code=setting">返回基本信息</a></td>
+	        		</tr>
+	        	</table>
+        	</div>
+        </div>
+	</body>
+<!--{template footer}-->

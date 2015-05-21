@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		{~ui('loader')->js('@xtn_menu')}
+		{~ui('loader')->css('@hl_style')}
+		{~ui('loader')->css('@photo_list')}
+		{~ui('loader')->js('@jquery')}
+		{~ui('loader')->js('@jquery.ad-gallery')}
+		{~ui('loader')->js('@zzsc')}
+		<!--用户评价列表-->
+		<div class="pl_box">
+			<ul class="pl_tab">
+				<li class="item">全部</li>
+				<li>好评</li>
+				<li>中评</li>
+				<li>差评</li>
+				<li>有图</li>
+				<span>有内容的评价<select><option>默认排序</option><option>时间排序</option></select></span>
+			</ul>
+			<div class="pl_list">
+				<ul>
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										  <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+					
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										   <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+			<!--好评-->
+			<div class="pl_list">
+				<ul>
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										  <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+					
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										   <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+			<!--中评-->
+			<div class="pl_list">
+				<ul>
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										  <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+					
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										   <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+			<!--差评-->
+			<div class="pl_list">
+				<ul>
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										  <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+					
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										   <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+			<!--有图-->
+			<div class="pl_list">
+				<ul>
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										  <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+					
+					<li>
+						<div class="pl_list_box">
+							<div class="pl_list_title">
+								<span class="vip_name"> yh118800</span>
+								<span class="vip_ico2"></span>
+								<span class="vip_time">2014-09-24</span>
+								<span class="vip_step0"><i></i></span>
+							</div>
+							<div class="pl_list_main">很好吃，每个星期都要去一次，品种也很多，每个菜的味道都不错，还有各种汤，我最喜欢白酒小汤圆！饭后水果有香蕉西瓜各种！吃完后太满足了！根本感觉不到是在吃素！健康又满足！一级棒！</div>
+							<div class="pl_list_pics">
+									<div id="gallery" class="ad-gallery">
+									 
+									  <div class="ad-nav">
+										<div class="ad-thumbs">
+										   <ul class="ad-thumb-list">
+											<li> <a href="images/1.jpg"> <img src="images/1.jpg"   class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg"  class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										   <li> <a href="images/1.jpg"> <img src="images/1.jpg" class="image0"> </a> </li>
+											<li> <a href="images/2.jpg"> <img src="images/2.jpg"  class="image6"> </a> </li>
+											<li> <a href="images/3.jpg"> <img src="images/3.jpg"  class="image7"> </a> </li>
+											<li> <a href="images/4.jpg"> <img src="images/4.jpg"  class="image8"> </a> </li>
+											<li> <a href="images/5.jpg"> <img src="images/5.jpg"  class="image9"> </a> </li>
+											<li> <a href="images/6.jpg"> <img src="images/6.jpg"  class="image10"> </a> </li>
+											<li> <a href="images/7.jpg"> <img src="images/7.jpg" class="image11"> </a> </li>
+											<li> <a href="images/8.jpg"> <img src="images/8.jpg"  class="image12"> </a> </li>
+										  </ul>
+										</div>
+									  </div>
+									   <div class="gallery_toggle">
+										   <div class="ad-controls"></div>
+										   <div class="ad-image-wrapper"></div>
+									   </div>
+									  
+									</div>
+							</div>
+							<h3>天府棒棒鸡（近华浦店）</h3>
+							<div class="store_ask">商家回复：尊敬的顾客:您好！给你带来不便，实在不好意思，我在这里带表公司向你郑重的承诺:天府棒棒鸡任何一家店铺不会少称，我们的价格是包含包装的，也是为了产品的卫生和你食用方便，如果你确实不想要，我们可以用袋子称，不用碗称</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

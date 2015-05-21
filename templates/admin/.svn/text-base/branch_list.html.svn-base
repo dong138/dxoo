@@ -1,0 +1,34 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('#admin/js/sdb.parser')}
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="4">
+			如何没有添加，您可以到商家分店添加 （<a target="main" href="admin.php?mod=branch">商家分店</a>）
+			</td>
+		</tr>
+		<tr>
+			<td>序号</td>
+			<td>商家分店名称</td>
+			<td>添加时间</td>
+			<td align="center">管理</td>
+		</tr>
+		<!--{if !empty($branch_list)}-->
+		<!--{loop $branch_list $value}-->
+		<tr onmouseover="this.className='tr_hover'"
+			onmouseout="this.className='tr_normal'">
+			<td>{$value['id']}</td>
+			<td>{$value['name']}</td>
+			<td>{echo date('Y-m-d H:i:s', $value['addstime'])}</td>
+			<td align="center"><a href="?mod=branch&code=seller&id={$value['id']}">管理商家分店</a></td>
+		</tr>
+		<!--{/loop}-->
+		<!--{/if}-->
+		<tr class="footer">
+			<td colspan="4"><div align=right></div></td>
+		</tr>
+	</table>
+	<center></center>
+</form>
+{template @admin/footer}

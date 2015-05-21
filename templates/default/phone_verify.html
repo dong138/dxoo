@@ -1,0 +1,104 @@
+<!--{template header}-->
+<!--{~ui('loader')->js('@validform')}-->
+<!--{~ui('loader')->css('@valid.style')}-->
+<link rel="stylesheet" type="text/css" href="styles/edit.css" />
+<script type="text/javascript" src="js/Check.js"></script>
+<form class="phoneform" method="post" action="{$nexturl}" >
+<div class="w edit_box">
+	<h2>
+		<span>{$title}</span>
+	</h2>
+	<ul class="edit_title">
+		<li>
+			<strong>1.</strong>选择验证方式
+		</li>
+		<li class="edit_active">
+			<strong>2.</strong>验证/修改
+		</li>
+		<li>
+			<strong>3.</strong>完成
+		</li>
+	</ul>
+	<div class="edit_info">您正在通过“{$title}”方式进行验证 / 修改</div>
+	<div class="edit_main">
+		<table border="0">
+			<tr>
+				<td colspan="2">
+					<div class="edit_staue">
+						<h2>为了您的账户安全，请先验证手机</h2>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" class="pad_right">您绑定的手机号</td>
+				<td>
+					<label>{$user['phone']}</label>
+					<input type="hidden" id="phone" value="{$user['phone']}" />
+				</td>
+			</tr>
+			<tr style="height: 20px;">
+				<td style="height: 20px;"></td>
+				<td style="height: 20px;">
+					<input type="button" class="left" value="获取验证码"
+						onclick="sendRegistCode(this,60)" />
+					<a href="javascript:void(0);" id="notcode" class="left no_num">
+						没收到短信验证码？ </a>
+					<div class="resend-message-tip">
+						<div class="arrow--background"></div>
+						<div class="arrow--prospect"></div>
+						<div id="tipsClose" class="close J-close"></div>
+						<ul class="resend-message-tip__list">
+							<li class="resend-message-tip__head">网络通讯异常可能会造成短信丢失，请重新发送短信</li>
+							<li>请核实手机是否已欠费停机，或者屏蔽了系统短信</li>
+							<li>如果手机{$user['phone']}已丢失或停用，请点击上一步选择其它验证方式</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" class="pad_right">短信验证码</td>
+				<td>
+					<input type="text" id="yanzhen" datatype="*" ajaxurl="?mod=myaccount&code=isValCode"
+						errormsg="请填写验证码" nullmsg="请输入验证码！" sucmsg=" " />
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<a class="left" id="btn_sub" href="javascript:void(0);">下一步</a>
+					<a class="left next_step" href="{$backurl}">上一步</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".phoneform").Validform({
+			tiptype : 3,
+			btnSubmit : "#btn_sub",
+			postonce : true,
+			showAllError : true
+		});
+		$("#tipsClose").click(function() {
+			$(".resend-message-tip").hide();
+		});
+		$("#notcode").click(function() {
+			$(".resend-message-tip").show();
+		});
+	});
+	function create_code() {
+		document.getElementById('signup-captcha-img').src = '?mod=myaccount&code=create_code&aa='
+				+ Math.random() * 10000;
+	}
+	function sendRegistCode(element, second) {
+		countDown(element, second);
+		$.ajax({
+			type : "GET",
+			data : "type=4&phone="+ $("#phone").val(),
+			url : "?mod=myaccount&code=account_sms"
+		});
+	}
+</script>
+<!--{template footer}-->

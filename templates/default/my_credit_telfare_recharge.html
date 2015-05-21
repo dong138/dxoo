@@ -1,0 +1,86 @@
+<!--{template header}-->
+<script type="text/javascript">
+	function checkRecharge(type) {
+		var tel = $('#txtPhone').val();
+		var cerCost = $('#selMoney').val();
+		if (cerCost == '0') {
+			foundError('请选择兑换金额！');
+			return false;
+		}
+		if (type==1 && tel == '') {
+			foundError('请输入手机号码！');
+			return false;
+		}
+		var cerLeft = CheckCerdit();
+		if (cerLeft <= 0) {
+			foundError('当前积分不够兑换，请换个重试！');
+			return false;
+		}
+		return true;
+	}
+	function foundError(msg) {
+		$('#error_msg').show();
+		$('#error_msg').html(msg).css('color', '#FF3D33');
+		setTimeout(function() {
+			$('#error_msg').hide();
+		}, 2000);
+	}
+	function selMoneyChange() {
+		var cerLeft = CheckCerdit();
+		$('#cerLeft').html(cerLeft);
+		if (cerLeft <= 0) {
+			foundError('当前积分不够兑换，请换兑换金额后重试！');
+			return;
+		}
+	}
+	function CheckCerdit() {
+		var cerCost = parseInt($('#selMoney option:selected').attr(
+				'data-cerdit'));
+		var cerCur = parseInt($('#cerCur').html());
+		return cerCur - cerCost;
+	}
+</script>
+<div class="site-ms__right user_nav">{~ui('widget')->load()}</div>
+<div class="site-ms__left">
+	<div class="t_area_out">
+		<div class="t_area_in">
+			<p class="cur_title">{echo $type==1 ? '积分兑换话费' : $this->Title}</p>
+			<div class="sect">
+				<div class="nleftL">
+					<div style="float: left; color: black;">
+						您当前的总积分是：
+						<b id="cerCur">{$total_credit}</b>
+						分，兑换后剩余：
+						<b id="cerLeft">{$total_credit}</b>
+					</div>
+				</div>
+				<div class="nleftL">
+					<form action="?mod=me&code=credit_telfare_recharge&op=add&type={$type}" method="post" onsubmit="return checkRecharge({$type});">
+						<div class="field">
+							<label style="overflow: hidden;">兑换金额</label>
+							<select id="selMoney" name="money" onchange="selMoneyChange()">
+								<option value="0" data-cerdit="0">请选择兑换金额</option>
+								<option value="10" data-cerdit="100">10元（100积分）</option>
+								<option value="50" data-cerdit="500">50元（500积分）</option>
+								<option value="100" data-cerdit="1000">100元（1000积分）</option>
+							</select>
+						</div>
+						{if $Phone['phone'] && $type==1}
+						<div class="field">
+							<label style="overflow: hidden;">号码</label>
+							<input readonly="readonly" id="txtPhone" value="{$Phone['phone']}" type="text" name="num" />
+						</div>
+						{else}{/if}
+						<div class="act">
+							<input type="submit" class="btn btn-primary" value="兑换" />
+						</div>
+					</form>
+					<div class="field">
+						<p id="error_msg"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--{template footer}-->

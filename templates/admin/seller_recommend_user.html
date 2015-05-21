@@ -1,0 +1,54 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+
+    <table cellspacing="1" cellpadding="4" width="100%" align="center"
+           class="tableborder">
+        <tr class="header">
+            <td colspan="12"><b style="float: left;">推荐用户列表</b></td>
+        </tr>
+        <tr class="">
+            <td colspan="4">
+                <div class="tr_select">
+                    <form action="admin.php?mod=profit&code=recommendUser&sellerid=$_GET['sellerid']" method="get">
+                        <input value="profit" name="mod" type="hidden"/>
+                        <input value="recommendUser" name="code" type="hidden"/>
+                        <input value="$_GET['sellerid']" name="sellerid" type="hidden"/>
+
+                    开始时间<input type="text" onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'',vel:'iscp_timev_begintime_coupon_main'})"
+                               size="11" class="Wdate" value="$_GET['stime']" readonly="" name="stime"/>
+                    结束时间<input type="text" onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'',vel:'iscp_timev_finishtime_coupon_main'})"
+                               size="11" class="Wdate" value="$_GET['etime']" readonly="" name="etime" />
+
+                    <input id="iscp_button" class="btn btn-primary btn-small" type="submit" value="搜索" />
+                    </form>
+                </div>
+
+            </td>
+        </tr>
+        <tr class="tr_nav">
+            <th width="10%">用户名</th>
+            <th width="16%">手机号</th>
+            <th width="12%">推荐时间</th>
+            <th width="12%">操作</th>
+        </tr>
+        <!--{if empty($users)}-->
+        <tr>
+            <td colspan="12">暂时还没有数据
+            </td>
+        </tr>
+
+        <!--{/if}-->
+        <!--{loop $users $i $user}-->
+        <tr onmouseover="this.className='tr_hover'"
+            onmouseout="this.className='tr_normal'">
+            <td>$user['username']</td>
+            <td>$user['phone']</td>
+            <td>$user['scantime']</td>
+            <td><a href="admin.php?mod=profit&code=Lists&sellerid=$_GET['sellerid']&userid=$user['uid']">查看订单</a></td>
+        </tr>
+        <!--{/loop}-->
+    </table>
+    {~page_moyo()}
+    <center>{$page_arr}</center>
+
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

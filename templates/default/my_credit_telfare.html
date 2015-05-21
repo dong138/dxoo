@@ -1,0 +1,63 @@
+<!--{template header}-->
+<style>
+    #report th {
+        text-align: left;
+    }
+</style>
+<div class="site-ms__right user_nav">
+    {~ui('widget')->load()}
+</div>
+<div class="site-ms__left">
+    <div class="t_area_out">
+        <div class="t_area_in">
+            <div class="nleftL">
+                <div style="float:left;color:black;">
+                    <b>您当前的总积分是：{$total_credit} 分</b>
+                    <a href="?mod=me&code=credit_telfare_recharge&type=1">&lt;点此兑换话费&gt;</a>&nbsp;&nbsp;
+                    <a href="?mod=me&code=credit_telfare_recharge&type=2">&lt;点此兑换现金&gt;</a>
+                </div>
+                <div class="z_nav" style="float: right;">
+                    <ul>
+                        <li>状态：</li>
+                        <li class="liL_{echo $state==0?'2':'3'}"><a href="?mod=me&code=credit_telfare">全部</a></li>
+                        <li class="liLine">|</li>
+                        <li class="liL_{echo $state==1?'2':'3'}">
+                            <a href="?mod=me&code=credit_telfare&state=1">兑换成功</a>
+                        </li>
+                        <li class="liLine">|</li>
+                        <li class="liL_{echo $state==2?'2':'3'}">
+                            <a href="?mod=me&code=credit_telfare&state=2">等待审核</a>
+                        </li>
+                        <li class="liLine">|</li>
+                        <li class="liL_{echo $state==3?'2':'3'}">
+                            <a href="?mod=me&code=credit_telfare&state=3">兑换失败</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nleftL">
+                <table id="report">
+                    <tr>
+                        <th>兑换时间</th>
+                        <th>号码</th>
+                        <th>兑换金额</th>
+                        <th>消费积分</th>
+                        <th>状态</th>
+                    </tr>
+                    <!--{loop $list $i $value}-->
+                    <tr>
+                        <td style="padding-left:10px;">{$value['addtime']}</td>
+                        <td style="padding-left:10px;">{$value['phone']}</td>
+                        <td style="padding-left:10px;">￥{$value['value']}</td>
+                        <td style="padding-left:10px;">{$value['cost']}</td>
+                        <td style="padding-left:10px;">{$value['state']}</td>
+                    </tr>
+                    <!--{/loop}-->
+                </table>
+                <div class="pagem product_list_pager">{~page_moyo()}</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--{template footer}-->

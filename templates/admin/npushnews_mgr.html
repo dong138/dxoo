@@ -1,0 +1,63 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+<script type="text/javascript">
+var __Global_ID = "{$npushnews[id]}";
+</script>
+<form action="?mod=npushnews&code=save" id="subForm" method="post" enctype="multipart/form-data">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="2">消息推送编辑</td>
+		</tr>
+		<tr>
+			<td width="100" bgcolor="#F4F8FC">标题</td>
+			<td><input type="text" name="name" value="{$npushnews['name']}" size="60" datatype="*" errormsg="请输入" sucmsg=" " /></td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">认证次数/每天</td>
+			<td><input type="text" name="num" value="{$npushnews['num']}" /></td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC" class="td_title">状态:</td>
+			<td align="right">
+			<select name="status" class="isearcher_filter_list" datatype="*" errormsg="请选择" sucmsg=" ">
+					<option value="1" {if "1"==$npushnews['status']}selected{/if}>显示</option>
+					<option value="0" {if "0"==$npushnews['status']}selected{/if}>不显示</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td colspan="2" bgcolor="#F4F8FC">
+				<center>
+					{if $npushnews}
+					<input type="hidden" name="id" value="{$npushnews['id']}" /> 
+					<input type="hidden" name="cityid" value="{$npushnews['cityid']}" /> 
+					{else}
+					<input type="hidden" name="cityid" value="{$cityid}" /> 
+					{/if}
+					<input type="submit" value="保存" class="button" />
+				</center>
+			</td>
+		</tr>
+	</table>
+</form>
+<script type="text/javascript">
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+	
+	$(document).ready(function() {
+		KindEditor.ready(function(K) {
+			K.create('#editor');
+		});
+		$.hook.add('swfuploaded', function (file) { InsertImage(file) });
+	});
+</script>
+{template @admin/footer}

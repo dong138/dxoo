@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/dxoo/!svn/ver/12/include/driver
+END
+service.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/driver/service.drv.php
+END
+cache.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/driver/cache.drv.php
+END
+database.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/driver/database.drv.php
+END
+i18n.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/1/include/driver/i18n.php
+END
+config.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/driver/config.drv.php
+END
+lock.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/1/include/driver/lock.drv.php
+END
+notify.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/driver/notify.drv.php
+END
+payment.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/driver/payment.drv.php
+END
+ulogin.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/driver/ulogin.drv.php
+END
+iaddress.drv.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/driver/iaddress.drv.php
+END

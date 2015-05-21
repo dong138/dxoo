@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dxoo/!svn/ver/12/include/driver/payment/wechat/WxPayPubHelper
+END
+WxPayPubHelper.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/dxoo/!svn/ver/12/include/driver/payment/wechat/WxPayPubHelper/WxPayPubHelper.php
+END
+WxPay.pub.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/dxoo/!svn/ver/12/include/driver/payment/wechat/WxPayPubHelper/WxPay.pub.config.php
+END
+SDKRuntimeException.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/dxoo/!svn/ver/12/include/driver/payment/wechat/WxPayPubHelper/SDKRuntimeException.php
+END

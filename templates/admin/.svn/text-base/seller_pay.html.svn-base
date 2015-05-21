@@ -1,0 +1,76 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="6">
+				<b style="float: left;">商家结算统计 
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<div class="tr_select">
+					<p class="searcher_li">
+						请输入您要搜索的商家名：
+						<input name="keyword" value="{$keyword}" id="keyword" type="text"
+							class="isearcher_input_words" />
+					</p>
+				</div>
+				<div class="tr_select" style="padding-left: 10px;">
+					<p class="searcher_li">
+						开始时间：
+						<input type="text"
+							onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'{$tvinputs[$tvk][begin]}',vel:'iscp_timev_begintime_{$tvk}'})"
+							size="11" class="Wdate" value="{$begintime}" />
+						<input name="iscp_timev_begintime" type="hidden"
+							id="iscp_timev_begintime_{$tvk}" value="{$begintime}" />
+						结束时间：
+						<input type="text"
+							onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'{$tvinputs[$tvk][finish]}',vel:'iscp_timev_finishtime_{$tvk}'})"
+							size="11" class="Wdate" value="{$endtime}" />
+						<input name="iscp_timev_finishtime" type="hidden"
+							id="iscp_timev_finishtime_{$tvk}" value="{$endtime}" />
+					</p>
+				</div>
+				<div class="tr_select"
+					style="padding-left: 15px; padding-top: 10px;">
+					筛选：订单状态
+					<select id="iscp_frc" name="iscp_frc" class="isearcher_filter_list">
+						{loop $order_process $key $val}
+						<option value="{$key}" {if $order_state==$key}selected="selected"{/if}>{$val}</option>
+						{/loop}
+					</select>
+				</div>
+				<div class="tr_select" style="padding-left: 30px;">
+					<p class="searcher_li">
+						<input name="bottom" type="submit" id="bottom" value="搜索"
+							class="btn btn-primary btn-small" />
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr class="tr_nav">
+			<td width="10%">商家编号</td>
+			<td width="30%">商家名称</td>
+			<td width="10%">商家电话</td>
+			<td width="20%">交易时间</td>
+			<td width="10%">订单总数</td>
+			<td width="20%">订单总额</td>
+		</tr>
+		{loop $sellerArray $sellerInfo}
+		<tr>
+			<td width="10%">{$sellerInfo['id']}</td>
+			<td width="30%">{$sellerInfo['sellername']}</td>
+			<td width="10%">{$sellerInfo['sellerphone']}</td>
+			<td width="20%">{echo date('Y-m-d
+				H:i:s',$sellerInfo['buytime'])}</td>
+			<td width="10%">{$sellerInfo['totalcounts']}</td>
+			<td width="20%">{$sellerInfo['totalprices']}元</td>
+		</tr>
+		{/loop}
+	</table>
+	<center>{$page_arr}</center>
+</form>
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

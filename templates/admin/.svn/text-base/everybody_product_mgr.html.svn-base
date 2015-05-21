@@ -1,0 +1,74 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('@jquery.idTabs')}
+{~ui('loader')->js('@jquery.form')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->css('@jquery.thickbox')}
+
+{~ui('loader')->css('#admin/css/product.mgr')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->js('@lhgdialog')}
+{~ui('loader')->js('@validform')}
+{~ui('loader')->css('@valid.style')}
+{~ui('loader')->js('@json2')}
+<form action="{$action}" id="subForm" method="post" enctype="multipart/form-data">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="2">众筹产品信息</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">产品选择：</td>
+			<td>
+				<input type="text" value="{$proudctname}" onfocus="dialog(1);" id="productname" datatype="*" errormsg="请选择产品" sucmsg=" ">
+				<input name="productid" type="hidden" value="{$everybody['productid']}" id="productid">
+				单击输入框选择产品
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">中奖名次：</td>
+			<td align="right">第 &nbsp; <input name="prize" type="text" id="prize" size="10" value="{$everybody['prize']}" datatype="/^(([1-9]{1}\d*)|([0]{1}))(\.(\d){1,2})?$/"  errormsg="请输入" sucmsg=" " /> &nbsp; 名(一等奖填写 1 以此类推)</td>
+		</tr>
+		<tr>
+			<td bgcolor="#F4F8FC">中奖名额：</td>
+			<td align="right"><input name="number" type="text" id="number" size="10" value="{$everybody['number']}" datatype="/^(([1-9]{1}\d*)|([0]{1}))(\.(\d){1,2})?$/" errormsg="请输入" sucmsg=" " />名</td>
+		</tr>
+	</table>
+	<br>
+	<center>
+		<input type="hidden" name="id" value="{$everybody[id]}"/> <!-- 当前修改ID 修改使用 -->
+		{if $everybody['raiseid'] >0}
+		<input type="hidden" name="raiseid" value="{$everybody['raiseid']}"/> <!--everybody_raise表ID 添加使用 -->
+		{else}
+		<input type="hidden" name="raiseid" value="{$eid}"/> <!--everybody_raise表ID 添加使用 -->
+		{/if}
+		<input type="submit" class="button" id="submitButton" name="addsubmit" value="提 交">
+	</center>
+</form>
+<script type="text/javascript">
+	
+	$(function(){
+		$("#subForm").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+		
+	function dialog(data){
+		$.dialog({
+			lock: true,
+		    max: false,
+		    min: false,
+			fixed: true,
+		    drag: false,
+		    resize: false,
+		    width:800,
+		    height:500,
+		    data:data,
+		    content: 'url:admin.php?mod=product&code=dList',
+			title: '产品查询'
+		});
+	}
+</script>
+{template @admin/footer}

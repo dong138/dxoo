@@ -1,0 +1,165 @@
+<!--{template header}-->
+<!--{~ui('loader')->js('@validform')}-->
+<!--{~ui('loader')->css('@valid.style')}-->
+<!--{~ui('loader')->js('@validate')}-->
+<!--{~ui('loader')->js('@dtree')}-->
+<!--{~ui('loader')->css('@dtree')}-->
+<style type="text/css">
+
+.dtree {
+	border: 1px solid #ddd;
+	font-size:14px;
+	overflow-y: scroll;
+	height: 350px;
+	display: none;
+	overflow-x: scroll;
+	width: 268px;
+	cursor: pointer;
+	position: absolute;
+	left:111px;
+	top:29px;
+	padding:15px;
+	background: #fff;
+}
+
+.node_name:hover {
+	color: #0ae;
+}
+
+.field
+{
+	inline-height:50px;
+	
+}
+</style>
+<script type="text/javascript">
+	d = new dTree("d");
+	d.add(0,-1,"{SYS_NAME}");
+{loop $catalog $catalogitem}
+	d.add($catalogitem['id'],$catalogitem['parent'],"$catalogitem['name']");
+{/loop}
+	document.write(d);
+	d.openAll();
+	
+	function tree_show(){
+		$(".dtree").slideToggle("fast");
+	}
+	
+	function node_name(_this){
+		if ($(this).attr("data") == 0) {
+			$("#shopType").val("请选择二级分类");
+			$(".dtree").slideToggle("fast");
+			return;
+		}
+		$("#shopType").val($(_this).text());
+		$(".dtree").slideToggle("fast");
+	}
+	
+	$(function () {
+		$("#registerform").Validform({
+			tiptype:3,
+			showAllError: true
+		});
+	});
+	
+</script>
+
+<script type="text/javascript">
+   $(function(){
+	   $(".box").append($(".dtree"));
+   })
+</script>
+
+<script language="javascript">
+	var str = "商家介绍:例如营业面积、本店特色等\r\n合作店数:\r\n套餐/产品:\r\n是否有营业执照/其它证书:\r\n人均消费:\r\n日均可接待量:\r\n其他介绍:\r\n ";
+	$(function() {
+		$("#content").text(str);
+	});
+
+
+	}
+</script>
+<div class="site-ms__left">
+	<div class="t_area_out">
+		<div class="t_area_in">
+			<p class="cur_title">商务合作</p>
+			<div class="sect">
+				<div class="nleftL">
+					特别欢迎优质商家、淘宝大卖家提供{TUANGOU_STR}信息。
+					<form action="?mod=list&code=doteamwork" method="post" id="registerform">
+						<div class="field">
+							<label><span style="color: red">*</span>您的姓名</label> <input
+								type="text" name="name" id="name"
+								datatype="*" errormsg="请输入您的姓名！" nullmsg="请输入您的姓名！" class="text"
+								value="" size="30">
+						</div>
+						<div class="field">
+							<label><span style="color: red">*</span>您的手机</label> <input
+								type="text" name="phone" id="phone" datatype="/^1[3578]\d{9}$/"
+								errormsg="手机号码错误！" nullmsg="请输入手机号码！"  sucmsg=" " class="text"
+								size="30"> 
+						</div>
+						<div class="field">
+							<label><span style="color: red">*</span>您的邮箱</label> <input type="text" name=email id="email"
+								datatype="/^\w+([-+.]\w+)*@(\w+([-.]\w+)*\.)+([a-zA-Z]+)+$/"
+								errormsg="邮箱错误！" nullmsg="请输入邮箱！"   sucmsg=" " class="text"
+								size="30"></span>
+						</div>
+						<div class="field">
+							<label>其他联系方式</label> <input name="elsecontat" type="text"
+								class="text" id="elsecontat" size="30"> <span
+								class="hint">请留下您的手机、QQ号或邮箱，方便联系</span>
+						</div>
+
+						<div class="field">
+							<label><span style="color: red">*</span>门店名称</label> <input
+								type="text" name="shopName" id="shopName"
+								datatype="*" errormsg="请输入门店名称！" nullmsg="请输入门店名称！" class="text"
+								value="" size="30">
+						</div>
+						<div class="field">
+							<label><span style="color: red">*</span>详细地址</label> <input
+								type="text" name="shopAddress" id="shopAddress"
+								datatype="*" errormsg="请输入详细地址！" nullmsg="请输入详细地址！" class="text"
+								value="" size="30">
+						</div>
+						<div class="field">
+							<label><span style="color: red">*</span>门店电话</label> <input
+								type="text" name="shopPhone" id="shopPhone"
+								datatype="*" errormsg="请输入门店电话！" nullmsg="请输入门店电话！" class="text"
+								value="" size="30">
+						</div>
+
+						<div class="field">
+							<label>日销售额</label> <input type="text" name="salesVolume"
+								id="salesVolume" 	datatype="/^[1-9]\d*$/" errormsg="请输入整数" nullmsg="请输入日销售额！" class="text"
+								value="" size="30">
+						</div>
+						<div class="field">
+							<div class="box">
+								<label><span style="color: red;">*</span>商家类型</label> <input
+									type="text" name="shopType" id="shopType"
+									onclick="tree_show()" datatype="*" errormsg="请输入商家类型！" nullmsg="请输入商家类型！" class="text"
+									 value="" size="30"> 
+							</div>
+						</div>
+
+						<div class="field">
+							<label><span style="color: red">*</span>{TUANGOU_STR}内容</label>
+							<textarea name="content" id="content" rows="5" cols="80"
+								datatype="*" errormsg="请输入内容！" nullmsg="请输入内容！" class="text"
+								style="width: 520px; height: 310px"></textarea>
+							<span id="content_Msg" style="color: red;"></span>
+						</div>
+						<div id="l_act">
+							<input type="submit" class="btn btn-primary" value="提 交">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="site-ms__right">{~ui('widget')->load()}</div>
+</div>
+<!--{template footer}-->

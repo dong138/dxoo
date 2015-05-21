@@ -1,0 +1,14 @@
+<!--{template "header"}-->
+<div class="site-ms__left">
+    <div class="site-mast__search-result" {if $kw} style="display:block;" {else}style="display:none;">
+        {/if}>找到“{$kw}”相关的玩广告信息如下
+    </div>
+<!--{eval echo ui('loader')->css($this->Module.'.'.$this->Code)}-->
+<!--{~ui('loader')->css('seller')}-->
+<div class="site-fs">
+    <!--{~logic('sort')->adplay_navigate()}-->
+    <!--{~logic('adplay')->state_navigate()}-->
+</div>
+<!--{template "adplay_list"}-->
+<!--{~ui('iimager')->single_lazy()}-->
+<!--{template "footer"}-->

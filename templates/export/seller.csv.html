@@ -1,0 +1,3 @@
+商家名称,商品名称,购买时间,所在区域,单价,总价,支付价,支付方式,订单状态{echo "\n"}
+{loop $list $i $order}{$order['sellername']},{$order['cName']},{echo date('Y-m-d H:i:s', $order['buytime'])},{echo logic ( 'misc' )->CityList($order['city'])[0]['cityname']},{$order['productprice']},{$order['totalprice']},{$order['paymoney']},{$order['dName']},{echo logic ( 'order' )->GetProcessValue($order['process'])}{echo "\n"}
+{/loop}

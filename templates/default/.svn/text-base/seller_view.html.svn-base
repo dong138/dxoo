@@ -1,0 +1,147 @@
+<!--{template header}-->
+<!--{~ui('loader')->css('seller')}-->
+<div class="site-ms__left"> 
+{~ui('loader')->js('@time.lesser')}
+<div class="t_area_out">
+<div class="shopInt">
+<div class="shopName"><a href="?mod=seller&code=view&id={$seller['id']}" target="_blank">{$seller['sellername']}</a></div>
+<div class="deal-tile__cover">{eval ui('iimager')->seller_multis($seller['id'], $seller['imgs'])}</div>
+<div class="deal-tile__con">
+<dl class="shopInt_info">
+<p><em>联系电话：</em>{$seller[sellerphone]}</p>
+<p><em>详细地址：</em>{$seller[selleraddress]}</p>
+<p><em>人均消费：</em>￥{$seller[price_avg]}元</p>
+<p><em>营业时间：</em>{$seller[trade_time]}</p>
+</dl>
+</div>
+</div>
+</div>
+<div class="t_area_out">
+<div class="t_area_in">
+<a class="detail-centit">
+<span>商家发布的{TUANGOU_STR}</span>
+</a>
+<!--{eval $data = logic('product')->GetOwnerList($seller['id'],5)}-->
+<!--{loop $data $product2}-->
+<p>
+<a target="_blank" href="?view={$product2['id']}">{$product2['name']}</a>
+<b class="oc_price">&yen;{$product2['nowprice']}</b>
+<span class="mb_0626" id="tuanState">已售出<b>{$product2['sells_count']}</b>份</span>
+</p>
+<!--{/loop}-->
+</div>
+</div>
+<div class="content-navbar" id="content-navbar-id">
+<ul>
+{if !meta('p_hs_'.$product['id'])}
+<li class="name-cur"><span id="name-address">商家位置</span></li>
+<script type="text/javascript">
+$("#name-address").click(function() {
+$(this).parent("li").nextAll().removeClass("name-cur");
+$(this).parent("li").addClass("name-cur");
+document.getElementById("name-address-block").scrollIntoView();
+})
+</script>
+{/if}
+<li {if meta('p_hs_'.$product['id'])}class="name-cur"{/if}><span id="name-product-detail" >商家介绍</span></li>
+</ul>
+<script type="text/javascript">
+if(!($.browser.msie && $.browser.version<7)){
+document.write('<script type="text/javascript" src="./js/side_follow.js"><'+'/script>');
+}
+$("#name-product-detail").click(function(){
+$(this).parent("li").nextAll().removeClass("name-cur");
+$(this).parent("li").prevAll().removeClass("name-cur");
+$(this).parent("li").addClass("name-cur");
+document.getElementById("name-product-detail-block").scrollIntoView();
+})
+</script>            
+<div style="clear:both;"></div>
+</div>
+<script type="text/javascript">
+if(!($.browser.msie && $.browser.version<7)){
+$("#content-navbar-id").fixbox({distanceToBottom:200,threshold:8});
+}
+</script>
+<div class="mainbox">
+<div class="main">
+{~ui('loader')->js('@product.detail')}
+<a class="detail-centit" id="name-address-block">
+<span>商家地址</span>
+</a>
+<div class="position-wrapper">
+<div class="address-list">
+{eval $sellermap = explode(',', $seller[sellermap]);}
+{if $sellermap[0]!=''}
+<script type="text/javascript" src="http://api.go2map.com/maps/js/api_v2.0.js"></script>
+<script type="text/javascript"> 
+var map, marker;
+function map_initialize()
+{
+var location = new sogou.maps.Point('{$sellermap[0]}', '{$sellermap[1]}');
+var mapOptions = {
+zoom: parseInt('{$sellermap[2]}'),
+center: location,
+mapTypeId: sogou.maps.MapTypeId.ROADMAP,
+mapControl: false
+};
+map = new sogou.maps.Map(document.getElementById("map_canvas"), mapOptions);
+marker = new sogou.maps.Marker({
+map: map,
+position: location,
+title: "{$seller['sellername']}"
+});
+}
+</script>
+<div class="left-content">
+<div id="map_canvas">
+<div style="padding:1em; color:gray;">正在载入...</div>
+</div>
+<a id="img1" class="img2"><div class="map_big">查看完整地图</div></a>
+</div>
+{/if}
+<div class="biz-wrapper" style="float:left;">
+<h1>{$seller['sellername']}</h1>
+<ul style="margin-top:15px;font-size:12px;">
+<li class="com_adr">
+<div><strong>地址：</strong>{$seller['selleraddress']}</div>
+<div><strong>电话：</strong>{$seller['sellerphone']}</div>
+<a href="{$seller['sellerurl']}" target="_blank">{$seller['sellerurl']}</a>
+</li>
+</ul>
+</div>
+{if $sellermap[0]!=''}
+<script type="text/javascript">
+$(document).ready(function() {
+$("#img1").click(function() {
+window.open('http://map.sogou.com/#c={$sellermap[0]},{$sellermap[1]},{$sellermap[2]}');
+});
+<!--{if $sellermap[0]!=''}-->
+map_initialize();
+<!--{/if}-->
+});
+</script>
+{/if}
+</div>
+<div style="clear:both;"></div>
+</div>
+<a class="detail-centit" id="name-product-detail-block">
+<span>商家介绍</span>
+</a>
+<div id="product_detail_area">
+<Script type="text/javascript">
+$("#t_detail_txt img").each(function(){
+if($(this).width() > $(this).parent().width()) {
+$(this).width("100%");
+}});
+</Script>
+<div id="product_detail_cnt" class="product_detail_cnt">{$seller['content']}</div>
+</div>
+</div>
+</div>
+</div>
+<div class="site-ms__right">
+<!--{~ui('widget')->load('index_detail')}-->
+</div>
+</div>
+<!--{template footer}-->

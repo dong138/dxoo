@@ -1,0 +1,63 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{~ui('loader')->js('#admin/js/cplace.mgr.ajax')}
+<table cellspacing="1" cellpadding="4" width="100%" align="center"
+	class="tableborder">
+	<tr class="header">
+		<td colspan="4">{$type['name']}<font color="red"></font></td>
+	</tr>
+	<tr class="banner">
+		<td colspan="7">1、是否开启精选？ <font class="ini"
+			src="catalog.enabled"></font>（点击按钮：绿色开启、灰色关闭）<br />
+			2、输入框为空时，查询所有列表<br />
+			3、输入框不为空时，然后选择为推送<br />
+		<div class="isearcher">
+			<p class="searcher_li">
+			<input id="iscp_input" value="{$keyword}" class="isearcher_input_words" type="text"/>
+			<input id="iscp_button" class="btn btn-primary btn-small" type="button" value="搜索" />
+		</div>
+		</td>
+	</tr>
+	<tr class="tr_nav">
+		<td width="10%">ID</td>
+		<td width="20%">推送名称</td>
+		<td width="20%">图片</td>
+		<td width="10%">关联</td>
+		{if $isSort}
+		<td width="10%">排序</td>
+		{/if}
+	</tr>
+	{loop $list $one}
+	<tr>
+		<td>{$one['id']}</td>
+		<td>{$one['name']}</td>
+		<td>{$one['pic']}</td>
+		<td>
+			{eval $num = logic('ticket_push')->Exists({$one['id']},{$pushid})}
+			<a href="javascript:void(0)" data="?mod=ticket_push&code=updateAjax&projectid={$one['id']}&pushid={$pushid}" onclick="update({$one[id]},{echo $num ? 1:0},this,{echo $num ? 1:0})">
+			<img id="img{$one['id']}" src="templates/admin/images/{echo $num ? 'btn_enable.png':'btn_disable.gif' }"></img>
+			</a>
+		</td>
+		{if $isSort}
+		<td><input data="?mod=ticket_push&code=order&id={$one['rid']}" value="{$one['order']}" class="th2s" type="text" onblur="order(this);"/></td>
+		{/if}
+	</tr>
+	{/loop}
+	
+</table>
+<tfoot>
+    <tr>
+        <td colspan="9">{~page_moyo()}</td>
+    </tr>
+</tfoot>
+<script type="text/javascript">
+	$(function(){
+		$('#iscp_button').click(function(){
+			var iscp=$('#iscp_input').val();
+			var strKey='?mod=ticket_push&code=toPush&id={$pushid}&key='+iscp;
+			window.location = strKey;
+		});
+	});
+</script>
+<!--{template @admin/footer}-->

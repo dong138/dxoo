@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/dxoo/!svn/ver/2/templates/admin/js
+END
+wizard.processer.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/admin/js/wizard.processer.js
+END
+service.mail.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/admin/js/service.mail.mgr.js
+END
+fund.order.ops.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/admin/js/fund.order.ops.js
+END
+order.process.batch.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dxoo/!svn/ver/2/templates/admin/js/order.process.batch.js
+END
+table.hover.js
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/admin/js/table.hover.js
+END
+express.cdp.sync.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/admin/js/express.cdp.sync.js
+END
+subscribe.generate.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/2/templates/admin/js/subscribe.generate.js
+END
+cplace.inputer.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/admin/js/cplace.inputer.js
+END
+prize.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/admin/js/prize.mgr.js
+END
+express.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/admin/js/express.mgr.js
+END
+attrs.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/admin/js/attrs.mgr.js
+END
+reports.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/admin/js/reports.mgr.js
+END
+jquery.highchartTable.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/2/templates/admin/js/jquery.highchartTable.js
+END
+recharge.card.ops.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/2/templates/admin/js/recharge.card.ops.js
+END
+order.process.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/admin/js/order.process.js
+END
+notify.event.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/2/templates/admin/js/notify.event.js
+END
+cplace.mgr.ajax.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/admin/js/cplace.mgr.ajax.js
+END
+export.selector.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/admin/js/export.selector.js
+END
+service.sms.js
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/admin/js/service.sms.js
+END
+product.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/admin/js/product.mgr.js
+END
+zlog.b64.js
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/2/templates/admin/js/zlog.b64.js
+END
+push.template.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/2/templates/admin/js/push.template.mgr.js
+END
+ets.lang.updater.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/admin/js/ets.lang.updater.js
+END
+recharge.card.generate.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/dxoo/!svn/ver/2/templates/admin/js/recharge.card.generate.js
+END
+subscribe.broadcast.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dxoo/!svn/ver/2/templates/admin/js/subscribe.broadcast.js
+END
+highcharts.js
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/admin/js/highcharts.js
+END
+tttuangou_seller.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dxoo/!svn/ver/2/templates/admin/js/tttuangou_seller.mgr.js
+END
+widget.checker.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/admin/js/widget.checker.js
+END
+widget.config.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/admin/js/widget.config.js
+END
+cash.order.ops.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/admin/js/cash.order.ops.js
+END
+recharge.order.ops.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/2/templates/admin/js/recharge.order.ops.js
+END
+product.mgr.autoSave.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dxoo/!svn/ver/2/templates/admin/js/product.mgr.autoSave.js
+END
+coupon.add.js
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/admin/js/coupon.add.js
+END
+widget.area.blocks.sort.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dxoo/!svn/ver/2/templates/admin/js/widget.area.blocks.sort.js
+END
+footer.js
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/2/templates/admin/js/footer.js
+END
+delivery.process.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/admin/js/delivery.process.js
+END
+sdb.parser.js
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/admin/js/sdb.parser.js
+END
+push.mgr.js
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/2/templates/admin/js/push.mgr.js
+END
+coupon.ops.js
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/admin/js/coupon.ops.js
+END

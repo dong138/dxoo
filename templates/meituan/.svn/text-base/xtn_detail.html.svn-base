@@ -1,0 +1,414 @@
+<!--{template header}-->
+{~ui('loader')->js('@xtn_menu')}
+{~ui('loader')->js('@time.lesser')}
+{~ui('loader')->js('@zzsc')}
+{~ui('loader')->js('@tabStyle')}
+
+<style>
+body {
+  position: relative;
+}
+.site-mast__user-nav,.site-mast__branding,.site-ms,.site-mast__branding,.site-mast__site-nav,.wrap
+	{
+	width: 980px;
+}
+
+.deal_component {
+	width: 938px;
+}
+
+.deal-tile__c {
+	width: 468px;
+}
+
+.site-ms__left {
+	width: 760px;
+}
+
+.content-navbar {
+	width: 758px;
+}
+
+.search-box {
+	margin-left: 130px;
+	width: 321px;
+}
+
+.search-box .search-box__input {
+	width: 158px;
+}
+</style>
+
+<div class="bread-nav">{eval
+	ui('catalog')->tree($product['category'])}</div>
+<div class="deal_component">
+	<h3>
+		{$product['name']}
+		<p>{$product['intro']}</p>
+	</h3>
+	<div class="deal-tile__cover" style="float: left;">
+		<div class="deal-tile__cover_img">{eval
+			ui('iimager')->multis($product['id'], $product['imgs'])}</div>
+		<div class="deal-tile__cover_tag">
+			{if $product['linkid']}<i><span title="多个套餐">多种套餐</span></i>{/if}
+			{eval logic('product_tag')->html($product['id'])}
+		</div>
+	</div>
+	<div class="deal-tile__c">
+		<div class="price">
+			{if $product['presell']}{$product['presell']['text']}{/if}<em>&yen;
+				{$product['nowprice']} </em> <sub>原价：&yen; {$product['price']}</sub> {if
+			$product['presell']}
+			{TUANGOU_STR}价：&yen;{$product['presell']['price_full']}【{$product['presell']['text']}：&yen;{$product['nowprice']}】
+			{else} 折扣：<span>{$product['discount']}折</span> {/if}
+		</div>
+		<div class="detail-B_box">
+			<b class="B"> {eval $product['num'] = $product['maxnum'] == 0 ?
+				999 : (($product['is_countdown'] ? $product['virtualnum'] : 0) +
+				$product['maxnum'] - $product['sells_count']);} {if $product['type']
+				== 'prize'} <span>{echo
+					logic('prize')->allCount($product['id'])}</span>人已参加抽奖 {if
+				$product['time_remain'] < 0} {if
+				logic('prize')->PrizeWIN($product['id'])}
+				<div>
+					已开奖 <br /> <a href="?mod=prize&code=view&pid={$product['id']}">查看中奖号码</a>
+				</div> {else}
+				<div>未开奖</div> {/if} {/if} {elseif !$product['begin_date'] &&
+				!$product['limit_time']} {if $product['is_countdown'] == 1} {if
+				$product['maxnum'] > 0} {if $product['num']<1} 已售完， {else} 剩余<em>{$product['num']}</em>份，
+				{/if} {/if} {else} 已售出<em>{$product['sells_count']}</em>份， {/if} <em>{$product['succ_buyers']}</em>人已购买
+				{/if}
+			</b> <b class="B T"> {if $product['begin_date']} 开始时间：<span>{$product['begin_date']}</span>
+				{elseif $product['limit_time']} 开始计时：
+				<div class="deal_djs" id="remainTime_{$product['id']}"></div> 
+				<script language="javascript">
+					addTimeLesser($product['id'], $product['limit_time']);
+				</script>
+ 				{elseif $product['time_remain'] > 86400} 结束时间：<span>{echo
+					date('Y-m-d H:i',$product['overtime'])}</span> {elseif
+				$product['time_remain'] > 0} 剩余时间：
+				<div class="deal_djs" id="remainTime_{$product['id']}"></div> 
+				<script language="javascript">
+					addTimeLesser($product['id'], $product['time_remain']);
+				</script> 
+			{else} <span>已结束</span> {/if}
+			</b> {if $product['time_remain'] < 0}
+			<p class="txt12">下次请赶早！</p>
+			{else} {if $product['surplus']<=0}
+			<p class="txt12">下次请赶早！</p>
+			{else}
+			<p class="txt12">
+				{if $product['is_countdown'] == 1 && $product['num'] > 0 ||
+				$product['is_countdown'] == 0}数量有限，行动要快哦！{/if} <i class="B3">{if
+					$favorited && MEMBER_ID > 0}已收藏{elseif MEMBER_ID > 0}<a
+					id="favorite" href="javascript:void(0);"
+					tourl="?mod=me&code=favorite&op=add&id={$product['id']}"
+					onclick="addfavorite()">点击收藏</a>{/if}
+				</i>
+			</p>
+			{if !$product['begin_date'] && !$product['limit_time'] &&
+			($product['is_countdown'] == 1 && $product['num'] > 0 ||
+			$product['is_countdown'] == 0)} {if $product['succ_remain']<=0}
+			<p class="txt12">{TUANGOU_STR}成功,仍可继续购买</p>
+			{else}
+			<p class="txt12">
+				达成{TUANGOU_STR}还需{$product['succ_remain']}人 {if
+				meta('p_ir_'.$product['id'])}<a
+					href="{eval echo $this->Config[site_url]; }/?u={MEMBER_ID}"
+					onclick="copyText(this.href);">，邀请朋友一起买，返利{ini:product.default_payfinder}元</a>{/if}
+			</p>
+			{/if} {/if} {/if} {/if} {if $product['linkid']}
+			<div class="other_l">
+				<em>套餐类型：</em>
+				<div class="other_l_s">
+					{loop $product['product_link']['products'] $plk} {if $product['id']
+					== $plk['pid']} <span class="u_seled">{$plk['name']}</span> {else}
+					<span class="u_sel"><a href="?view={$plk['pid']}">{$plk['name']}</a></span>
+					{/if} {/loop}
+				</div>
+			</div>
+			{/if}
+		</div>
+		{if $product['time_remain'] < 0}
+		<div class="deal_o">
+			<a class="jieshu" href="javascript:void(0)"> 已结束 </a>
+		</div>
+		{else} 
+		{if $product['surplus']>0}
+		<div class="deal_b">
+			{echo logic('check')->buildCountDownButton($product['id'],0);}
+		</div>
+		{else}
+		<div class="deal_y">已售完</div>
+		{/if} {/if}
+		<div class="datail_shop" style="display: none;">
+			<a id="favorite" class="shop_cart">购物车</a> {if $product['surplus']>0}
+			{if $favorited && MEMBER_ID > 0}<a class="shop_fav"
+				href="javascript:void(0);" title="已收藏">已收藏</a>{elseif MEMBER_ID > 0}<a
+				id="favorite" class="shop_fav" href="javascript:void(0);"
+				tourl="?mod=me&code=favorite&op=add&id={$product['id']}"
+				onclick="addfavorite()" title="收藏">收藏</a>{/if} {/if}
+		</div>
+	</div>
+	<div class="like_share_this" style="padding-bottom: 0;">{eval
+		app('bshare')->load('product_detail', array('product'=>$product))}</div>
+</div>
+<div class="site-ms__left">
+	<div class="t_area_out">
+		<div class="t_area_in">
+			<h5 class="detail-centit">商家的其他{TUANGOU_STR}</h5>
+			{if $product['show_type'] == 2 && $product['child_sellerid']}
+				<!--{eval $data = logic('product')->GetOwnerList($product['child_sellerid'],5)}-->
+			{else}
+				<!--{eval $data = logic('product')->GetOwnerList($product['sellerid'],5)}-->
+			{/if}
+			<!--{loop $data $product2}-->
+			<!--{if $product2['id']!=$product['id']}-->
+			<p>
+				<b class="oc_price">&yen;{$product2['nowprice']}</b> <a
+					target="_blank" href="?view={$product2['id']}">{$product2['name']}</a>
+				<span class="mb_0626" id="tuanState" style="float: right;">已售<b>{$product2['sells_count']}</b></span>
+			</p>
+			<!--{/if}-->
+			<!--{/loop}-->
+		</div>
+	</div>
+
+	<div class="t_area_out">
+		<div class="content-navbar" >
+			<ul class="name_subnavs">
+				{if $product['type'] != 'prize'}
+					{if !meta('p_hs_'.$product['id'])}
+					<li class="name_one active"><a href="?view={$product['id']}#shop_adress" id="name-adress" >商家位置</a></li>
+					<!-- <script type="text/javascript">
+						$("#name-address").click(function() {
+						$(this).parent("li").nextAll().removeClass("name-cur");
+						$(this).parent("li").addClass("name-cur");
+						document.getElementById("name-address-block").scrollIntoView();
+						})
+					</script> -->
+					{/if}
+				{/if}
+				<li class="name_two">
+					<a href="?view={$product['id']}#product_detail_area" id="name-product-detail">
+						{if $product['type'] == 'prize'}
+							抽奖须知
+						{else}
+							购买须知
+						{/if}
+					</a>
+				</li>
+				<script>
+					$(function(){
+						$("#name_detail_box img").css("width","100%");
+					})	
+				</script>
+				<li class="name_three"><a href="?view={$product['id']}#name_detail_box" id="name-detail">本单详情</a></li>
+				<li class="name_four"><a href="?view={$product['id']}#name_infor_box" id="name-infro">商家介绍</a></li>
+				{if $product['type'] != 'prize'}
+					<li class="name_five"><a href="?view={$product['id']}#name-comment-block_lh" id="name-comment">消费评价</a></li>
+					
+				{/if}
+			</ul>
+			<!-- <script type="text/javascript">
+				if(!($.browser.msie && $.browser.version<7)){
+				document.write('<script type="text/javascript" src="./js/side_follow.js"><'+'/script>');
+				}
+				$("#name-product-detail").click(function(){
+				$(this).parent("li").nextAll().removeClass("name-cur");
+				$(this).parent("li").prevAll().removeClass("name-cur");
+				$(this).parent("li").addClass("name-cur");
+				document.getElementById("name-product-detail-block").scrollIntoView();
+				})
+				$("#name-comment").click(function() {
+				$(this).parent("li").prevAll().removeClass("name-cur");
+				$(this).parent("li").addClass("name-cur");
+				document.getElementById("name-comment-block").scrollIntoView();
+				})
+			</script> -->
+			<!-- 固定位置 -->
+			<div class="content-navbar_buy">
+				{if $product['is_special']}
+					
+				{else}
+					<a href="?mod=buy&code=checkout&id={$product['id']}"><div class="landb-now">立即购买</div></a>
+				{/if}
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		
+		<script type="text/javascript">
+			if(!($.browser.msie && $.browser.version<7)){
+				$("#content-navbar-id").fixbox({distanceToBottom:200,threshold:8});
+			}
+		</script>
+		<div class="mainbox">
+			<div class="main" style=" position: relative;">
+				{~ui('loader')->js('@product.detail')} 
+				{if $product['type'] != 'prize'}
+
+					<!-- 商家位置 -->
+					{if !meta('p_hs_'.$product['id'])}
+						<div class="position-wrapper" id="shop_adress">
+							<a class="detail-centit active" id="name-address-block"> <span>商家地址</span>
+							</a>
+							<div class="address-list">
+								{eval $sellermap = $product['sellermap']} {if $sellermap[0]!=''}
+								<script type="text/javascript"
+									src="http://api.go2map.com/maps/js/api_v2.0.js"></script>
+								<script type="text/javascript"> 
+									var map, marker;
+									function map_initialize(){
+										var location = new sogou.maps.Point('{$sellermap[0]}', '{$sellermap[1]}');
+										var mapOptions = {
+											zoom: parseInt('{$sellermap[2]}'),
+											center: location,
+											mapTypeId: sogou.maps.MapTypeId.ROADMAP,
+											mapControl: false
+										};
+										map = new sogou.maps.Map(document.getElementById("map_canvas"), mapOptions);
+										marker = new sogou.maps.Marker({
+											map: map,
+											position: location,
+											title: "{$product['sellername']}"
+										});
+									}
+								</script>
+								<div class="left-content">
+									<div id="map_canvas">
+										<div style="padding: 1em; color: gray;">正在载入...</div>
+									</div>
+									<a id="img1" class="img2"><div class="map_big">查看完整地图</div></a>
+								</div>
+								{/if}
+								<div class="biz-wrapper" style="float: left;">
+									<h1>
+										{if $product['show_type'] == 2 && $product['child_sellerid']}
+											<a href="?mod=seller&code=view&id={$product['child_sellerid']}">{$product['sellername']}</a>
+										{else}
+											<a href="?mod=seller&code=view&id={$product['sellerid']}">{$product['sellername']}</a>
+										{/if}
+									</h1>
+									<ul style="margin-top: 15px; font-size: 12px;">
+										<li class="com_adr">
+											<div>
+												<strong>地址：</strong>{$product['selleraddress']}
+											</div>
+											<div>
+												<strong>电话：</strong>{$product['sellerphone']}
+											</div> <a href="{$product['sellerurl']}" target="_blank">{$product['sellerurl']}</a>
+										</li>
+									</ul>
+								</div>
+								{if $sellermap[0]!=''}
+								<script type="text/javascript">
+									$(document).ready(function() {
+										$("#img1").click(function() {
+											window.open('http://map.sogou.com/#c={$sellermap[0]},{$sellermap[1]},{$sellermap[2]}');
+										});
+										<!--{if $sellermap[0]!=''}-->
+										map_initialize();
+										<!--{/if}-->
+									});
+								</script>
+								{/if}
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+					{/if}
+				{/if}
+
+				<!-- 购买须知、抽奖须知 -->
+				<div id="product_detail_area">
+					<a class="detail-centit" id="name-product-detail-block"> 
+						{if $product['type'] == 'prize'}
+							<span>抽奖须知</span>
+						{else}
+							<span>购买须知</span>
+						{/if}
+					</a> 
+					<div class="product_detail_cnt">{$product['cue']}</div>
+				</div>
+
+				<!-- 本单详情 -->
+				
+				<div id="name_detail_box">
+				<a class="detail-centit scrolltop" id="name-comment-block"> <span>本单详情</span></a><br/>
+				{$product['content']}
+				</div>
+
+				<!-- 商家介绍 -->
+				
+				<div id="name_infor_box" class="scrolltop">
+				<a class="detail-centit " id="name-comment-block"> <span>商家介绍</span></a>
+				{$product['seller_content']}
+				</div>
+				
+				<!-- 消费评价 -->
+				{if $product['type'] != 'prize'}
+					<a class="detail-centit " id="name-comment-block_lh"> <span>消费评价</span>
+					</a>
+					<!--{eval logic('comment')->show_summary($product['id'])}-->
+				{/if}
+			</div>
+			<div class="deal-buy-bottom ">
+				<div class="price">&yen;{$product['nowprice']}</div>
+				<table>
+					<tbody>
+						<tr>
+							<th>市场价</th>
+							<th>折扣</th>
+							<th>已{TUANGOU_STR}</th>
+						</tr>
+						<tr>
+							<td><span>&yen;</span>
+							<del>{$product['price']}</del></td>
+							<td>{$product['discount']}折</td>
+							<td>{if $product['type'] == 'prize'} {echo
+								logic('prize')->allCount($product['id'])} {else}
+								{$product['succ_buyers']} {/if} 人</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 评价下边的 -->
+				<div class="btn—wrapper">
+					{echo logic('check')->buildCountDownButton($product['id'],0);}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="site-ms__right">
+	<div class="t_area_out ">
+		<h1>看了本{TUANGOU_STR}的用户还看了</h1>
+		<div class="t_area_in">
+			<ul class="product_list">
+				{eval $cpid = isset($_GET['view']) ? $_GET['view'] : -1;} {eval
+				$one_product = logic('product')->GetOne($cpid);} {eval
+				$product_other_list =
+				logic('product')->GetOtherList($one_product['city'],
+				$one_product['category'], $one_product['id'], 10);} {loop
+				$product_other_list $i $product}
+				<li>
+					<p class="pl_img">
+						<a href="?view={$product['id']}"><img
+							src="{echo imager($product['imgs'][0], IMG_Small);}" width="175" /></a>
+					</p>
+					<p class="name">
+						<a href="?view={$product['id']}">{$product['name']}</a>
+					</p>
+					<div class="shop">
+						<div class="pr">
+							<font class="price">&yen;{$product['nowprice']}</font> <font
+								class="markprice">&nbsp;市场价：&yen;{$product['price']}</font>
+						</div>
+						<div style="clear: both;"></div>
+					</div>
+				</li> {/loop}
+			</ul>
+		</div>
+	</div>
+	<!--{~ui('widget')->load('index_detail')}-->
+</div>
+</div>
+<!--{template footer}-->

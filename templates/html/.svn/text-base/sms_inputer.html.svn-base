@@ -1,0 +1,36 @@
+<div class="pro-phone">
+<p class="title">手机号：</p>
+<div class="field">
+{if ini('member.contact.keep')}
+<input type="text" name="phone" id="sms_phone" value="{~user()->get('phone')}" class="f_input input_h" size="30">
+{else}
+<input type="text" name="phone" id="sms_phone" value="{~user()->get('phone')}" class="f_input input_h" size="30">
+{/if}
+<span class="hint">{echo $product['type']=='ticket'?ini('settings.tuangou_str').'券密码将通过短信发到手机上':ini('settings.tuangou_str').'成功的通知短信会发送到您的手机'} (节假日期间短信稍有延迟，请耐心等待)</span>
+</div>
+</div>
+<script type="text/javascript">
+//$(document).ready(function(){
+$.hook.add('checkout_submit', function(){
+var phone = $('#sms_phone').val();
+if (phone == '' || phone == undefined || isNaN(phone) || phone.length != 11)
+{
+$('#sms_phone').tipTip({
+content:"请输入有效的手机号！",
+keepAlive:true,
+activation:"focus",
+defaultPosition:"top",
+edgeOffset:8,
+maxWidth:"300px"
+});
+$('#sms_phone').focus();
+df_allow_to_submit('sms.inputer', false);
+}
+else
+{
+checkout_field_append('phone', phone);
+df_allow_to_submit('sms.inputer', true);
+}
+});
+//});
+</script>

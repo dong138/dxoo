@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset={ini:settings.charset}" />
+        <title>搜狗地图API接口</title>
+        <script type="text/javascript" src="http://api.go2map.com/maps/js/api_v2.0.js"></script>
+        <style type="text/css">
+            .divQuery{margin:0 10px 10px 10px;line-height: 40px;vertical-align: middle;}
+            .input{line-height: 20px;}
+        </style>
+    </head>
+    <body onLoad="initialize()" style="background-color: #F4F8FC;margin: 0;padding: 0;">
+        <div class="divQuery">
+            <input type="text" id="queryKey" placeholder="输入查找名称" class="input" onkeydown="keyEnter(window.event)"/>
+            <input type="button" value="查询" onclick="queryMapByKeys(queryKey.value)"/>
+            <input type="button" value="清除查询结果" onclick="clearQueryResult()"/>
+        </div>
+        <div id="map_canvas" style="width: 590px; height: 450px"></div>
+    <script type="text/javascript">
+var map, marker,sRender;
+function clearQueryResult(){
+    if(sRender&&sRender.clearResultFeatures){
+        sRender.clearResultFeatures();
+    }
+}
+function keyEnter(e) {
+    var keynum = -1;
+    if (window.event) {
+        keynum = e.keyCode
+    }
+    else if (e.which) {
+        keynum = e.which
+    }
+    if (keynum == 13)queryMapByKeys(document.getElementById('queryKey').value);
+}
+function queryMapByKeys(keys){
+    clearQueryResult();
+    if(keys=='')return;
+    var search=new sogou.maps.Search();
+    var request={
+        'map':map,
+        'what':{
+            'keyword':keys
+        },
+        'range':{
+            'boundFlag':2
+        }
+    };
+    search.search(request);
+    sRender=new sogou.maps.SearchRenderer();
+    search.setRenderer(sRender);
+}
+function initialize() {
+var city0 = "{$city}";
+if( city0 != "" ){
+var request = {address:{addr:city0, city:city0}};
+var geo = new sogou.maps.Geocoder();
+geo.geocode(request,city2point);
+}else{
+map_init('{$x}', '{$y}');
+}
+}
+function city2point(res){
+if(res.status='ok'){
+var p = res.data[0];
+//alert(p.location.x);
+map_init(p.location.x, p.location.y);
+}
+}
+function map_init(map_x, map_y){
+var myPoint = new sogou.maps.Point(map_x, map_y);
+var myOptions = {
+zoom:{$z},
+center: myPoint,
+mapTypeId: sogou.maps.MapTypeId.ROADMAP
+}
+map = new sogou.maps.Map(document.getElementById("map_canvas"), myOptions);
+sogou.maps.event.addListener(map, 'click', function(event) {
+xyzchanged(event, map);
+});
+marker = new sogou.maps.Marker({map: map, draggable: true});
+sogou.maps.event.addListener(marker, 'dragend', function(event){
+xyzchanged(event, map);
+});
+placeMarker(myPoint);
+}
+function xyzchanged(event, map)
+{
+placeMarker(event.point);
+var xyz = event.point.x+","+event.point.y+","+map.getZoom();
+window.parent.getxy(xyz);
+}
+function placeMarker(location) {
+marker.setPosition(location);
+map.setCenter(location);
+}
+</script> </body> </html>

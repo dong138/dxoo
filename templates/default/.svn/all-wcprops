@@ -1,0 +1,665 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/dxoo/!svn/ver/116/templates/default
+END
+subscribe_sms_validate.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dxoo/!svn/ver/2/templates/default/subscribe_sms_validate.html
+END
+home_sort_navigate.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dxoo/!svn/ver/2/templates/default/home_sort_navigate.html
+END
+article_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/default/article_view.html
+END
+recharge.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/default/recharge.html
+END
+buy_checkout.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/default/buy_checkout.html
+END
+header.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/header.html
+END
+refund_apply.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/default/refund_apply.html
+END
+recharge_pay.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/default/recharge_pay.html
+END
+buy_order.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/buy_order.html
+END
+city_place_navigate.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dxoo/!svn/ver/2/templates/default/city_place_navigate.html
+END
+fund.html
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/2/templates/default/fund.html
+END
+attrs_selector.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/attrs_selector.html
+END
+invite.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/invite.html
+END
+apiz_c2phone_confirm.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/2/templates/default/apiz_c2phone_confirm.html
+END
+seller_manage.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/seller_manage.html
+END
+select_rebate.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/select_rebate.html
+END
+adplay_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/116/templates/default/adplay_list.html
+END
+my_account_register.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dxoo/!svn/ver/2/templates/default/my_account_register.html
+END
+my_rebate.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/my_rebate.html
+END
+attrs_displayer.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/default/attrs_displayer.html
+END
+cash_order.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/cash_order.html
+END
+adplay.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/adplay.html
+END
+confirmaccount.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/confirmaccount.html
+END
+bind_finish.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/2/templates/default/bind_finish.html
+END
+choice_password.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/default/choice_password.html
+END
+seller_recommend_User.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dxoo/!svn/ver/74/templates/default/seller_recommend_User.html
+END
+bind_mail.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/bind_mail.html
+END
+article_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/default/article_list.html
+END
+seller_product_order.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/dxoo/!svn/ver/66/templates/default/seller_product_order.html
+END
+new_phone.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/new_phone.html
+END
+edit_username.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/edit_username.html
+END
+home.html
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/2/templates/default/home.html
+END
+my_product_mgr.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/my_product_mgr.html
+END
+business.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/default/business.html
+END
+tttuangou_doaddmoney.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_doaddmoney.html
+END
+pay_help.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/default/pay_help.html
+END
+detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/detail.html
+END
+bind_phone.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/bind_phone.html
+END
+phone_verify_pwd.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/2/templates/default/phone_verify_pwd.html
+END
+tttuangou_face.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_face.html
+END
+my_coupon.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/my_coupon.html
+END
+prize_sign.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/prize_sign.html
+END
+seller_recommend_order.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/dxoo/!svn/ver/81/templates/default/seller_recommend_order.html
+END
+seller_menu.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/66/templates/default/seller_menu.html
+END
+seller_list_inc.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/default/seller_list_inc.html
+END
+seller_sort_navigate.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/2/templates/default/seller_sort_navigate.html
+END
+html_static.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/2/templates/default/html_static.html
+END
+choice_verify.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/choice_verify.html
+END
+cash.html
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/2/templates/default/cash.html
+END
+ask.html
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/dxoo/!svn/ver/2/templates/default/ask.html
+END
+group_place_navigate.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/2/templates/default/group_place_navigate.html
+END
+my_credit.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/my_credit.html
+END
+comment_summary.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/2/templates/default/comment_summary.html
+END
+seller_clerka_add.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/2/templates/default/seller_clerka_add.html
+END
+seller_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/2/templates/default/seller_view.html
+END
+my_credit_telfare_recharge.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/dxoo/!svn/ver/116/templates/default/my_credit_telfare_recharge.html
+END
+my_credit_telfare.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dxoo/!svn/ver/116/templates/default/my_credit_telfare.html
+END
+seller_product_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dxoo/!svn/ver/2/templates/default/seller_product_list.html
+END
+my_setting.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/my_setting.html
+END
+circle_place_navigate.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/dxoo/!svn/ver/2/templates/default/circle_place_navigate.html
+END
+subscribe_mail.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/subscribe_mail.html
+END
+feedback.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/default/feedback.html
+END
+account_active.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/account_active.html
+END
+my_bill.html
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/2/templates/default/my_bill.html
+END
+deals.html
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/2/templates/default/deals.html
+END
+buy_order_process.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/2/templates/default/buy_order_process.html
+END
+tttuangou_ticketlist.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_ticketlist.html
+END
+seller_product_delivery.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/dxoo/!svn/ver/2/templates/default/seller_product_delivery.html
+END
+my_account_login.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/2/templates/default/my_account_login.html
+END
+my_comments.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/2/templates/default/my_comments.html
+END
+send_mail.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/send_mail.html
+END
+subscribe_mail_validate.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/dxoo/!svn/ver/2/templates/default/subscribe_mail_validate.html
+END
+phone_verify.html
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/2/templates/default/phone_verify.html
+END
+tplinfo.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/tplinfo.php
+END
+buy_countdown.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/buy_countdown.html
+END
+account_register.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/2/templates/default/account_register.html
+END
+fund_money.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/fund_money.html
+END
+subscribe_undo.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/subscribe_undo.html
+END
+tttuangou_ckticket.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_ckticket.html
+END
+recharge_order.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/default/recharge_order.html
+END
+seller_join_table.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/2/templates/default/seller_join_table.html
+END
+tttuangou_data_show_js.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_data_show_js.html
+END
+test.html
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/22/templates/default/test.html
+END
+my_order.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/default/my_order.html
+END
+tttuangou_rss.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_rss.html
+END
+preview.gif
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/preview.gif
+END
+prize_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/prize_view.html
+END
+my_favorite.html
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/2/templates/default/my_favorite.html
+END
+account_login.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/account_login.html
+END
+seller.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/seller.html
+END
+fund_order.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/fund_order.html
+END
+ccc.html
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/dxoo/!svn/ver/2/templates/default/ccc.html
+END
+seller_product_ticket.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/dxoo/!svn/ver/2/templates/default/seller_product_ticket.html
+END
+my_address.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/2/templates/default/my_address.html
+END
+new_mail.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/default/new_mail.html
+END
+msg_email.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/2/templates/default/msg_email.html
+END
+footer.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/2/templates/default/footer.html
+END
+adplay_sort_navigate.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/2/templates/default/adplay_sort_navigate.html
+END
+seller_clerka_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dxoo/!svn/ver/2/templates/default/seller_clerka_list.html
+END
+subscribe_sms.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/subscribe_sms.html
+END
+adplay_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/116/templates/default/adplay_view.html
+END
+get_password_main.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/2/templates/default/get_password_main.html
+END
+messager.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/2/templates/default/messager.html
+END
+edit_password.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/2/templates/default/edit_password.html
+END
+downapp.html
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/2/templates/default/downapp.html
+END
+buy_pay.html
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/2/templates/default/buy_pay.html
+END
+my_menu.html
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/2/templates/default/my_menu.html
+END
+tttuangou_addmoney.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_addmoney.html
+END
+tttuangou_printticket.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/dxoo/!svn/ver/2/templates/default/tttuangou_printticket.html
+END
+isearcher_inputer.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/2/templates/default/isearcher_inputer.html
+END

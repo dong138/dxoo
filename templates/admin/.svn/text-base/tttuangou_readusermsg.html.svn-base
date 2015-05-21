@@ -1,0 +1,66 @@
+<!--{template @admin/header}-->
+<table cellspacing="1" cellpadding="4" width="100%" align="center"
+	class="tableborder">
+	<tr class="header">
+		<td colspan="6">{if $msg['type']==1}意见反馈{elseif
+			$value['type']==4}手机端反馈{elseif
+			$value['type']==5}投广告{else}商务合作{/if}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="15%">姓名:</td>
+		<td>{$msg['name']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">手机:</td>
+		<td>{$msg['phone']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">邮箱:</td>
+		<td>{$msg['email']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">其他联系方式:</td>
+		<td>{$msg['elsecontat']}</td>
+	</tr>
+	
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">门店名称:</td>
+		<td>{$msg['shopName']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">详细地址:</td>
+		<td>{$msg['shopAddress']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">门店电话:</td>
+		<td>{$msg['shopPhone']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">日销售额:</td>
+		<td>{$msg['salesVolume']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">商家类型:</td>
+		{if $msg['shopType'] && $msg['shopType'] != 0}
+			{eval $cat = logic('catalog')->GetOne($msg['shopType']);}
+			<td>{$cat['name']}</td>
+		{else}
+			<td>{$msg['shopType']}</td>
+		{/if}
+	</tr>
+	
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">内容:</td>
+		<td>{$msg['content']}</td>
+	</tr>
+	<tr>
+		<td bgcolor="#F4F8FC" width="10%">金额:</td>
+		<td>{$msg['money']}</td>
+	</tr>
+</table>
+<br>
+<center>
+	<a href="?mod=tttuangou&code=usermsg">返回上一页</a> <a href="#"
+		onclick="if(confirm('您确认要删除该信息吗？')){window.location.href='?mod=tttuangou&code=deleteusermsg&id={$msg['id']}'}">删除这条信息</a>
+</center>
+{template @admin/footer}

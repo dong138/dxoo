@@ -1,0 +1,40 @@
+<!--{template header}-->
+<link rel="stylesheet" type="text/css" href="styles/edit.css"/>
+        <div class="w edit_box">
+        	<h2><span>修改绑定的{$title}</span></h2>
+        	<ul class="edit_title">
+        		<li class="edit_active"><strong>1.</strong> 选择验证方式</li>
+        		<li><strong>2.</strong> 验证/修改</li>
+        		<li><strong>3.</strong> 完成 </li>
+        	</ul>
+        	<div class="edit_info">
+        		您正在修改绑定的{$title} <label>{echo {$way}==1?{$user['phone']}:{$user['email']}}</label>，请选择修改方式：
+        	</div>
+        	<table border="1">
+        		{if {$user['phone']}}
+        		<tr>
+        			<td width="70%" valign="middle">
+        				<span class="left edit_ico1"></span>
+        				<span class="left">
+        					<h3>通过绑定的手机</h3>
+        				    <p>只需填写已经绑定的手机号</p>
+        				</span>
+        			</td>
+        			<td width="30%" valign="middle"><a href="{$phoneurl}">去修改</a></td>
+        		</tr>
+        		{/if}
+        		{if {$user['email']}}
+        		<tr>
+        			<td>
+        				<span class="left edit_ico2"></span>
+        				<span class="left">
+        					<h3>通过绑定的邮箱</h3>
+        				    <p>需要您绑定的手机可进行短信验证</p>
+        				</span>
+        			</td>
+        			<td><a href="{$emailurl}">去修改</a></td>
+        		</tr>
+        		{/if}
+        	</table>
+        </div>
+<!--{template footer}-->

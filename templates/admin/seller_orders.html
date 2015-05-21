@@ -1,0 +1,100 @@
+<!--{template @admin/header}-->
+{~ui('loader')->css('#html/isearcher/style')}
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}
+<form method="post" action="{$action}">
+<div class="header">
+	<a href="?mod=order&code=vlist"> 订单列表 </a>
+</div>
+<div>
+	<div class="isearcher">
+		<p class="searcher_li">
+			请输入您要搜索的商家关键词：<input id="keyword" name="keyword" class="isearcher_input_words" type="text" value="{$keyword}" />
+		<div id="iscp_iresult" class="isearcher_instant_result">
+			<ul id="iscp_iresult_list">
+			</ul>
+		</div>
+		</p>
+		<p class="searcher_li">
+			开始：<input type="text"
+				onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'{$tvinputs[$tvk][begin]}',vel:'iscp_timev_begintime_{$tvk}'})"
+				size="11" class="Wdate" value="{$begintime}" /> <input
+				name="iscp_timev_begintime" type="hidden"
+				id="iscp_timev_begintime_{$tvk}" value="{$begintime}" />
+			结束：<input type="text"
+				onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd',startDate:'{$tvinputs[$tvk][finish]}',vel:'iscp_timev_finishtime_{$tvk}'})"
+				size="11" class="Wdate" value="{$finishtime}" /> <input
+				name="iscp_timev_finishtime" type="hidden"
+				id="iscp_timev_finishtime_{$tvk}"
+				value="{$finishtime}" />
+		</p>
+		<p class="searcher_li">
+			 &nbsp;&nbsp;订单状态：
+			 <select name="ordproc" id="ordproc"
+				class="isearcher_filter_list">
+				<option value="" {if ''==$ordproc}selected{/if}>全部</option>
+				<option value="__CREATE__" {if '__CREATE__'==$ordproc}selected{/if}>创建订单</option>
+				<option value="__PAY_YET__" {if '__PAY_YET__'==$ordproc}selected{/if}>已经付款</option>
+				<option value="WAIT_BUYER_PAY" {if 'WAIT_BUYER_PAY'==$ordproc}selected{/if}>等待付款</option>
+				<option value="WAIT_SELLER_SEND_GOODS" {if 'WAIT_SELLER_SEND_GOODS'==$ordproc}selected{/if}>等待发货</option>
+				<option value="WAIT_BUYER_CONFIRM_GOODS" {if 'WAIT_BUYER_CONFIRM_GOODS'==$ordproc}selected{/if}>等待收货</option>
+				<option value="TRADE_FINISHED" {if 'TRADE_FINISHED'==$ordproc}selected{/if}>交易完成</option>
+			</select> 
+			<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+		</p>
+	</div>
+	<script type="text/javascript">
+		var frcKeys = '{echo substr($frcKeys, 0, -1)}';
+	</script>
+</div>
+<div class="export_link">
+	<a class="button  back1 back2 fr"
+		href="?mod=export&code=seller&referrer={echo urlencode($_SERVER['QUERY_STRING'])}">导出数据</a>
+</div>
+<table id="orderTable" cellspacing="1" cellpadding="4" width="100%"
+	align="center" class="tableborder">
+	<tr class="tr_nav">
+			<td width="10%">商家名称</td>
+			<td width="10%">商品名称</td>
+			<td width="10%">购买时间</td>
+			<td width="8%">所在区域</td>
+			<td width="7%">单价</td>
+			<td width="7%">总价</td>
+			<td width="7%">支付价</td>
+			<td width="12%">支付方式</td>
+			<td width="7%" align="center">订单状态</td>
+		</tr>
+		<!--{loop $seller $i $value}-->
+		<tr onmouseover="this.className='tr_hover'"
+			onmouseout="this.className='tr_normal'">
+			<td>{$value['sellername']}<br />
+			<a href="{$value['sellerurl']}" target="_blank">{$value['sellerurl']}</a></td>
+			<td>{$value['cName']}</td>
+			<!-- 等待 -->
+			<td>{echo date('Y-m-d H:i:s', $value['buytime'])}</td>
+			<td>{$newcity[$value['city']]}</td>
+			<td>{$value['productprice']}元</td>
+			<td>{$value['totalprice']}元</td>
+			<td>{$value['paymoney']}元</td>
+			<td>{$value['dName']}</td>
+			<td>{if $value['process']=="__CREATE__"}创建订单{/if}
+			{if $value['process']=="__PAY_YET__"}已经付款{/if}
+			{if $value['process']=="WAIT_BUYER_PAY"}等待付款{/if}
+			{if $value['process']=="WAIT_SELLER_SEND_GOODS"}等待发货{/if}
+			{if $value['process']=="WAIT_BUYER_CONFIRM_GOODS"}等待收货{/if}
+			{if $value['process']=="TRADE_FINISHED"}交易完成{/if}
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="8">{$page_arr}</td>
+		</tr>
+	</tfoot>
+</table>
+</form>
+<script type="text/javascript">
+	
+</script>
+{template @admin/footer}

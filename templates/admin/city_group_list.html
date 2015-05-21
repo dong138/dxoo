@@ -1,0 +1,67 @@
+<!--{template @admin/header}-->
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->js('#admin/js/sdb.parser')}
+{~ui('loader')->js('#html/catalog/catalog.mgr.ajax')}
+<table cellspacing="1" cellpadding="4" width="100%" align="center"
+	class="tableborder">
+	<tr class="header">
+		<td colspan="4">热门团购管理 / 当前城市：<font color="red">{$city['cityname']}</font></td>
+	</tr>
+	<tr class="banner">
+		<td colspan="7">1、是否开启热门团购？ <font class="ini"
+			src="catalog.enabled"></font>（点击按钮：绿色开启、灰色关闭） <br />
+		</td>
+	</tr>
+	<tr class="tr_nav">
+		<td width="5%">显示顺序</td>
+		<td width="15%">分类名称</td>
+		<td width="15%">产品数<BR>在售/总计
+		</td>
+		<td width="15%">更新时间</td>
+		<td width="15%">热门推荐</td>
+	</tr>
+	<!--{if count($catalog)==0}-->
+	<tr class="tips">
+		<td colspan="6"><font color="red">提醒：如果您启用了分类功能，那么您必须至少添加一个主分类才可以，否则添加或编辑产品时是无法选择分类的！</font>
+		</td>
+	</tr>
+	<!--{/if}-->
+	<!--{loop $catalog $i $topclass}-->
+	{eval if ($topclass['id']==0) continue;} {eval $mclass = $topclass;
+	unset($mclass['subclass']); $topclass['subclass'] ||
+	$topclass['subclass'] = array(); array_unshift($topclass['subclass'],
+	$mclass); $topclass['subclass'][0]['master'] = true; $parentID =
+	$mclass['id']; $parent = $mclass['name']; $subclass =
+	$topclass['subclass']; }
+	<!--{loop $topclass['subclass'] $i $class}-->
+	{eval if ($class['id']==0) continue;}
+	<tr>
+		<td style="white-space: nowrap;">{if $class['parent'] ==
+			0}{else}{echo '|——';}{/if}<font class="dbf th2s"
+			src="id:{$class['id']}@catalog/order">{$class['order']}</font>
+		</td>
+		<td>{echo $class['master'] ? '' : '|——'}<font class="dbf"
+			src="id:{$class['id']}@catalog/name">{$class['name']}</font>
+		</td>
+		<td>{echo $class['master'] ? '---' : ($class['oslcount'].' /
+			'.$class['procount'])}</td>
+		<td>{echo date('Y-m-d H:i:s', $class['upstime'])}</td>
+		<td>
+			{eval $num = logic('group')->Exists({$city['cityid']},{$class['id']})}
+			<a href="javascript:void(0)" onclick="group_update({$city['cityid']},{$class['id']},{echo $num ? 0:1},this)">
+			<img id="img{$class['id']}" src="templates/admin/images/{echo $num ? 'btn_enable.png':'btn_disable.gif' }"></img>
+			</a>
+		</td>
+	</tr>
+	<!--{/loop}-->
+	<!--{/loop}-->
+</table>
+<script type="text/javascript">
+	$.hook.add('catalog.add.finish', function(id) {
+		location.href = location.href;
+	});
+	function after_catalog_delete(id) {
+		location.href = location.href;
+	}
+</script>
+<!--{template @admin/footer}-->

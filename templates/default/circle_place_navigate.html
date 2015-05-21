@@ -1,0 +1,11 @@
+<div class="site-fs__cell">
+	<div class="site-fs__cell-title">热门商圈：</div>
+	<div class="site-fs__cell-son1">
+		{loop $circles $i $circle} 
+			<a href="index.php?{$circle['parent_type']}={$circle['parent_id']}&{$circle['type']}={$circle['id']}" class="topclass-name">{$circle['name']}</a>
+		{/loop}
+		<div style="clear: both;"></div>
+	</div>
+	<div style="clear: both; height: 0px; overflow: hidden;"></div>
+	<div style="display: none;">{SYS_NAME}+区域导航</div>
+</div>

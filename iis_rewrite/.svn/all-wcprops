@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/dxoo/!svn/ver/1/iis_rewrite
+END
+httpd.ini
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/dxoo/!svn/ver/1/iis_rewrite/httpd.ini
+END
+httpd.parse.errors
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/iis_rewrite/httpd.parse.errors
+END
+Rewrite.dll
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/1/iis_rewrite/Rewrite.dll
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/dxoo/!svn/ver/1/iis_rewrite/readme.txt
+END
+mtbnotif.dll
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/dxoo/!svn/ver/1/iis_rewrite/mtbnotif.dll
+END

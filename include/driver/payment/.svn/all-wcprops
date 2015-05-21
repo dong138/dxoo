@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/12/include/driver/payment
+END
+self.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/driver/payment/self.php
+END
+tenpay.api.v1.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.api.v1.php
+END
+cod.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/driver/payment/cod.php
+END
+guofubao.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/1/include/driver/payment/guofubao.php
+END
+tenpay.api.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.api.php
+END
+guofubao11.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/1/include/driver/payment/guofubao11.php
+END
+alipaymobile.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/dxoo/!svn/ver/1/include/driver/payment/alipaymobile.config.php
+END
+bank.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/driver/payment/bank.php
+END
+bankdirect.install.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dxoo/!svn/ver/1/include/driver/payment/bankdirect.install.php
+END
+aliwap.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/driver/payment/aliwap.php
+END
+chinabank.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/1/include/driver/payment/chinabank.php
+END
+alipay.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/driver/payment/alipay.php
+END
+recharge.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/1/include/driver/payment/recharge.php
+END
+HttpClient.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/1/include/driver/payment/HttpClient.class.php
+END
+chinabank.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/1/include/driver/payment/chinabank.config.php
+END
+kuaibillmobile.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dxoo/!svn/ver/1/include/driver/payment/kuaibillmobile.php
+END
+kuaibillmobile.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/dxoo/!svn/ver/1/include/driver/payment/kuaibillmobile.config.php
+END
+wechatpay.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/dxoo/!svn/ver/1/include/driver/payment/wechatpay.config.php
+END
+yeepay.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/driver/payment/yeepay.php
+END
+yeepay.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/1/include/driver/payment/yeepay.config.php
+END
+tenpay.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.php
+END
+tenpay.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/1/include/driver/payment/tenpay.config.php
+END
+bankdirect.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/1/include/driver/payment/bankdirect.php
+END
+alipaymobile.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/1/include/driver/payment/alipaymobile.php
+END
+bankdirect.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/dxoo/!svn/ver/1/include/driver/payment/bankdirect.config.php
+END
+guofubao.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/dxoo/!svn/ver/1/include/driver/payment/guofubao.config.php
+END
+bank.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/1/include/driver/payment/bank.config.php
+END
+aliwap.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/1/include/driver/payment/aliwap.config.php
+END
+alipay.config.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/dxoo/!svn/ver/1/include/driver/payment/alipay.config.php
+END
+wechatpay.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/1/include/driver/payment/wechatpay.php
+END
+payment.list.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/1/include/driver/payment/payment.list.php
+END
+guofubao1.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dxoo/!svn/ver/1/include/driver/payment/guofubao1.php
+END

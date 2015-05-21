@@ -1,0 +1,52 @@
+<!--{template @admin/header}-->
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="12"><b style="float: left;">活动分类管理</b> <a
+				style="float: left; margin-left: 5px"
+				href="?mod=activity&code=add&id={$id}" class="back1 back2">添加活动分类</a></td>
+		</tr>
+		{if !empty($list)}
+		<tr>
+			<td colspan="12">
+				<div class="tr_select">
+					请输入您要搜索的活动关键词： <input name="keyword" value="{$keyword}" id="keyword" type="text" class="isearcher_input_words" />
+					<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+				</div>
+			</td>
+		</tr>
+		{/if}
+		<tr class="tr_nav">
+			<td width="8%">分类ID</td>
+			<td width="20%">分类名称</td>
+			<td width="40%">配置信息</td>
+			<td width="15%" align="center">管理</td>
+		</tr>
+		<!--{if empty($list)}-->
+		<tr>
+			<td colspan="12">暂时还没有活动分类，请<a
+				href="?mod=activity&code=Activity&id={$id}">点此添加活动分类</a>。
+			</td>
+		</tr>
+		<!--{/if}-->
+		<!--{loop $list $i $value}-->
+		<tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'">
+			<td>{$value['id']}</td>
+			<td>{$value['name']}</td>
+			<td>{$value['configkey']}</td>
+			<td align="center">
+				<a href="?mod=activity&code=manager_list&id={$value['id']}">管理活动项目</a>
+			</td>
+		</tr>
+		<!--{/loop}-->
+		<tr>
+			<td colspan="12">请注意：<br>1、商家各项金额数据中，均不包括实物订单中用户支付的商品运输费用。<br>2、添加商家时绑定的商家用户将成为商家分类{TUANGOU_STR}券的管理者，<font
+				color=red>商家用户可前台登陆、查看旗下{TUANGOU_STR}券、核对和消费</font>！
+			</td>
+		</tr>
+	</table>
+	<a href="?mod=activity&code=Add&id={$id}" class="back1 back2">添加活动分类</a> <br>
+	<center>{$page_arr}</center>
+</form>
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

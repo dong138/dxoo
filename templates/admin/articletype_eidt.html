@@ -1,0 +1,50 @@
+<!--{template @admin/header}-->
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->js('@jquery.hook')}
+{~ui('loader')->addon('editor.kind')}
+{~ui('loader')->css('#admin/css/product.mgr')}
+{eval $title = $article['id']>0?'文章分类修改':'添加文章分类'}
+<script type="text/javascript">
+    var __Global_ID = "{$article[id]}";
+</script>
+<form action="?mod=articletype&code=save" method="post"
+      enctype="multipart/form-data">
+    <table cellspacing="1" cellpadding="4" width="100%" align="center"
+           class="tableborder">
+        <tr class="header">
+            <td colspan="2">$title</td>
+        </tr>
+        <tr>
+            <td width="50" bgcolor="#F4F8FC">分类名称</td>
+            <td><input type="text" id="typename" name="typename" value="{$article['typename']}" size="60" required /></td>
+        </tr>
+        <tr>
+            <td bgcolor="#F4F8FC" class="td_title">状态:</td>
+            <td align="right">
+                <select name="status" class="isearcher_filter_list" datatype="*" errormsg="请选择" sucmsg=" ">
+                    <option value="1" {if "1"==$article['status']}selected{/if}>显示</option>
+                    <option value="0" {if "0"==$article['status']}selected{/if}>不显示</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td colspan="2" bgcolor="#F4F8FC">
+                <center>
+                    <input type="hidden" name="id" value="{$article['id']}" />
+                    <input type="submit" value="保存" class="button" />
+                </center>
+            </td>
+        </tr>
+    </table>
+</form>
+<script type="text/javascript">
+    $(function(){
+        $('input:submit').click(function(){
+            var name = $('#typename').val();
+            if($.trim(name).length==0){
+                alert('文章分类名称不能为空');
+                return false;
+            }
+        });
+    });
+</script>
+{template @admin/footer}

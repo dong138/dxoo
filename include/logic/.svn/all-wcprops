@@ -1,0 +1,461 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/dxoo/!svn/ver/176/include/logic
+END
+acl.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/1/include/logic/acl.logic.php
+END
+circle.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/circle.logic.php
+END
+profit.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/86/include/logic/profit.logic.php
+END
+city.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/38/include/logic/city.logic.php
+END
+everybody.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/logic/everybody.logic.php
+END
+wimage.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/wimage.logic.php
+END
+tag.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/1/include/logic/tag.logic.php
+END
+push.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/push.logic.php
+END
+delivery.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/1/include/logic/delivery.logic.php
+END
+apim.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/apim.logic.php
+END
+sort.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/sort.logic.php
+END
+pay.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/1/include/logic/pay.logic.php
+END
+prize.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/prize.logic.php
+END
+enabled.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/enabled.logic.php
+END
+gd.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/dxoo/!svn/ver/1/include/logic/gd.logic.php
+END
+sellerTicket.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/178/include/logic/sellerTicket.logic.php
+END
+account.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/account.logic.php
+END
+attrs.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/attrs.logic.php
+END
+branch.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/branch.logic.php
+END
+service.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/service.logic.php
+END
+me.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/dxoo/!svn/ver/1/include/logic/me.logic.php
+END
+rebate.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/rebate.logic.php
+END
+mysql.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/mysql.logic.php
+END
+isearcher.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/128/include/logic/isearcher.logic.php
+END
+pinyin.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/pinyin.logic.php
+END
+rbac.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/rbac.logic.php
+END
+choujiang.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/logic/choujiang.logic.php
+END
+adplay.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/114/include/logic/adplay.logic.php
+END
+order.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/176/include/logic/order.logic.php
+END
+express.cdp.sync.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/1/include/logic/express.cdp.sync.php
+END
+safe.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/safe.logic.php
+END
+ticket_push.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/206/include/logic/ticket_push.logic.php
+END
+article.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/article.logic.php
+END
+ticket.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/202/include/logic/ticket.logic.php
+END
+refund.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/refund.logic.php
+END
+articletype.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/1/include/logic/articletype.logic.php
+END
+address.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/address.logic.php
+END
+robot_log.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/logic/robot_log.logic.php
+END
+gps.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/1/include/logic/gps.logic.php
+END
+npushnews_test.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/dxoo/!svn/ver/1/include/logic/npushnews_test.logic.php
+END
+group.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/group.logic.php
+END
+reports.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/reports.logic.php
+END
+url.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/1/include/logic/url.logic.php
+END
+html.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/html.logic.php
+END
+search.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/search.logic.php
+END
+notify.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/notify.logic.php
+END
+credit.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/114/include/logic/credit.logic.php
+END
+check.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/check.logic.php
+END
+cash.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/cash.logic.php
+END
+dev.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/dxoo/!svn/ver/1/include/logic/dev.logic.php
+END
+favorite.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/1/include/logic/favorite.logic.php
+END
+recharge.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/1/include/logic/recharge.logic.php
+END
+product.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/207/include/logic/product.logic.php
+END
+robot.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/robot.logic.php
+END
+cream.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/cream.logic.php
+END
+upgrade.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/upgrade.logic.php
+END
+express.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/express.logic.php
+END
+npushnews.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/dxoo/!svn/ver/82/include/logic/npushnews.logic.php
+END
+ci.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/dxoo/!svn/ver/1/include/logic/ci.logic.php
+END
+misc.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/114/include/logic/misc.logic.php
+END
+fund.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/fund.logic.php
+END
+callback.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/1/include/logic/callback.logic.php
+END
+myaccount.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/logic/myaccount.logic.php
+END
+comment.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/95/include/logic/comment.logic.php
+END
+coupon.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/176/include/logic/coupon.logic.php
+END
+imagick.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/imagick.logic.php
+END
+code.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/code.logic.php
+END
+catalog.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/logic/catalog.logic.php
+END
+product_tag.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/dxoo/!svn/ver/1/include/logic/product_tag.logic.php
+END
+subscribe.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/dxoo/!svn/ver/1/include/logic/subscribe.logic.php
+END
+image.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/dxoo/!svn/ver/1/include/logic/image.logic.php
+END
+upload.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/upload.logic.php
+END
+db.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/dxoo/!svn/ver/1/include/logic/db.logic.php
+END
+seller.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dxoo/!svn/ver/1/include/logic/seller.logic.php
+END
+cart.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/dxoo/!svn/ver/1/include/logic/cart.logic.php
+END
+activity.logic.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dxoo/!svn/ver/1/include/logic/activity.logic.php
+END

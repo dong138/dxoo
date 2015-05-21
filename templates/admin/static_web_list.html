@@ -1,0 +1,88 @@
+<!--{template @admin/header}-->
+<form method="post" action="{$action}">
+	<table cellspacing="1" cellpadding="4" width="100%" align="center"
+		class="tableborder">
+		<tr class="header">
+			<td colspan="12"><b style="float: left;">静态页面内容管理</b> <a
+				style="float: left; margin-left: 5px"
+				href="?mod=activity&code=AddStatic" class="back1 back2">添加静态内容</a>
+				&nbsp; <label>
+					<input type="checkbox" onclick="enabled_click();" id="enabledUpdate" {if $enabled['key']==1}checked{/if}>
+					启用静态列表
+				</label>
+				<label id="page_size_label" {if $enabled['key'] == 1}style="display:none;"{/if}>
+					<input type="text" id="page_size" value="{$activity_size['key']}">
+						每页大小
+					</label>
+				<input type="button" onclick="enabled_update();" value="保存">
+			</td>
+		</tr>
+		{if !empty($list)}
+		<tr>
+			<td colspan="12">
+				<div class="tr_select">
+					请输入您要搜索的关键词： <input name="keyword" value="{$keyword}" id="keyword" type="text" class="isearcher_input_words" />
+					<input name="bottom" type="submit" id="bottom" value="搜索" class="btn btn-primary btn-small" />
+				</div>
+			</td>
+		</tr>
+		{/if}
+		<tr class="tr_nav">
+			<td width="10%">标题</td>
+			<td width="7%">状态</td>
+			<td width="7%">添加时间</td>
+			<td width="15%" align="center">管理</td>
+		</tr>
+		<!--{if empty($list)}-->
+		<tr>
+			<td colspan="12">暂时还没有静态内容，请<a
+				href="?mod=activity&code=AddStatic">添加静态内容</a>。
+			</td>
+		</tr>
+		<!--{/if}-->
+		<!--{loop $list $i $value}-->
+		<tr onmouseover="this.className='tr_hover'" onmouseout="this.className='tr_normal'">
+			<td>{$value['title']}</td>
+			<td>{echo $value['status']==1 ? '显示' : '不显示'}</td>
+			<td>{echo date('Y-m-d', $value['addtime'])}</td>
+			<td align="center">
+				[<a href="?mod=activity&code=EditStatic&id={$value['id']}">修改</a> -<a href="javascript:vold(0);" title="点此删除该众筹"
+				onclick="if(confirm('您确认要删除该活动项目吗？')){window.location.href='?mod=activity&code=DeleteStatic&id={$value['id']}'}">删除</a>
+				]
+			</td>
+		</tr>
+		<!--{/loop}-->
+		<tr>
+			<td colspan="12">请注意：<br>1、商家各项金额数据中，均不包括实物订单中用户支付的商品运输费用。<br>2、添加商家时绑定的商家用户将成为商家产品{TUANGOU_STR}券的管理者，<font
+				color=red>商家用户可前台登陆、查看旗下{TUANGOU_STR}券、核对和消费</font>！
+			</td>
+		</tr>
+	</table>
+	<a href="?mod=activity&code=AddStatic" class="back1 back2">添加静态内容</a> <br>
+	<center>{$page_arr}</center>
+</form>
+<script type="text/javascript">
+	function enabled_update(){
+		var enabled = $('#enabledUpdate').prop("checked")== true ? 1 : 0;
+		var page_size = $('#page_size').val();
+		$.ajax({
+            type: "GET",
+            url: '?mod=activity&code=ajaxUpdate&enabled='+enabled+'&psize='+page_size,
+            dataType: "text",
+            success: function(data){
+            	alert("更新成功");
+            }
+		});
+	}
+	function enabled_click(){
+		enabled = $('#enabledUpdate').prop("checked")== true ? 1 : 0;
+		if(enabled == 1){
+			//启用静态列表
+			$('#page_size_label').hide();
+		}else{
+			//不启用静态列表
+			$('#page_size_label').show();
+		}
+	}
+</script>
+{~ui('loader')->js('#admin/js/sdb.parser')} {template @admin/footer}

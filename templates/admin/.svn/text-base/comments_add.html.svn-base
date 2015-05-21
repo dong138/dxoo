@@ -1,0 +1,139 @@
+<!--{template @admin/header}-->
+{~ui('loader')->css('comment',false,'templates/default/styles')}
+{~ui('loader')->css('@hl_style',true,'static/css')}
+<!--<link href="static/css/hl_style.css" rel="stylesheet" type="text/css" />-->
+<!--{~ui('loader')->js('@comment.ops',false,'static/js')}-->
+{~ui('loader')->css('@jquery.thickbox')}
+{~ui('loader')->js('@jquery.thickbox')}
+{~ui('loader')->addon('picker.date')}
+{~ui('loader')->css('@webuploader',true,'webuploader-0.1.5')}
+{~ui('loader')->js('@webuploader',true,'webuploader-0.1.5')}
+{~ui('loader')->js('@uploadImg',true,'webuploader-0.1.5')}
+<div style="padding: 10px;">
+<div class="header">
+    添加产品评论
+</div>
+<div class="header">
+    <a style="color: #0077d1;margin-left:30px;" href="index.php?view={$product['id']}#name-comment-block_lh" target="_blank">$product['name'];</a>
+</div>
+<form action="admin.php?mod=comment&code=AddSubmit&pid={$product['id']}" method="post">
+<table width="100%" class="tableborder">
+    <tbody>
+        <tr class="">
+            <td width="100" class="td_title">评分：</td>
+            <td>
+                <input name="score" id="i-comment-score" type="hidden" value="5"/>
+                <ul class="comment-rating comment-rating-current">
+                    <li id="comment-score-displayer"
+                        style="z-index: 0; display: list-item; width: 100%;"></li>
+                    <li id="comment-score-selector" class="comment-score-selector">
+                        <span class="comment-score-block-span" onclick="comment_score_over(1)" onmouseover="comment_score_over(1)"></span>
+                        <span class="comment-score-block-span" onclick="comment_score_over(2)" onmouseover="comment_score_over(2)"></span>
+                        <span class="comment-score-block-span" onclick="comment_score_over(3)" onmouseover="comment_score_over(3)"></span>
+                        <span class="comment-score-block-span" onclick="comment_score_over(4)" onmouseover="comment_score_over(4)"></span>
+                        <span class="comment-score-block-span" onclick="comment_score_over(5)" onmouseover="comment_score_over(5)"></span>
+                    </li>
+                </ul>
+                <span id="comment-score-description" style="margin-left: 10px;"></span>
+            </td>
+        </tr>
+        <tr class="">
+            <td width="100" class="td_title">用户名：</td>
+            <td>
+                <input type="text" name="user_name" id="user_name" style="height: 25px"/>
+            </td>
+        </tr>
+        <tr class="">
+			<td width="100" class="td_title">评论时间：</td>
+			<td>
+			<input type="text" 
+				onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy年MM月dd日 HH时mm分ss秒',startDate:'{echo date('Y-m-d H:i:s', time());}',vel:'timestamp_update'})"
+				size="35" class="Wdate" value="{echo date('Y年m月d日 H时i分s秒', time());}"  datatype="*" errormsg="请选择" sucmsg=" "/>
+			<input name="timestamp_update" type="hidden" id="timestamp_update" value="{echo date('Y-m-d H:i:s', time());}" datatype="*"  errormsg="请输入" sucmsg=" " /></td>
+		</tr>
+        <tr class="">
+            <td width="100" class="td_title">内容：</td>
+            <td>
+                <textarea name="content" id="i-comment-content" cols="100"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td width="100" class="td_title">上传图片：</td>
+            <td>
+                <div><input type="hidden" name="imgs" id="imgspath"/><input type="button" id="J_selectImage" value="上传图片"></div>
+                <div id="J_imageView" class="J_imageView">
+                    <ul class="filelist">
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr class="">
+            <td colspan="2" bgcolor="#F4F8FC">
+                <center>
+                    <input type="hidden" name="id" value="4">
+                    <input type="submit" value="保存" class="button" onclick="return sumbitCheck(this);">
+                </center>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</form>
+<!--<div class="comment-list" id="deal_comment" style="width: 708px;">-->
+    <!--<div class="comment-sort">-->
+        <!--<h4 style="background: #f4f4f4; color: #666666; border: 1px solid #e7e3e4;padding: 10px">最新评价内容</h4>-->
+        <!--<dl class="comment-txt">-->
+            <!--<div class="pl_box">-->
+                <!--<ul class="pl_tab">-->
+                    <!--<li id="pl_qb_li" onclick="clickTab_d(1);" class="item">全部</li>-->
+                    <!--<li id="pl_hp_li" onclick="clickTab_d(2);">好评</li>-->
+                    <!--<li id="pl_zp_li" onclick="clickTab_d(3);">中评</li>-->
+                    <!--<li id="pl_cp_li" onclick="clickTab_d(4);">差评</li>-->
+                    <!--<li id="pl_yt_li" onclick="clickTab_d(5);">有图</li>-->
+                    <!--&lt;!&ndash; <span>-->
+                        <!--有内容的评价-->
+                        <!--<select>-->
+                            <!--<option>默认排序</option>-->
+                            <!--<option>时间排序</option>-->
+                        <!--</select>-->
+                    <!--</span> &ndash;&gt;-->
+                <!--</ul>-->
+                <!--&lt;!&ndash;全部&ndash;&gt;-->
+                <!--<div class="pl_list" id="pl_qb" style="display:block;">-->
+                    <!--<ul><li><div class="pl_list_box"><div class="pl_list_title"><span class="vip_name"> wrwer</span> <span class="vip_ico2"></span> <span class="vip_time">2015-04-02 09:36:58</span><span class="vip_step0"><i></i><i></i><i></i><i></i><i></i></span></div><div class="pl_list_main">werwr</div><ul style="width:700px;"><li style="padding-right:5px;"><a onclick="add_pics(0,this);return false"><img width="105" height="105" src="http://127.0.0.1:888/dxoo/uploads/2015-04-02/9ec340b9a8240eef527b4c548661770e.png"></a></li></ul><h3></h3></div></li><li><div class="pl_list_box"><div class="pl_list_title"><span class="vip_name"> 234</span> <span class="vip_ico2"></span> <span class="vip_time">2015-04-02 09:40:49</span><span class="vip_step0"><i></i><i></i><i></i><i></i><i></i></span></div><div class="pl_list_main">24234</div><ul style="width:700px;"><li style="padding-right:5px;"><a onclick="add_pics(0,this);return false"><img width="105" height="105" src="http://127.0.0.1:888/dxoo/uploads/2015-04-02/5ee0b0aad6662d20b6ce2f64b5403924.png"></a></li></ul><h3></h3></div></li><li><div class="pl_list_box"><div class="pl_list_title"><span class="vip_name"> 2342342</span> <span class="vip_ico2"></span> <span class="vip_time">2015-04-02 09:45:21</span><span class="vip_step0"><i></i><i></i><i></i><i></i><i></i></span></div><div class="pl_list_main">234242</div><ul style="width:700px;"><li style="padding-right:5px;"><a onclick="add_pics(0,this);return false"><img width="105" height="105" src="http://127.0.0.1:888/dxoo/uploads/2015-04-02/e2edf2b764b9da54e6909bfdac556b80.png"></a></li></ul><h3></h3></div></li></ul>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;好评&ndash;&gt;-->
+                <!--<div class="pl_list" id="pl_hp"></div>-->
+                <!--&lt;!&ndash;中评&ndash;&gt;-->
+                <!--<div class="pl_list" id="pl_zp"></div>-->
+                <!--&lt;!&ndash;差评&ndash;&gt;-->
+                <!--<div class="pl_list" id="pl_cp"></div>-->
+                <!--&lt;!&ndash;有图&ndash;&gt;-->
+                <!--<div class="pl_list" id="pl_yt"></div>-->
+            <!--</div>-->
+        <!--</dl>-->
+    <!--</div>-->
+<!--</div>-->
+</div>
+<script type="text/javascript">
+    $('#J_selectImage').uploadImgs('#J_imageView .filelist','#imgspath');
+    function sumbitCheck(me){
+        var score = $('#i-comment-score').val();
+        var content = $('#i-comment-content').val();
+        var user_name = $('#user_name').val();
+        var timestamp_update = $("#timestamp_update").val();
+        if(js_strto_time(timestamp_update)-2 > "{echo time();}"){alert("不能超过当前日期!");return false;}
+        if(score==''){alert('请选择评分!');return false;}
+        if(content.replace(/^\s\s*/, '').replace(/\s\s*$/, '').length<5){alert('内容不能少于五个字!');return false;}
+        if(user_name==''){alert('请输入用户名!');return false;}
+        setTimeout(function(){ $(me).attr('disabled','');},1);
+
+    }
+    
+    function js_strto_time(str_time){
+        var new_str = str_time.replace(/:/g,'-');
+        new_str = new_str.replace(/ /g,'-');
+        var arr = new_str.split("-");
+        var datum = new Date(Date.UTC(arr[0],arr[1]-1,arr[2],arr[3]-8,arr[4],arr[5]));
+        return strtotime = datum.getTime()/1000;
+    }
+</script>

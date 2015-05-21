@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 25
+/svn/dxoo/!svn/ver/14/api
+END
+appi.php
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/dxoo/!svn/ver/1/api/appi.php
+END
+sellerApiCheck.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/14/api/sellerApiCheck.php
+END
+sellerApiFind.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/dxoo/!svn/ver/1/api/sellerApiFind.php
+END
+OldInit.php
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/dxoo/!svn/ver/1/api/OldInit.php
+END
+init.php
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/dxoo/!svn/ver/1/api/init.php
+END
+profit.php
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/dxoo/!svn/ver/1/api/profit.php
+END
+uc_api_db.php
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/dxoo/!svn/ver/1/api/uc_api_db.php
+END
+uc.php
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/dxoo/!svn/ver/1/api/uc.php
+END

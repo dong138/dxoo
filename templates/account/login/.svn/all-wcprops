@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/dxoo/!svn/ver/2/templates/account/login
+END
+redirect.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/dxoo/!svn/ver/2/templates/account/login/redirect.html
+END
+union_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dxoo/!svn/ver/2/templates/account/login/union_list.html
+END

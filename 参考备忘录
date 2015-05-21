@@ -1,0 +1,31 @@
+1）.widget.php这个文件里面保存的就是侧边的挂历
+	'test_testview' => 
+	  array (
+	    'name' => '我的测试',
+	    'blocks' => 
+	    array (
+	      'invite' => 
+	      array (
+	        'enabled' => true,
+	      ),
+	      'asker' => 
+	      array (
+	        'enabled' => true,
+	      ),
+	    ),
+	  ),
+  {~ui('widget')->load()}这句话会带着当前请求来配置挂件
+  这个格式是固定的，test_testview代表着，在请求?mod=test&code=testview的时候的挂件，不能再带有op这个参数
+  
+2）.moSpace/table/get/post/loadInstance等这一系列的带着黄色提示的方法都在extends.php这个文件里面，
+	据推测应该是在init.php里面的require_once INCLUDE_PATH . 'extend.php';这一句将它引进来的
+	
+3）<!-- max -->搜索这个即可找到首页最新模块，最新下边模块，头，尾等
+	
+	
+	
+基本：a)mod=?&code=?&op=?
+	这个请求到达的是：{mod}.mod.php文件里面的{code}_{op}方法
+	b)logic(?)
+	代表着：{logic}.logic.php
+	

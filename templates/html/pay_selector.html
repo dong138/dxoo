@@ -1,0 +1,193 @@
+{~ui('loader')->css('@pay.selector')} {eval $me_money =
+round(user()->get('money')*1, 2); $allowSelfPay = false; $pay_money =
+round($pay_money, 2); $remain_money = round(($pay_money - $me_money),2);
+$dspSelfPay = $product_type == 'recharge' ? false : true; }
+
+
+
+<div id="paytype_list" class="paytype_list">
+	<p class="title">请选择支付方式</p>
+	<table width="100%" border="0" class="P_diso">
+		<tr>
+			<td colspan="3">
+				<p class="P_diso_1">
+					您当前账户余额：{$me_money} 元 {if $dspSelfPay} {if $me_money > 0 &&
+					$me_money < $pay_money} ，<label><input type="checkbox"
+						id="payment_use_surplus" value="true" /> 使用余额支付</label> {elseif $me_money
+					>= $pay_money} {eval $allowSelfPay = true} ，可以使用余额付款 {/if} {/if}
+				</p> {if $dspSelfPay}
+				<p class="P_diso_2">
+					<font id="payment_total_money">您总共需要支付<span id="totalmoney2">{$pay_money}</span>元
+					</font> <input type="hidden" id="totalmoney_2" value="{$pay_money}">
+					<font id="payment_remain_money">扣除您帐户的{$me_money}元后，您还需要支付{$remain_money}元</font>
+				<div id="payment_clear"></div>
+				</p> {/if}
+			</td>
+		</tr>
+	</table>
+	<div>
+		<!-- 国付宝银行选择 -->
+
+		<div class="banks">
+			<h3>选择银行支付</h3>
+			<!-- <div class="bank_list" onclick="selectedBank('TBANK')">
+				<input type="radio" ID="TBANK" name="payment_id" value="7" /> <img alt=""
+					src="static/images/ibank/TBankTest.jpg" />
+			</div> -->
+
+			<p class="h30 lh30 ma ovh pt5 pb5">
+			<div class="bank_list " onclick="selectedBank('ICBC')">
+				<input class="bank_radio" type="radio" value="7" ID="ICBC"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg7 db bods ml5" title="工商银行"></span>
+			</div>
+
+			<div class="bank_list" onclick="selectedBank('BOCOM')">
+				<input class="bank_radio" type="radio" value="7" ID="BOCOM"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg8 db bods ml5" title="交通银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('CCB')">
+				<input class="bank_radio" type="radio" value="7" ID="CCB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg9 db bods ml5" title="建设银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('CMB')">
+				<input class="bank_radio" type="radio" value="7" ID="CMB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg10 db bods ml5" title="招商银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('BOC')">
+				<input class="bank_radio" type="radio" value="7" ID="BOC"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg11 db bods" title="中国银行"></span>
+			</div>
+			</p>
+			<p class="h30 lh30 ma ovh pt5 pb5">
+			<div class="bank_list" onclick="selectedBank('ABC')">
+				<input class="bank_radio" type="radio" value="7" ID="ABC"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg12 db bods ml5" title="农业银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('CMBC')">
+				<input class="bank_radio" type="radio" value="7" ID="CMBC"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg13 db bods ml5" title="中国民生银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('BOBJ')">
+				<input class="bank_radio" type="radio" value="7" ID="BOBJ"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg15 db bods ml5" title="北京银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('CITIC')">
+				<input class="bank_radio" type="radio" value="7" ID="CITIC"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg14 db bods ml5" title="中信银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('SPDB')">
+				<input class="bank_radio" type="radio" value="7" ID="SPDB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg16 db bods ml5" title="浦发银行"></span>
+			</div>
+			</p>
+
+			<p class="h30 lh30 ma ovh pt15 pb15 ">
+			<div class="bank_list" onclick="selectedBank('CIB')">
+				<input class="bank_radio" type="radio" value="7" ID="CIB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg17 db bods ml5" title="兴业银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('GDB')">
+				<input class="bank_radio" type="radio" value="7" ID="GDB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg18 db bods ml5" title="广发银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('CEB')">
+				<input class="bank_radio" type="radio" value="7" ID="CEB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg20 db bods ml5" title="中国光大银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('PSBC')">
+				<input class="bank_radio" type="radio" value="7" ID="PSBC"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg19 db bods ml5" title="中国邮政银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('PAB')">
+				<input class="bank_radio" type="radio" value="7" ID="PAB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg23 db bods ml5" title="平安银行"></span>
+			</div>
+			</p>
+
+			<p class="h30 lh30 ma ovh pt15 pb15 ">
+			<div class="bank_list" onclick="selectedBank('HXBC')">
+				<input class="bank_radio" type="radio" value="7" ID="HXBC"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg24 db bods ml5" title="华夏银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('NBCB')">
+				<input class="bank_radio" type="radio" value="7" ID="NBCB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg25 db bods ml5" title="宁波银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('BOS')">
+				<input class="bank_radio" type="radio" value="7" ID="BOS"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg26 db bods ml5" title="上海银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('TCCB')">
+				<input class="bank_radio" type="radio" value="7" ID="TCCB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg27 db bods ml5" title="天津银行"></span>
+			</div>
+			<div class="bank_list" onclick="selectedBank('NJCB')">
+				<input class="bank_radio" type="radio" value="7" ID="NJCB"
+					name="payment_id" /> <span
+					class="w126 l h30 lh30 formBg formBg28 db bods ml5" title="南京银行"></span>
+			</div>
+			</p>
+			<!-- 国付宝银行选择 -->
+
+		</div>
+	</div>
+	<h3 class="xtn_banks">选择其他平台支付</h3>
+	{if $product_type == 'recharge'} {eval $allowSelfPay = false} {/if} {if
+	$product_id} {eval $listString = meta('paymentlist_of_'.$product_id)}
+	{else} {eval $listString = false} {/if} {loop logic('pay')->GetList()
+	$i $pay} {if !$allowSelfPay && $pay['code'] == 'self'} {eval continue}
+	{/if} {if $pay['code'] == 'cod' && $product_type != 'stuff'} {eval
+	continue} {/if} {if $pay_money <=0 && $pay['code'] != 'self'} {eval
+	continue} {/if} {if $product_type == 'recharge' && $pay['code'] ==
+	'bank'} {eval continue} {/if} {if $product_type != 'recharge' &&
+	$pay['code'] == 'recharge'} {eval continue} {/if} {if $listString} {if
+	!stristr($listString, $pay['code'].',')} {eval continue} {/if} {/if}
+	{if $pay['code'] == 'yeepay' && $pay['config']['yeepayType'] == '1'}
+	{eval continue} {/if} {if
+	logic('pay')->plugin_has_ext_html($pay['code'])}
+	<table width="100%" border="0" class="PayTypeList">
+		<tr class="pay_tr" onclick="pay_tr_click('{$pay['id']}')">
+			<td colspan="3">{$pay['detail']}<input
+				id="payment_id_{$pay['id']}" name="payment_id" type="radio"
+				value="{$pay['id']}" /></td>
+		</tr>
+		{echo logic('pay')->plugin_ouput_ext_html($pay['code'])}
+	</table>
+	{else}
+	<!-- 隐藏国付宝：xjf -->
+
+	<table width="100%" border="0" class="PayTypeList">
+		<tr class="pay_tr" style="cursor: pointer;"
+			onmouseover="pay_tr_mouseover(this)"
+			onmouseout="pay_tr_mouseout(this)"
+			onclick="pay_tr_click('{$pay['id']}')">
+			<td width="15"><input id="payment_id_{$pay['id']}"
+				name="payment_id" type="radio" value="{$pay['id']}" /></td>
+			<td width="150"><em><img
+					src="static/images/pay/{$pay['code']}.gif" /></em></td>
+			<td width="350">{$pay['detail']}</td>
+		</tr>
+	</table>
+
+	{/if} {/loop}
+</div>
+{~ui('loader')->js('@pay.selector')}

@@ -1,0 +1,5 @@
+.ac_results{background-color: #FFF;border: 1px solid #0370ad; font-size:12px; z-index:999;}
+.ac_results table{padding:2px;}
+.ac_results table td{ white-space:nowrap; font-size:12px; padding:1px 3px; cursor:default; color:#0055AA; line-height:20px;}
+.ac_results  .ac_caption{color: #666;margin: 8px 10px 3px 10px; border-bottom: dashed 1px #666;}
+.ac_results .ac_over{background:#bce7ff;}

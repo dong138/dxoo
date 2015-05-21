@@ -1,0 +1,289 @@
+<!--{~ui('loader')->css('comment')}-->
+<!--{~ui('loader')->js('@comment.ops')}-->
+<!--{~ui('loader')->js('@lhgdialog')}-->
+{~ui('loader')->css('@zoom')}
+{~ui('loader')->css('@hl_style')}
+{~ui('loader')->css('@webuploader',true,'webuploader-0.1.5')}
+{~ui('loader')->js('@webuploader',true,'webuploader-0.1.5')}
+{~ui('loader')->js('@uploadImg',true,'webuploader-0.1.5')}
+<div class="user-reviews">
+	<div class="overview">
+		<div class="overview-head">
+			<div class="overview-title">消费评价</div>
+			<div class="overview-feedback">{if $i_buyed} {if
+                $canComment}您已购买过本单且已消费，请评价 {else}您已经购过本单，消费后才可以进行评价 {/if} {else}请您购买后评价{/if}</div>
+		</div>
+		<div class="rating-area total-detail">
+			<div class="total-score">
+				本单用户评价：
+				<span>{$summary['average']}</span>
+				分
+			</div>
+		</div>
+		<div class="rating-area">
+			<ul class="comment-rating">
+				<li style="z-index: 0; display: list-item; width:{echo ($summary['average']*20)}%"></li>
+			</ul>
+		</div>
+		<div class="rating-area">
+			<div>
+				已有
+				<strong>{$summary['count']}</strong>
+				人评价
+			</div>
+		</div>
+		<div style="clear: both"></div>
+	</div>
+	<div class="comment-list" id="deal_comment">
+		<div id="sp_other" style="margin-top: 30px;">
+			{if $comment_my||$canComment}
+			<div class="comment-sort">
+				<h4 style="background: #f4f4f4; color: #666666; border: 1px solid #e7e3e4;">我的评价内容</h4>
+			</div>
+			<dl class="comment-txt">
+				<dd>
+                    {if $canComment}
+                    <div id="comment-form-box" class="comment-form">
+                        <form id="comment-form"
+                              action="index.php?mod=comment&code=submit&pid={$product_id}"
+                              method="post">
+                            <p class="p-title">评分</p>
+                            <p class="p-sbox">
+                            <ul class="comment-rating comment-rating-current">
+                                <li id="comment-score-displayer"
+                                    style="z-index: 0; display: list-item; width: 0%;"></li>
+                                <li id="comment-score-selector" class="comment-score-selector"></li>
+                            </ul>
+                            <input id="i-comment-score" type="hidden" />
+                            </p>
+                            <script type="text/javascript">
+
+                            </script>
+                            <p class="p-title">内容</p>
+                            <p class="p-sbox">
+                                <input id="imgspath" type="hidden" />
+                                <textarea id="i-comment-content"></textarea>
+                                <input type="button" id="J_selectImage" value="上传图片">
+                            <div id="J_imageView" class="J_imageView">
+                                <ul class="filelist">
+                                </ul>
+                            </div>
+                            </p>
+                            <p class="p-sbox">
+                                <input id="comment-button" type="button" class="btn btn-primary"
+                                       value="发布" style="_margin-left: 0;" />
+                            </p>
+                        </form>
+                        <div id="comment-form-loading" class="comment-form-loading"></div>
+                    </div>
+                    {/if}
+
+					{if $comment_my}
+                    {loop $comment_my $key $c_my}
+					<p>{$c_my['content']}</p>
+					{if $c_my['reply']}
+					<div class="replybg">
+						<p class="reply">{$c_my['reply']}</p>
+					</div>
+					{/if}
+					<div class="comment-info">
+						<ul class="comment-info__rating">
+							<li
+									style="z-index:100;display:list-item;width:{echo $c_my['score']*20}%"></li>
+						</ul>
+						<span class="comment-info__user-time">
+							<span class="name">{$c_my['user_name']}</span>
+							<span class="date">{echo date('Y-m-d H:i:s',
+								$c_my['timestamp_update'])}</span>
+						</span>
+					</div>
+					{eval $AllImgs = explode(',',$c_my['imgs'])}
+					<p>
+					<div>
+						{loop $AllImgs $key}
+						{eval $imageurl = imager($key, IMG_Original);}
+						<img width="105" height="105" style="padding-right: 10px;"
+							 src="$imageurl" />
+						{/loop}
+					</div>
+					</p>
+                    {/if}
+                    {/loop}
+				</dd>
+			</dl>
+			{/if}
+			<div class="comment-sort">
+				<h4 style="background: #f4f4f4; color: #666666; border: 1px solid #e7e3e4;">最新评价内容</h4>
+				<dl class="comment-txt">
+					<div class="pl_box">
+						<ul class="pl_tab">
+							<li id="pl_qb_li" onclick="clickTab_d(1);" class="item">全部</li>
+							<li id="pl_hp_li" onclick="clickTab_d(2);">好评</li>
+							<li id="pl_zp_li" onclick="clickTab_d(3);">中评</li>
+							<li id="pl_cp_li" onclick="clickTab_d(4);">差评</li>
+							<li id="pl_yt_li" onclick="clickTab_d(5);">有图</li>
+							<!-- <span>
+								有内容的评价
+								<select>
+									<option>默认排序</option>
+									<option>时间排序</option>
+								</select>
+							</span> -->
+						</ul>
+						<!--全部-->
+						<div class="pl_list" id="pl_qb"></div>
+						<!--好评-->
+						<div class="pl_list" id="pl_hp"></div>
+						<!--中评-->
+						<div class="pl_list" id="pl_zp"></div>
+						<!--差评-->
+						<div class="pl_list" id="pl_cp"></div>
+						<!--有图-->
+						<div class="pl_list" id="pl_yt"></div>
+					</div>
+				</dl>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+    $('#J_selectImage').uploadImgs('#J_imageView .filelist','#imgspath');
+	var add_pics_cuNum;
+	var add_pics_cuArr;
+	function add_pics(cu,imgs){
+		add_pics_cuNum = cu;
+		add_pics_cuArr = [];
+		$(imgs).parents('ul').find('img').each(function(){
+			var src = $(this).attr('src');
+			add_pics_cuArr.push(src);
+		});
+		if($("#zoom").length <= 0){
+			//不存在则加
+			$("body").append('<div id="zoom"><a class="close" onclick="add_pics_close();return false"></a><a href="#previous" class="previous" onclick="add_pics_pre();return false"></a><a href="#next" class="next" onclick="add_pics_next();return false"></a><img id="zoom_img"/><span id="zoom_img_info" style="color:red;margin-top:10px;"></span></div>');
+			$("#zoom").hide();
+		}
+		pic = add_pics_cuArr[cu];
+		add_pics_picMain(pic);
+		$("#zoom").show();
+	}
+	function add_pics_next(){
+		add_pics_cuNum = add_pics_cuNum + 1;
+		if(add_pics_cuNum >= add_pics_cuArr.length){
+			add_pics_cuNum = add_pics_cuNum - 1;
+			$("#zoom_img_info").text("已经最后一张");
+			$("#zoom_img_info").show();
+			return;
+		}
+		var pic = add_pics_cuArr[add_pics_cuNum];
+		add_pics_picMain(pic);
+	}
+	function add_pics_pre(){
+		add_pics_cuNum = add_pics_cuNum - 1;
+		if(add_pics_cuNum < 0){
+			add_pics_cuNum = add_pics_cuNum + 1;
+			$("#zoom_img_info").text("已经第一张");
+			$("#zoom_img_info").show();
+			return;
+		}
+		var pic = add_pics_cuArr[add_pics_cuNum];
+		add_pics_picMain(pic);
+	}
+	function add_pics_close(){
+		$("#zoom_img_info").text("");
+		$("#zoom_img_info").hide();
+		$("#zoom").hide();
+	}
+	function add_pics_picMain(pic){
+		$("#zoom_img_info").text("");
+		$("#zoom_img_info").hide();
+		var s = $(window).width(), o = $(window).height();
+		var img = new Image();
+		img.onload = function () {
+			var iw = this.width;
+			var ih = this.height;
+			var w = (s - iw) / 2;
+			var h = (o - ih) / 2;
+			$("#zoom_img").css("margin-left",w + "px").css("margin-top",h + "px");
+			$("#zoom_img").attr("src",pic);
+		}
+		img.src=pic;
+	}
+</script>
+
+<script type="text/javascript">
+	var d1 = true;
+	var d2 = false;
+	var d3 = false;
+	var d4 = false;
+	var d5 = false;
+	function clickTab_d(type){
+		if (type == 1) {
+			if(d1){
+				d1 = true;
+				return;
+			}
+			d1 = true;
+		}
+		if (type == 2) {
+			if(d2){
+				d2 = true;
+				return;
+			}
+			d2 = true;
+		}
+		if (type == 3) {
+			if(d3){
+				d3 = true;
+				return;
+			}
+			d3 = true;
+		}
+		if (type == 4) {
+			if(d4){
+				d4 = true;
+				return;
+			}
+			d4 = true;
+		}
+		if (type == 5) {
+			if(d5){
+				d5 = true;
+				return;
+			}
+			d5 = true;
+		}
+		pj(type,1);
+	}
+	function pj(type, page) {
+		if (type == 1) {
+			divHtml = "#pl_qb";
+		}
+		if (type == 2) {
+			divHtml = "#pl_hp";
+		}
+		if (type == 3) {
+			divHtml = "#pl_zp";
+		}
+		if (type == 4) {
+			divHtml = "#pl_cp";
+		}
+		if (type == 5) {
+			divHtml = "#pl_yt";
+		}
+		$.ajax({
+			type : "POST",
+			dataType : 'json',
+			data : "commentType=" + type + "&productId=" + {$product_id} + "&page=" + page,
+			url : "?mod=comment&code=getComment",
+			success : function(data) {
+				if (data.status == 1) {
+					$("#next_page_"+type).remove();
+					if(data.msg.length > 0){
+						$(divHtml).append(data.msg);
+					}
+				}
+			}
+		});
+	}
+</script>

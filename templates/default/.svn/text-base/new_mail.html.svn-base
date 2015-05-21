@@ -1,0 +1,66 @@
+<!--{template header}-->
+<!--{~ui('loader')->js('@validform')}-->
+<!--{~ui('loader')->css('@valid.style')}-->
+<link rel="stylesheet" type="text/css" href="styles/edit.css" />
+<form class="registerform" method="post" action="?mod=myaccount&code=newConfirm">
+	<div class="w edit_box">
+		<h2>
+			<span>修改绑定的邮箱</span>
+		</h2>
+		<ul class="edit_title">
+			<li><strong>1.</strong> 选择验证方式</li>
+			<li class="edit_active"><strong>2.</strong> 验证/修改</li>
+			<li><strong>3.</strong> 完成</li>
+		</ul>
+		<div class="edit_info">您正在通过“绑定的邮箱”方式进行验证 / 修改</div>
+		<div class="edit_main">
+			<table border="0">
+				<tr>
+					<td colspan="2">
+						<div class="edit_staue2">
+							<h2>{$msg}</h2>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" class="pad_right">新邮箱</td>
+					<td><input type="text" id="email" name="email"
+						datatype="/^\w+([-+.]\w+)*@(\w+([-.]\w+)*\.)+([a-zA-Z]+)+$/"
+						errormsg="邮箱错误！" ajaxurl="?mod=myaccount&code=isEmail"
+						nullmsg="请输入邮箱！" sucmsg=" " class="text" /></td>
+				</tr>
+				<tr>
+
+					<td align="right">验证码</td>
+					<td><input type="text" id="captcha" class="yz_number"
+						name="a_code" datatype="*" ajaxurl="?mod=myaccount&code=isCode"
+						errormsg="请填写验证码" nullmsg="请输入验证码！" sucmsg=" " autocomplete="off"
+						maxlength="5" /> <img id="signup-captcha-img" height="30px"
+						width="60px" class="left" src="?mod=myaccount&code=create_code" />
+						<a tabindex="-1" class="changNum" href="javascript:void(0);"
+						onclick="create_code();">看不清楚？换一张</a></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><a id='btn_sub' class="left" href="javascript:void(0);">下一步</a><a
+						class="left next_step" href="?mod=me&code=send_mail">上一步</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	$(function() {
+		$(".registerform").Validform({
+			tiptype : 3,
+			btnSubmit : "#btn_sub",
+			postonce : true,
+			showAllError : true
+		});
+	});
+	function create_code() {
+		document.getElementById('signup-captcha-img').src = '?mod=myaccount&code=create_code&aa='
+				+ Math.random() * 10000;
+	}
+</script>
+<!--{template footer}-->

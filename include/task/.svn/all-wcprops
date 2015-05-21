@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/dxoo/!svn/ver/1/include/task
+END
+task_core.task.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/task/task_core.task.php
+END
+mail_send.task.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/dxoo/!svn/ver/1/include/task/mail_send.task.php
+END
